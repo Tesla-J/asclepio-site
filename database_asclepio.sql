@@ -1,0 +1,71 @@
+/* STARTUP - serie */
+
+USE asclepio;
+
+CREATE TABLE IF NOT EXISTS Sala(
+	Numero_Sala tinyint NOT NULL,
+	Codigo_Turma VARCHAR(10) NOT NULL,
+	Numero_Alunos TINYINT NOT NULL,
+	Ano YEAR,
+	Numero_Disciplinas TINYINT NOT NULL,
+	Nome_Curso VARCHAR(50) NOT NULL UNIQUE,
+	PRIMARY KEY(Numero_Sala)
+);
+
+CREATE TABLE IF NOT EXISTS Encarregado (
+	BI CHAR(14) NOT NULL UNIQUE,
+	Nome_Completo VARCHAR(50) NOT NULL UNIQUE,
+	Data_Nascimento DATE NOT NULL,
+	Telefone VARCHAR(13) NOT NULL,
+	Email VARCHAR(50) UNIQUE,
+	Sexo ENUM('M','F') NOT NULL,
+	Morada VARCHAR(50) NOT NULL,
+	Senha CHAR(128) NOT NULL,
+	PRIMARY KEY(BI)
+);
+
+CREATE TABLE IF NOT EXISTS Aluno(
+	BI CHAR(14) NOT NULL,
+	Nome_Completo VARCHAR(50) NOT NULL UNIQUE,
+	Encarregado CHAR(14) NOT NULL,
+	Data_Nascimento DATE NOT NULL,
+	Email varchar(50) UNIQUE,
+	Curso VARCHAR(50) NOT NULL,
+	Telefone VARCHAR(13) NOT NULL,
+	Morada VARCHAR(50) NOT NULL,
+	Sexo ENUM('M','F') NOT NULL,
+	Senha CHAR(128) NOT NULL,
+	PRIMARY KEY(BI),
+	FOREIGN KEY(Encarregado) REFERENCES Encarregado(BI),
+	FOREIGN KEY(Curso) REFERENCES Sala(Nome_Curso)
+);
+
+CREATE TABLE IF NOT EXISTS Funcionarios(
+	BI CHAR(14) NOT NULL UNIQUE,
+	Nome_Completo VARCHAR(50) NOT NULL UNIQUE,
+	Data_Nascimento DATE NOT NULL,
+	Sexo ENUM('M','F') NOT NULL,
+	Email VARCHAR(50) UNIQUE,
+	Telefone VARCHAR(13) NOT NULL UNIQUE,
+	Morada VARCHAR(50) NOT NULL,
+	Funcao ENUM('Professor','Coordenador') NOT NULL,
+	Senha CHAR(128) NOT NULL,
+	PRIMARY KEY(BI)
+);
+
+CREATE TABLE IF NOT EXISTS Comunicados(
+	ID_Comunicado TINYINT NOT NULL AUTO_INCREMENT,
+	Arquivo VARCHAR(100) NOT NULL UNIQUE,
+	Data_Publicação DATE NOT NULL,
+	Autor CHAR(14) NOT NULL,
+	PRIMARY KEY(ID_Comunicado),
+	FOREIGN KEY(Autor) REFERENCES Funcionarios(BI)
+);
+
+CREATE TABLE IF NOT EXISTS Boletins(
+	ID_Boletim TINYINT NOT NULL AUTO_INCREMENT,
+	Arquivo VARCHAR(100) NOT NULL,
+	Trimestre ENUM('1','2'),
+	Ano YEAR NOT NULL,
+	PRIMARY KEY(ID_Boletim)
+);
