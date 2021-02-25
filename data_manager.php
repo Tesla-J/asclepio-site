@@ -2,12 +2,11 @@
     /* Classe Server
     Essa classe abstracta será implementada em todas as classes que irão interagir com a BD*/
     abstract class Server{
-        private $c;
+        protected $c;
         function __construct($host, $user, $password, $db_name, $port){
             try{
-                $c = new PDO("mysql:host=$host;port=$port;dbname=$db_name", $user, $password);
-                $c->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                $this->$c = $c;
+                $this->$c = new PDO("mysql:host=$host;port=$port;dbname=$db_name", $user, $password);
+                $this->$c->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             }
             catch (PDOException $e){
                 echo $e->getMessage();
@@ -57,13 +56,16 @@
 
     class Funcionario extends Server{
         public function getFuncionarioById($id){
-            $q = "SELECT * FROM Funcionarios WHERE BI = ?;";
-            $stm = $this->c->prepare($q);
-            $stm->bindValue($id, $BI);
-            $stm->execute();
-            $row = $stm->fetch(PDO::FETCH_ASSOC);
+            if($this->$c != null){
+                $q = "SELECT * FROM Funcionarios WHERE BI = ?;";
+                $stm = $this->c->prepare($q);
+                $stm->bindValue($id, $BI);
+                $stm->execute();
+                $row = $stm->fetch(PDO::FETCH_ASSOC);
 
-            return $row;
+                return $row;
+            }
+                return null;
         }
 
         public function getAllFromFuncionario(){
@@ -81,7 +83,7 @@
 
         public function addNewFuncionario($bi, $nome_completo, $data_nascimento, $sexo, $email, $telefone, $morada, $funcao, $senha){
             $q = "INSERT INTO Funcionarios VALUES ( :bi, :nome_completo, :data_nascimento, :sexo, :email, :telefone, :morada, :funcao, :senha)";
-            $stm = $this->c->prepare($q);
+            $stm = $this->$c->prepare($q);
             $stm->execute(["bi" => $bi, "nome_completo" => $nome_completo, "data_nascimento" => $data_nascimento, "sexo" => $sexo, "email" => $email, "telefone" => $telefone, "morada" => $morada, "funcao" => $funcao, "senha" => hash("sha512", $senha, false)]);
         }
 
