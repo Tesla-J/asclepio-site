@@ -295,6 +295,22 @@
             $json = json_encode($this->data_array);
             return $json;
         }
+
+        public function namesToJSON(){
+            $address = $this->getNameColumn();
+            $row = $address["row"] +1; //skips the title
+            $column = $address["column"];
+            $maxColumn = $this->sheet->getHighestDataColumn();
+            $columnChar = range('A',$maxColumn); //vai ajudar a obter a letra certa para criar o endereço das células
+
+            $names_array = array();
+
+            for(; $row <= $this->sheet->getHighestDataRow(); $row++){
+                $value = $this->sheet->getCell($columnChar[$column] . (string) $row)->getValue();
+                array_push($names_array,$value);
+            }
+            return json_encode($names_array);
+        }
     }
 
 ?>

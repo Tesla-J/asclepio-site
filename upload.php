@@ -27,6 +27,7 @@ if(isset($_FILES['pauta'])){
     echo chr(0x40);
     echo $boletim_manager->toJSON() . "</br>";
     $boletim_manager->getAllNames();
+    echo $boletim_manager->namesToJSON() . "</br>";
 }
 
 ?>
