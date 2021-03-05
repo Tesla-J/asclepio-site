@@ -24,6 +24,9 @@ if(isset($_FILES['pauta'])){
     $data_array = $boletim_table->getBoletimById(5);
 	$boletim_manager = new BoletimManager($data_array['Arquivo']);
     $boletim_manager->toTable();
+    echo chr(0x40);
+    echo $boletim_manager->toJSON() . "</br>";
+    $boletim_manager->getAllNames();
 }
 
 ?>
