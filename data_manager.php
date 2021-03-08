@@ -247,7 +247,7 @@
         }
 
         public function toTable(){
-            echo '<table>';
+            echo '<table class="striped centered">';
         	foreach($this->data_array as $row => $columns){
         		echo '<tr>';
         		foreach($columns as $column){
@@ -291,6 +291,7 @@
 
         }
 
+        //retorna o array com os dados das celulas em formato JSON
         public function toJSON(){
             $json = json_encode($this->data_array);
             return $json;
