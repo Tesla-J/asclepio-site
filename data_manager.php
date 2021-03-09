@@ -53,6 +53,12 @@
                 return null;
         }
 
+        public function addNewEncarregado($bi, $nome_completo, $data_nascimento, $telefone, $email, $sexo, $morada, $senha){
+            $q = "INSERT INTO Funcionarios VALUES ( :bi, :nome_completo, :encarregado,  :data_nascimento, :telefone, :email, :morada, :sexo, :senha)";
+            $stm = $this->c->prepare($q);
+            $stm->execute(["bi" => $bi, "nome_completo" => $nome_completo, "data_nascimento" => $data_nascimento, "telefone" => $telefone, "email" => $email, "morada" => $morada, "sexo" => $sexo, "senha" => hash("sha512", $senha, false)]);
+        }
+
         public function getAllFromEncarregado(){
             $q = "SELECT * FROM Encarregado;";
             $stm = $this->c->execute($q);
@@ -75,11 +81,17 @@
                 return null;
         }
 
+        public function addNewAluno($bi, $nome_completo, $encarregado,  $data_nascimento, $email, $curso, $telefone, $morada, $sexo, $senha){
+            $q = "INSERT INTO Funcionarios VALUES ( :bi, :nome_completo, :encarregado,  :data_nascimento, :email, :curso, :telefone, :morada, :sexo, :senha)";
+            $stm = $this->c->prepare($q);
+            $stm->execute(["bi" => $bi, "nome_completo" => $nome_completo, "encarregado" => $encarregado, "data_nascimento" => $data_nascimento, "email" => $email, "curso" => $curso, "telefone" => $telefone, "morada" => $morada, "sexo" => $sexo, "senha" => hash("sha512", $senha, false)]);
+        }
+
         public function getAllFromAluno(){
             $q = "SELECT * FROM Aluno;";
-            $stm = $this->c->execute($q);
-            $rows = $stm.fetchAll(PDO::FETCH_ASSOC);
-            return $rows;
+            $stm = $this->c->query($q);
+            $rows = $stm->fetchAll(PDO::FETCH_ASSOC);
+            return json_encode($rows);
         }
     }
 
@@ -201,9 +213,9 @@
 
         public function getAllFromBoletim(){
             $q = "SELECT * FROM Boletins;";
-            $stm = $this->c->execute($q);
+            $stm = $this->c->query($q);
             $rows = $stm->fetchAll(PDO::FETCH_ASSOC);
-            return $rows;
+            return json_encode($rows);
         }
 
         public function addNewBoletim($arquivo, $trimestre, $ano){
