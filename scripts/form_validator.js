@@ -1,13 +1,17 @@
-var FormValidator = {
-    function validadeBI(id){
-        var BInumber = document.getElementById(id).getValue();
-        var regex = "";
-        if(true){
-            var BIField = document.getElementById(id);
-            if (BIField.length != 14){
-                return false;
-            }
+
+function validadeBI(id){
+    var BIField = document.getElementById(id);
+    var BInumber = BIField.getValue();
+    var
+    if(true){
+
+        if (BIField.length != 14){
+            return false;
         }
-        return false;
     }
+    return false;
+}
+
+function validatePassword(){
+    
 }

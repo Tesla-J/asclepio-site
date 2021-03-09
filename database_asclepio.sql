@@ -1,71 +1,61 @@
-/* STARTUP - serie */
-
+CREATE DATABASE IF NOT EXISTS asclepio;
 USE asclepio;
 
-CREATE TABLE IF NOT EXISTS Sala(
-	Numero_Sala tinyint NOT NULL,
-	Codigo_Turma VARCHAR(10) NOT NULL,
-	Numero_Alunos TINYINT NOT NULL,
-	Ano YEAR,
-	Numero_Disciplinas TINYINT NOT NULL,
-	Nome_Curso VARCHAR(50) NOT NULL UNIQUE,
-	PRIMARY KEY(Numero_Sala)
+CREATE TABLE IF NOT EXISTS Coordenador(
+    BI_Coordenador CHAR(14) NOT NULL,
+    Nome_Completo varchar(70) not null unique,
+    Morada varchar(35) not null,
+    Sexo enum('M','F'),
+    Data_Nascimento date not null,
+    Telefone char(13) unique not null,
+    Email varchar(30) unique not null,
+    Senha char(128) not null,
+    PRIMARY KEY(BI_Coordenador)
 );
 
-CREATE TABLE IF NOT EXISTS Encarregado (
-	BI CHAR(14) NOT NULL UNIQUE,
-	Nome_Completo VARCHAR(50) NOT NULL UNIQUE,
-	Data_Nascimento DATE NOT NULL,
-	Telefone VARCHAR(13) NOT NULL,
-	Email VARCHAR(50) UNIQUE,
-	Sexo ENUM('M','F') NOT NULL,
-	Morada VARCHAR(50) NOT NULL,
-	Senha CHAR(128) NOT NULL,
-	PRIMARY KEY(BI)
+CREATE TABLE IF NOT EXISTS Encarregado(
+    BI_Encarregado char(14) not null,
+    Nome_Completo varchar(70) not null unique,
+    Morada varchar(35) not null,
+    Email varchar(30) not null unique,
+    Senha char(128) not null,
+    Telefone char(13) not null unique,
+    Sexo enum('M','F'),
+    BI_Coordenador char(14) not null,
+    PRIMARY KEY(BI_Encarregado),
+    FOREIGN KEY (BI_Coordenador) REFERENCES Coordenador(BI_Coordenador)
 );
 
 CREATE TABLE IF NOT EXISTS Aluno(
-	BI CHAR(14) NOT NULL,
-	Nome_Completo VARCHAR(50) NOT NULL UNIQUE,
-	Encarregado CHAR(14) NOT NULL,
-	Data_Nascimento DATE NOT NULL,
-	Email varchar(50) UNIQUE,
-	Curso VARCHAR(50) NOT NULL,
-	Telefone VARCHAR(13) NOT NULL,
-	Morada VARCHAR(50) NOT NULL,
-	Sexo ENUM('M','F') NOT NULL,
-	Senha CHAR(128) NOT NULL,
-	PRIMARY KEY(BI),
-	FOREIGN KEY(Encarregado) REFERENCES Encarregado(BI),
-	FOREIGN KEY(Curso) REFERENCES Sala(Nome_Curso)
+    Turma varchar(35) not null,
+    Senha char(128) not null,
+    BI char(14) not null,
+    Sexo enum('M','F'),
+    Curso enum('Enfermagem','Estomatologia','Farmacologia','Análises Clínicas'),
+    Nome_Completo varchar(70) not null unique,
+    Email varchar(30) not null unique,
+    Data_Nascimento date not null,
+    Telefone char(13) not null unique,
+    Morada varchar(35) not null,
+    BI_Coordenador char(14) not null,
+    BI_Encarregado char(14) not null,
+    PRIMARY KEY(BI),
+    FOREIGN KEY(BI_Coordenador) REFERENCES Coordenador(BI_Coordenador),
+    FOREIGN KEY(BI_Encarregado) REFERENCES Encarregado(BI_Encarregado)
 );
 
-CREATE TABLE IF NOT EXISTS Funcionarios(
-	BI CHAR(14) NOT NULL UNIQUE,
-	Nome_Completo VARCHAR(50) NOT NULL UNIQUE,
-	Data_Nascimento DATE NOT NULL,
-	Sexo ENUM('M','F') NOT NULL,
-	Email VARCHAR(50) UNIQUE,
-	Telefone VARCHAR(13) NOT NULL UNIQUE,
-	Morada VARCHAR(50) NOT NULL,
-	Funcao ENUM('Professor','Coordenador') NOT NULL,
-	Senha CHAR(128) NOT NULL,
-	PRIMARY KEY(BI)
+CREATE TABLE IF NOT EXISTS Boletim(
+    Arquivo varchar(200) not null unique,
+    ID_Boletim int not null auto_increment,
+    BI_Coordenador char(14) not null,
+    PRIMARY KEY(ID_Boletim),
+    FOREIGN KEY(BI_Coordenador) REFERENCES Coordenador(BI_Coordenador)
 );
 
-CREATE TABLE IF NOT EXISTS Comunicados(
-	ID_Comunicado TINYINT NOT NULL AUTO_INCREMENT,
-	Arquivo VARCHAR(100) NOT NULL UNIQUE,
-	Data_Publicação DATE NOT NULL,
-	Autor CHAR(14) NOT NULL,
-	PRIMARY KEY(ID_Comunicado),
-	FOREIGN KEY(Autor) REFERENCES Funcionarios(BI)
-);
-
-CREATE TABLE IF NOT EXISTS Boletins(
-	ID_Boletim TINYINT NOT NULL AUTO_INCREMENT,
-	Arquivo VARCHAR(100) NOT NULL,
-	Trimestre ENUM('1','2'),
-	Ano YEAR NOT NULL,
-	PRIMARY KEY(ID_Boletim)
+CREATE TABLE IF NOT EXISTS Comunicado(
+    Arquivo varchar(200) not null unique,
+    ID_Boletim int not null auto_increment,
+    BI_Coordenador char(14) not null,
+    PRIMARY KEY(ID_Boletim),
+    FOREIGN KEY(BI_Coordenador) REFERENCES Coordenador(BI_Coordenador)
 );

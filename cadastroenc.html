@@ -3,14 +3,14 @@
 <head>
 	<link type="text/css" rel="stylesheet" href="styles/nsd/materialize.css">
       <link rel="stylesheet" type="text/css" href="styles/nsd/style.css">
-      <link rel="stylesheet" type="text/css" href="icons/fontawesome-free-5.15.1-web/css/all.min.css"> 
+      <link rel="stylesheet" type="text/css" href="icons/fontawesome-free-5.15.1-web/css/all.min.css">
       <link rel="stylesheet" type="text/css" href="icons/fonts/material-icons.css">
       <link rel="stylesheet" type="text/css" href="styles/nsd/flag-icon.css">
       <style type="text/css">
       	.formulario{
             border: 3px solid #00bcd4;
             border-radius: 10px;
- }                    
+ }
 
                    .input-field .prefix.active {
                       color: #26a69a !important;
@@ -48,8 +48,8 @@
               <input type="text" name="Search" class="header-search-input z-depth-2" placeholder="Instituto Médio Privado de Saúde Asclépio " style="border-radius: 25px;" />
             </div>
             <ul class="right hide-on-med-and-down">
-             
-              
+
+
               <li>
                 <a href="javascript:void(0);" class="waves-effect waves-block waves-light notification-button" data-activates="notifications-dropdown">
                   <i class="material-icons">notifications_none
@@ -65,9 +65,9 @@
                   </span>
                 </a>
               </li>
-              
+
             </ul>
-            
+
             <!-- notifications-dropdown -->
             <ul id="notifications-dropdown" class="dropdown-content">
               <li>
@@ -117,7 +117,7 @@
                   <i class="material-icons">live_help</i>Ajuda</a>
               </li>
               <li class="divider"></li>
-              
+
               <li>
                 <a href="#" class="grey-text text-darken-1">
                   <i class="material-icons">keyboard_tab</i>Logout</a>
@@ -155,7 +155,7 @@
                         <i class="material-icons">live_help</i>Ajuda</a>
                     </li>
                     <li class="divider"></li>
-                    
+
                     <li>
                       <a href="#" class="grey-text text-darken-1">
                         <i class="material-icons">keyboard_tab</i>Logout</a>
@@ -194,7 +194,7 @@
                     </a>
                 </li>
 
-                
+
 
                 <li class="bold">
                   <a href="enviarcomunic.html" class="waves-effect waves-cyan">
@@ -202,7 +202,7 @@
                       <span class="nav-text" style="font-size: 17px;">Enviar Comunicados</span>
                     </a>
                 </li>
-               
+
               </ul>
             </li>
           </ul>
@@ -210,80 +210,80 @@
            <i class="fas fa-bars fa-2x white-text"></i>
           </a>
         </aside>
-        
+
          <section id="content">
           <!--start container-->
           <div class="container">
           <div class="row">
   <p>&nbsp;</p>
-  <form    action=""   method="" class="col s12">
+  <form    action="reg_client.php"   method="post" class="col s12">
   <fieldset class="formulario" style="padding: 15px;">
     <legend><img src="pictures/avatar-13.png" class="circle" width="100"></legend>
     <h5 class="light center">Cadastro de Encarregado</h5>
 
                        <div class="input-field col s6">
                 <i class="fas fa-id-badge prefix"></i>
-                <input type="text" name="BI" id="BI" maxlength="50" required autofocus>
+                <input type="text" name="BI" id="BI" maxlength="14" required autofocus>
                 <label for="BI">BI</label>
               </div>
               <div class="input-field col s6">
                  <i class="fas fa-user prefix"></i>
-                <input type="text" name="nomecompleto" id="nomecompleto" maxlength="50">
+                <input type="text" name="nomecompleto" id="nomecompleto" maxlength="70">
                 <label for="nomecompleto">Nome Completo</label>
               </div>
                             <div class="input-field col s6">
                 <i class="material-icons prefix">email</i>
-                <input type="email" name="email" id="email" maxlength="40" required>
+                <input type="email" name="email" id="email" maxlength="30" required>
                 <label for="email">Email</label>
               </div>
 
                             <div class="input-field col s6">
                             <i class="material-icons prefix">phone</i>
-                            <input id="icon_telephone" type="tel" class="validate">
+                            <input id="icon_telephone" type="tel" maxlength="13">
                             <label for="icon_telephone">Telephone</label>
                             </div>
 
                <div class="input-field col s6">
                             <i class="fas fa-address-card prefix"></i>
-                             <input id="morada" type="text" name="morada">
+                             <input id="morada" type="text" name="morada" maxlength="35">
                              <label for="morada">Morada</label>
                              </div>
-                              
+
                              <div class="input-field col s6">
                 <i class="fas fa-key prefix"></i>
-                <input type="password" name="senha" id="senha" maxlength="14" required>
+                <input type="password" name="senha" id="senha" required>
                 <label for="senha">Senha</label>
               </div>
-                        
-                        <div class="input-field col s6">
-                <i class="fas fa-key prefix"></i>
-                <input type="password" name="senha" id="senha" maxlength="14" required>
-                <label for="senha">Confirmar a Senha</label>
+
+              <div class="input-field col s6">
+               <i class="fas fa-venus-mars prefix"></i>
+                <select name="sexo">
+                <option value="" disabled selected>Selecione o Sexo</option>
+               <option value="M">Masculino</option>
+              <option value="F">Feminino</option>
+               </select>
               </div>
 
-                               <div class="input-field col s6">
-                                <i class="fas fa-venus-mars prefix"></i>
-                                 <select>
-                                 <option value="" disabled selected>Selecione o gênero</option>
-                                <option value="1">Masculino</option>
-                               <option value="2">Feminino</option>
-                                </select>
-                               </div>
+                        <div class="input-field col s6">
+                <i class="fas fa-key prefix"></i>
+                <input type="password" name="senha" id="senha" required>
+                <label for="senha">Confirmar a Senha</label>
+              </div>
 
                                <div class="input-field col s12">
                 <input type="submit" value="Cadastrar" class="btn blue" style=" margin:0 1em 0 0;">
                 <input type="reset" value="Limpar" class="btn red">
-                
+
               </div>
 
-                             
+
    </fieldset>
   </form>
 </div>
- </div>        
-                 <br> 
-                 
-                  
+ </div>
+                 <br>
+
+
 
          <footer class="page-footer gradient-45deg-light-blue-cyan">
         <div class="footer-copyright">
