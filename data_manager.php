@@ -1,7 +1,6 @@
 <?php
     /* Classe Server
     Essa classe abstracta será implementada em todas as classes que irão interagir com a BD
-    Nota: posso optimizar o código colocando as funções de update, getAll, getSpecific e delete na classe Server
     */
     class Server{
 
