@@ -1,32 +1,48 @@
 <?php
     /* Classe Server
-    Essa classe abstracta será implementada em todas as classes que irão interagir com a BD*/
+    Essa classe abstracta será implementada em todas as classes que irão interagir com a BD
+    Nota: posso optimizar o código colocando as funções de update, getAll, getSpecific e delete na classe Server
+    */
     class Server{
+
         protected $c;
+        protected $table;
+
         function __construct(){
+
             $host = "127.0.0.1";
             $port = 3306;
             $db_name = "asclepio";
             $user = "root";
             $password = "toor";
+
             try{
-                $this->c = new PDO("mysql:host=$host;port=$port;dbname=$db_name", $user, $password);
+                $this->c = new PDO(
+                    "mysql:host=$host;
+                    port=$port;
+                    dbname=$db_name",
+                    $user,
+                    $password);
                 $this->c->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             }
             catch (PDOException $e){
                 echo $e->getMessage();
             }
         }
-    }
 
+        //Must set it before use the followind methods
+        public function setTable($table){
+            $this->table = $table;
+        }
 
-    class Encarregado extends Server{
-        public function getEncarregado($attribute, $value){
+        //remember: before use these methods, set the table with the method above
+
+        public function get($attribute, $value){
             if($this->c != null){
-                $q = "SELECT * FROM Encarregado WHERE :attribute = :value;";
+                $q = "SELECT * FROM :table WHERE :attribute = :value;";
                 $stm = $this->c->prepare($q);
                 //$stm->bindValue($id, $BI_Encarregado);
-                $stm->execute(['attribute' => $attribute, 'value' => $value]);
+                $stm->execute(['table' => $this->table, 'attribute' => $attribute, 'value' => $value]);
                 $row = $stm->fetch(PDO::FETCH_ASSOC);
 
                 return json_encode($row);
@@ -34,8 +50,48 @@
                 return null;
         }
 
+        public function getAll(){
+            $q = "SELECT * FROM :table;";
+            $stm = $this->c->prepare($q);
+            $stm->execute(["table" => $this->table]);
+            $rows = $stm.fetchAll(PDO::FETCH_ASSOC);
+            return json_encode($rows);
+        }
+
+        public function update($id_attr, $id_attr_value, $attr, $value){
+            $q = "UPDATE :table SET :attr = :value WHERE :id_attr = :id_attr_value;";
+            $stm = $this->c->prepare($q);
+            $stm->execute([
+                "table" => $this->table,
+                "attr" => $attr,
+                "value" => $value,
+                "id_attr" => $id_attr,
+                "id_attr_value" => $id_attr_value]);
+        }
+
+        public function delete($id_attr, $id_attr_value){
+            $q = "DELETE FROM :table WHERE :id_attr = :id_attr_value;";
+            $stm = $this->c->prepare($q);
+            $stm->execute([
+                "table" => $this->table,
+                "id_attr" => $id_attr,
+                "id_attr_value" => $id_attr_value]);
+        }
+    }
+
+
+    class Encarregado extends Server{
+
         public function addNewEncarregado($bi, $nome_completo, $morada, $email, $senha, $telefone, $sexo, $bi_coordenador){
-            $q = "INSERT INTO Encarregadp VALUES ( :bi, :nome_completo, :morada, :email, :senha, :telefone, :sexo, :bi_coordenador)";
+            $q = "INSERT INTO Encarregadp VALUES (
+                :bi,
+                :nome_completo,
+                :morada,
+                :email,
+                :senha,
+                :telefone,
+                :sexo,
+                :bi_coordenador)";
             $stm = $this->c->prepare($q);
             $stm->execute([
                 "bi" => $bi,
@@ -48,46 +104,25 @@
                 "bi_coordenador" => $bi_coordenador]);
         }
 
-        public function getAllFromEncarregado(){
-            $q = "SELECT * FROM Encarregado;";
-            $stm = $this->c->execute($q);
-            $rows = $stm.fetchAll(PDO::FETCH_ASSOC);
-            return json_encode($rows);
-        }
 
-        public function updateEncarregado($id_attr, $id_attr_value, $attr, $value){
-            $q = "UPDATE Encarregado SET :attr = :value WHERE :id_attr = :id_attr_value;";
-            $stm = $this->c->prepare($q);
-            $stm->execute([
-                "attr" => $attr,
-                "value" => $value,
-                "id_attr" => $id_attr,
-                "id_attr_value" => $id_attr_value]);
-        }
-
-        public function deleteEncarregado($id_attr, $id_attr_value){
-            $q = "DELETE FROM Encarregado WHERE :id_attr = :id_attr_value;";
-            $stm = $this->c->prepare($q);
-            $stm->execute(["id_attr" => $id_attr, "id_attr_value" => $id_attr_value]);
-        }
     }
 
     class Aluno extends Server{
-        public function getAluno($attribute, $value){
-            if($this->c != null){
-                $q = "SELECT * FROM Aluno WHERE :attribute = :value;";
-                $stm = $this->c->prepare($q);
-                //$stm->bindValue($id, $BI_Encarregado);
-                $stm->execute(['attribute' => $attribute, 'value' => $value]);
-                $row = $stm->fetch(PDO::FETCH_ASSOC);
-
-                return json_encode($row);
-            }
-                return null;
-        }
 
         public function addNewEncarregado($turma, $senha, $bi, $sexo, $curso, $nome_completo, $email, $data_nascimento, $telefone, $morada, $bi_coordenador, $bi_encarregado){
-            $q = "INSERT INTO Aluno VALUES ( :turma, :senha, :bi, :sexo, :curso, :nome_completo, :email, :data_nascimento, :telefone, :morada, :bi_coordenador, :bi_encarregado)";
+            $q = "INSERT INTO Aluno VALUES (
+                :turma,
+                :senha,
+                :bi,
+                :sexo,
+                :curso,
+                :nome_completo,
+                :email,
+                :data_nascimento,
+                :telefone,
+                :morada,
+                :bi_coordenador,
+                :bi_encarregado)";
             $stm = $this->c->prepare($q);
             $stm->execute([
                 "turma" => $turma,
@@ -104,32 +139,11 @@
                 "bi_encarregado" => $bi_encarregado]);
         }
 
-        public function getAllFromAluno(){
-            $q = "SELECT * FROM Aluno;";
-            $stm = $this->c->execute($q);
-            $rows = $stm.fetchAll(PDO::FETCH_ASSOC);
-            return json_encode($rows);
-        }
-
-        public function updateAluno($id_attr, $id_attr_value, $attr, $value){
-            $q = "UPDATE Aluno SET :attr = :value WHERE :id_attr = :id_attr_value;";
-            $stm = $this->c->prepare($q);
-            $stm->execute([
-                "attr" => $attr,
-                "value" => $value,
-                "id_attr" => $id_attr,
-                "id_attr_value" => $id_attr_value]);
-        }
-
-        public function deleteAluno($id_attr, $id_attr_value){
-            $q = "DELETE FROM Aluno WHERE :id_attr = :id_attr_value;";
-            $stm = $this->c->prepare($q);
-            $stm->execute(["id_attr" => $id_attr, "id_attr_value" => $id_attr_value]);
-        }
     }
 
     /* Classe Funcionário
     Responsável pelo CRUD da tabela Funcionários na BD asclepio
+    Nota: a ser revisado
     */
     class Coordenador extends Server{
         public function getCoordenadorById($id){
