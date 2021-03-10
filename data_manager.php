@@ -19,87 +19,120 @@
         }
     }
 
-/* Classes com métodos para interagir com cada entidade*/
-    class Sala extends Server{
-        public function getSalaById($id){
-            $q = "SELECT * FROM Sala WHERE Numero_Sala = :id;";
-            $stm = $this->c->prepare($q);
-            $stm->bindParam(":id", $id, PDO::PARAM_INT);
-            $stm->execute(['id'=>$id]);
-
-            $row = $stm->fetchAll(PDO::FETCH_ASSOC);
-            return $row;
-        }
-
-        public function getAllFromSala(){
-            $q = "SELECT * FROM Sala";
-            $stm = $this->c->execute($q);
-            $row = $stm->fetchAll(PDO::FETCH_ASSOC);
-            return $row;
-        }
-    }
 
     class Encarregado extends Server{
-        public function getEncarregadoById($id){
-                   if($this->c != null){
-                $q = "SELECT * FROM Encarregado WHERE BI_Encarregado = ?;";
+        public function getEncarregado($attribute, $value){
+            if($this->c != null){
+                $q = "SELECT * FROM Encarregado WHERE :attribute = :value;";
                 $stm = $this->c->prepare($q);
-                $stm->bindValue($id, $BI_Encarregado);
-                $stm->execute();
+                //$stm->bindValue($id, $BI_Encarregado);
+                $stm->execute(['attribute' => $attribute, 'value' => $value]);
                 $row = $stm->fetch(PDO::FETCH_ASSOC);
 
-                return $row;
+                return json_encode($row);
             }
                 return null;
         }
 
-        public function addNewEncarregado($bi, $nome_completo, $data_nascimento, $telefone, $email, $sexo, $morada, $senha){
-            $q = "INSERT INTO Funcionarios VALUES ( :bi, :nome_completo, :encarregado,  :data_nascimento, :telefone, :email, :morada, :sexo, :senha)";
+        public function addNewEncarregado($bi, $nome_completo, $morada, $email, $senha, $telefone, $sexo, $bi_coordenador){
+            $q = "INSERT INTO Encarregadp VALUES ( :bi, :nome_completo, :morada, :email, :senha, :telefone, :sexo, :bi_coordenador)";
             $stm = $this->c->prepare($q);
-            $stm->execute(["bi" => $bi, "nome_completo" => $nome_completo, "data_nascimento" => $data_nascimento, "telefone" => $telefone, "email" => $email, "morada" => $morada, "sexo" => $sexo, "senha" => hash("sha512", $senha, false)]);
+            $stm->execute([
+                "bi" => $bi,
+                "nome_completo" => $nome_completo,
+                "morada" => $morada,
+                "email" => $email,
+                "senha" => hash("sha512", $senha, false),
+                "telefone" => $telefone,
+                "sexo" => $sexo,
+                "bi_coordenador" => $bi_coordenador]);
         }
 
         public function getAllFromEncarregado(){
             $q = "SELECT * FROM Encarregado;";
             $stm = $this->c->execute($q);
             $rows = $stm.fetchAll(PDO::FETCH_ASSOC);
-            return $rows;
+            return json_encode($rows);
+        }
+
+        public function updateEncarregado($id_attr, $id_attr_value, $attr, $value){
+            $q = "UPDATE Encarregado SET :attr = :value WHERE :id_attr = :id_attr_value;";
+            $stm = $this->c->prepare($q);
+            $stm->execute([
+                "attr" => $attr,
+                "value" => $value,
+                "id_attr" => $id_attr,
+                "id_attr_value" => $id_attr_value]);
+        }
+
+        public function deleteEncarregado($id_attr, $id_attr_value){
+            $q = "DELETE FROM Encarregado WHERE :id_attr = :id_attr_value;";
+            $stm = $this->c->prepare($q);
+            $stm->execute(["id_attr" => $id_attr, "id_attr_value" => $id_attr_value]);
         }
     }
 
     class Aluno extends Server{
-        public function getAlunoById($id){
-           if($this->c != null){
-                $q = "SELECT * FROM Aluno WHERE BI = ?;";
+        public function getAluno($attribute, $value){
+            if($this->c != null){
+                $q = "SELECT * FROM Aluno WHERE :attribute = :value;";
                 $stm = $this->c->prepare($q);
-                $stm->bindValue($id, $BI);
-                $stm->execute();
+                //$stm->bindValue($id, $BI_Encarregado);
+                $stm->execute(['attribute' => $attribute, 'value' => $value]);
                 $row = $stm->fetch(PDO::FETCH_ASSOC);
 
-                return $row;
+                return json_encode($row);
             }
                 return null;
         }
 
-        public function addNewAluno($bi, $nome_completo, $encarregado,  $data_nascimento, $email, $curso, $telefone, $morada, $sexo, $senha){
-            $q = "INSERT INTO Funcionarios VALUES ( :bi, :nome_completo, :encarregado,  :data_nascimento, :email, :curso, :telefone, :morada, :sexo, :senha)";
+        public function addNewEncarregado($turma, $senha, $bi, $sexo, $curso, $nome_completo, $email, $data_nascimento, $telefone, $morada, $bi_coordenador, $bi_encarregado){
+            $q = "INSERT INTO Aluno VALUES ( :turma, :senha, :bi, :sexo, :curso, :nome_completo, :email, :data_nascimento, :telefone, :morada, :bi_coordenador, :bi_encarregado)";
             $stm = $this->c->prepare($q);
-            $stm->execute(["bi" => $bi, "nome_completo" => $nome_completo, "encarregado" => $encarregado, "data_nascimento" => $data_nascimento, "email" => $email, "curso" => $curso, "telefone" => $telefone, "morada" => $morada, "sexo" => $sexo, "senha" => hash("sha512", $senha, false)]);
+            $stm->execute([
+                "turma" => $turma,
+                "senha" => hash("sha512",$senha, false),
+                "bi" => $bi,
+                "sexo" => $sexo,
+                "curso" => $curso,
+                "nome_completo" => $nome_completo,
+                "email" => $email,
+                "data_nascimento" => $data_nascimento,
+                "telefone" => $telefone,
+                "morada" => $morada,
+                "bi_coordenador" => $bi_coordenador,
+                "bi_encarregado" => $bi_encarregado]);
         }
 
         public function getAllFromAluno(){
             $q = "SELECT * FROM Aluno;";
-            $stm = $this->c->query($q);
-            $rows = $stm->fetchAll(PDO::FETCH_ASSOC);
+            $stm = $this->c->execute($q);
+            $rows = $stm.fetchAll(PDO::FETCH_ASSOC);
             return json_encode($rows);
+        }
+
+        public function updateAluno($id_attr, $id_attr_value, $attr, $value){
+            $q = "UPDATE Aluno SET :attr = :value WHERE :id_attr = :id_attr_value;";
+            $stm = $this->c->prepare($q);
+            $stm->execute([
+                "attr" => $attr,
+                "value" => $value,
+                "id_attr" => $id_attr,
+                "id_attr_value" => $id_attr_value]);
+        }
+
+        public function deleteAluno($id_attr, $id_attr_value){
+            $q = "DELETE FROM Aluno WHERE :id_attr = :id_attr_value;";
+            $stm = $this->c->prepare($q);
+            $stm->execute(["id_attr" => $id_attr, "id_attr_value" => $id_attr_value]);
         }
     }
 
     /* Classe Funcionário
     Responsável pelo CRUD da tabela Funcionários na BD asclepio
     */
-    class Funcionario extends Server{
-        public function getFuncionarioById($id){
+    class Coordenador extends Server{
+        public function getCoordenadorById($id){
             if($this->c != null){
                 $q = "SELECT * FROM Funcionarios WHERE BI = ?;";
                 $stm = $this->c->prepare($q);
@@ -112,7 +145,7 @@
                 return null;
         }
 
-        public function getAllFromFuncionario(){
+        public function getAllFromCoordenador(){
             $q = "SELECT * FROM Funcionarios;";
             $stm = $this->c->execute($q);
             $rows = $stm.fetchAll(PDO::FETCH_ASSOC);
@@ -125,7 +158,7 @@
             $stm->execute(["new_BI" => $new_BI, "id" => $id]);
         }
 
-        public function addNewFuncionario($bi, $nome_completo, $data_nascimento, $sexo, $email, $telefone, $morada, $funcao, $senha){
+        public function addNewCoordenador($bi, $nome_completo, $data_nascimento, $sexo, $email, $telefone, $morada, $funcao, $senha){
             $q = "INSERT INTO Funcionarios VALUES ( :bi, :nome_completo, :data_nascimento, :sexo, :email, :telefone, :morada, :funcao, :senha)";
             $stm = $this->c->prepare($q);
             $stm->execute(["bi" => $bi, "nome_completo" => $nome_completo, "data_nascimento" => $data_nascimento, "sexo" => $sexo, "email" => $email, "telefone" => $telefone, "morada" => $morada, "funcao" => $funcao, "senha" => hash("sha512", $senha, false)]);
@@ -158,12 +191,6 @@
             $q = "UPDATE Funcionarios SET Telefone = :new_Telefone WHERE BI = :id";
             $stm = $this->c->prepare($q);
             $tm->execute(["new_Telefone" => $new_Telefone, "id" => $id]);
-        }
-
-        public function setFuncao($id, $new_Funcao){
-            $q = "UPDATE Funcionarios SET Funcao = :new_Funcao WHERE BI = :id";
-            $stm = $this->c->prepare($q);
-            $tm->execute(["new_Funcao" => $new_Funcao, "id" => $id]);
         }
 
         public function setSenha($id, $new_Senha){
