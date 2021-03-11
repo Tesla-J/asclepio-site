@@ -46,16 +46,25 @@ const class Form {
 
         switch(type){
             case "enc":
-                var bi_encarregado = ducument.getElementById('bi_encarregado').getValue();
+                var bi_encarregado = document.getElementById('bi_encarregado').getValue();
                 var nome_completo = document.getElementById('nome_completo').getValue();
                 var morada = document.getElementById('morada').getValue();
                 var email = document.getElementById('email').getValue();
                 var senha = document.getElementById('senha').getValue();
                 var telefone = document.getElementById('telefone').getValue();
                 var sexo = document.getElementById('sexo').getValue();
-                var bi_coordenador = document.getElementById('bi_coordenador').getValue();
+                var bi_coordenador = document.cookie['cBI'];
 
-                xhr.send()
+                xhr.send('bi_encarregado=' + bi_encarregado,
+                    '&nome_completo=' + nome_completo,
+                    '&morada=' + morada,
+                    '&email=' + email,
+                    '&senha=' + senha,
+                    '&telefone=' + telefone,
+                    '&sexo=' + sexo,
+                    '&bi_coordenador=' + bi_coordenador,
+                    '&type=' + type
+                );
                 break;
 
             case "aluno":
@@ -73,7 +82,21 @@ const class Form {
                 var bi_coordenador = document.getElementById('bi_coordenador').getValue();
                 var bi_encarregado = document.getElementById('bi_encarregado').getValue();
 
-
+                xhr.send('turma=' + turma,
+                    '&senha=' + senha,
+                    '&encarregado=' + encarregado,
+                    '&bi=' + bi,
+                    '&sexo=' + sexo,
+                    '&curso=' + curso,
+                    '&nome_completo=' + nome_completo,
+                    '&email=' + email,
+                    '&data_nascimento=' + data_nascimento,
+                    '&telefone=' + telefone,
+                    '&morada=' + morada,
+                    '&bi_coordenador=' + bi_coordenador,
+                    '&bi_encarregado=' + bi_encarregado,
+                    '&type=' + type
+                );
                 break;
 
             case "coord":
