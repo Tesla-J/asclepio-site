@@ -53,7 +53,8 @@ CREATE TABLE IF NOT EXISTS Boletim(
 );
 
 CREATE TABLE IF NOT EXISTS Comunicado(
-    Arquivo varchar(200) not null unique,
+    Titulo varchar(100) not null default 'Comunicado',
+    Mensagem varchar(300) not null,
     ID_Boletim int not null auto_increment,
     BI_Coordenador char(14) not null,
     PRIMARY KEY(ID_Boletim),
