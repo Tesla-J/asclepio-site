@@ -1,11 +1,13 @@
 
-const class Form {
+class FormSubmiter {
 
-    var isPasswordValid = false;
+    constructor(){
+        this.isPasswordValid = false;
+    }
 
     /*function validadeBI(id){
         var BIField = document.getElementById(id);
-        var BInumber = BIField.getValue();
+        var BInumber = BIField.value;
         var
         if(true){
 
@@ -16,85 +18,95 @@ const class Form {
         return false;
     }*/
 
-    function isValidPassword(id_pass1, id_pass2){
-        var pass1 = document.getElementById(id_pass1).getValue();
-        var pass2 = document.getElementById(id_pass2).getValue();
+    isValidPassword(id_pass1, id_pass2){
+        var pass1 = document.getElementById(id_pass1).value;
+        var pass2 = document.getElementById(id_pass2).value;
 
-        if (pass1 == padd2){
-            return true;
+        if (pass1 == pass2){
+            this.isPasswordValid = true;
+            return;
         }
         else{
             alert("As senhas devem ser idênticas, por favor corrija.")
-            return false;
+            this.isPasswordValid = false;
+            return;
         }
     }
 
-    function submitInsert(type, form){
+    submitInsert(type, form_id){
 
         var xhr = new XMLHttpRequest();
         xhr.open("POST", "reg_client.php", true);
-        xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
         xhr.onreadystatechange = function(){
             if(xhr.readyState == 4 && xhr.status == 200){
                 if(xhr.responseText == 'OK'){
                     alert("cadastro feito com sucesso!");
-                    var form = document.getElementById(form);
+                    var form = document.getElementById(form_id);
                     form.reset();
+                }
+                else{
+                    alert("Ocorreu um erro, por favor verifique os dados.");
+                    console.log(xhr.responseText);
                 }
             }
         }
 
         switch(type){
             case "enc":
-                var bi_encarregado = document.getElementById('bi_encarregado').getValue();
-                var nome_completo = document.getElementById('nome_completo').getValue();
-                var morada = document.getElementById('morada').getValue();
-                var email = document.getElementById('email').getValue();
-                var senha = document.getElementById('senha').getValue();
-                var telefone = document.getElementById('telefone').getValue();
-                var sexo = document.getElementById('sexo').getValue();
+                this.isValidPassword('senha1', 'senha2');
+                if(!this.isPasswordValid){return;}
+                var bi_encarregado = document.getElementById('bi_encarregado').value;
+                var nome_completo = document.getElementById('nome_completo').value;
+                var morada = document.getElementById('morada').value;
+                var email = document.getElementById('email').value;
+                var senha = document.getElementById('senha1').value;
+                var telefone = document.getElementById('telefone').value;
+                var sexo = document.getElementById('sexo').value;
                 var bi_coordenador = document.cookie['cBI'];
 
-                xhr.send('bi_encarregado=' + bi_encarregado,
-                    '&nome_completo=' + nome_completo,
-                    '&morada=' + morada,
-                    '&email=' + email,
-                    '&senha=' + senha,
-                    '&telefone=' + telefone,
-                    '&sexo=' + sexo,
-                    '&bi_coordenador=' + bi_coordenador,
+                xhr.send('bi_encarregado=' + bi_encarregado +
+                    '&nome_completo=' + nome_completo +
+                    '&morada=' + morada +
+                    '&email=' + email +
+                    '&senha=' + senha +
+                    '&telefone=' + telefone +
+                    '&sexo=' + sexo +
+                    '&bi_coordenador=' + bi_coordenador  +
                     '&type=' + type
                 );
                 break;
 
             case "aluno":
-                var turma = document.getElementById('turma').getValue();
-                var senha = document.getElementById('senha').getValue();
-                var encarregado = document.getElementById('encarregado').getValue();
-                var bi = document.getElementById('bi').getValue();
-                var sexo = document.getElementById('sexo').getValue();
-                var curso = document.getElementById('curso').getValue();
-                var nome_completo = document.getElementById('nome_completo').getValue();
-                var email = document.getElementById('email').getValue();
-                var data_nascimento = document.getElementById('data_nascimento').getValue();
-                var telefone = document.getElementById('telefone').getValue();
-                var morada = document.getElementById('morada').getValue();
-                var bi_coordenador = document.getElementById('bi_coordenador').getValue();
-                var bi_encarregado = document.getElementById('bi_encarregado').getValue();
+                this.isValidPassword('senha1', 'senha2');
+                if(!this.isPasswordValid){return;}
+                var turma = document.getElementById('turma').value;
+                var senha = document.getElementById('senha').value;
+                var encarregado = document.getElementById('encarregado').value;
+                var bi = document.getElementById('bi').value;
+                var sexo = document.getElementById('sexo').value;
+                var curso = document.getElementById('curso').value;
+                var nome_completo = document.getElementById('nome_completo').value;
+                var email = document.getElementById('email').value;
+                var data_nascimento = document.getElementById('data_nascimento').value;
+                var telefone = document.getElementById('telefone').value;
+                var morada = document.getElementById('morada').value;
+                var bi_coordenador = document.getElementById('bi_coordenador').value;
+                var bi_encarregado = document.getElementById('bi_encarregado').value;
 
-                xhr.send('turma=' + turma,
-                    '&senha=' + senha,
-                    '&encarregado=' + encarregado,
-                    '&bi=' + bi,
-                    '&sexo=' + sexo,
-                    '&curso=' + curso,
-                    '&nome_completo=' + nome_completo,
-                    '&email=' + email,
-                    '&data_nascimento=' + data_nascimento,
-                    '&telefone=' + telefone,
-                    '&morada=' + morada,
-                    '&bi_coordenador=' + bi_coordenador,
-                    '&bi_encarregado=' + bi_encarregado,
+                xhr.send('turma=' + turma +
+                    '&senha=' + senha +
+                    '&encarregado=' + encarregado +
+                    '&bi=' + bi +
+                    '&sexo=' + sexo +
+                    '&curso=' + curso +
+                    '&nome_completo=' + nome_completo +
+                    '&email=' + email +
+                    '&data_nascimento=' + data_nascimento +
+                    '&telefone=' + telefone +
+                    '&morada=' + morada +
+                    '&bi_coordenador=' + bi_coordenador +
+                    '&bi_encarregado=' + bi_encarregado +
                     '&type=' + type
                 );
                 break;
@@ -105,3 +117,5 @@ const class Form {
 
     }
 }
+
+validator = new FormSubmiter();
