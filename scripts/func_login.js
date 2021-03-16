@@ -10,7 +10,7 @@ class FuncLogin{
         self.xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
         self.xhr.onreadystatechange = function() {
             if(self.xhr.readyState == 4 && self.xhr.status == 200){
-                if(self.xhr.responseText == 'NONE'){
+                if(self.xhr.responseText == '"NONE"'){
                     alert('Usuário ou senha incorrectos.');
                     ++self.tentativas;
                 }
@@ -22,7 +22,7 @@ class FuncLogin{
                         document.cookie = 'bi='+obj.bi;
                     }
                     catch(e){}
-                    
+
                     switch(obj.username){
                         case 'Administrador':
                             window.location.replace('Admin.html');
@@ -31,6 +31,7 @@ class FuncLogin{
                             window.location.replace('telaprofessorgeral.php');
                             break;
                         default:
+                            alert (obj.username);
                             window.location.replace('coordenador.html');
                     }
                 }

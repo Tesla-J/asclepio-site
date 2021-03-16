@@ -48,7 +48,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         $data = array('username' => 'Administrador');
     }
     else{
-        $data = 'NONE';
+        $data = $_POST['user'];//'NONE';
     }
 
     echo (string) json_encode($data);

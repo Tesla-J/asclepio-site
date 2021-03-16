@@ -38,10 +38,10 @@
 
         public function get($attribute, $value){
             if($this->c != null){
-                $q = "SELECT * FROM ". $this->table ." WHERE :attribute = :value;";
+                $q = "SELECT * FROM ". $this->table ." WHERE ". $attribute ." = :value;";
                 $stm = $this->c->prepare($q);
                 //$stm->bindValue($id, $BI_Encarregado);
-                $stm->execute(['attribute' => $attribute, 'value' => $value]);
+                $stm->execute(['value' => $value]);
                 $row = $stm->fetch(PDO::FETCH_ASSOC);
 
                 return json_encode($row);
@@ -52,26 +52,23 @@
         public function getAll(){
             $q = "SELECT * FROM ". $this->table .";";
             $stm = $this->c->prepare($q);
-            $stm->execute(["table" => $this->table]);
+            $stm->execute();
             $rows = $stm.fetchAll(PDO::FETCH_ASSOC);
             return json_encode($rows);
         }
 
         public function update($id_attr, $id_attr_value, $attr, $value){
-            $q = "UPDATE ". $this->table ." SET :attr = :value WHERE :id_attr = :id_attr_value;";
+            $q = "UPDATE ". $this->table ." SET ". $attr ." = :value WHERE ". $id_attr ." = :id_attr_value;";
             $stm = $this->c->prepare($q);
             $stm->execute([
-                "attr" => $attr,
                 "value" => $value,
-                "id_attr" => $id_attr,
                 "id_attr_value" => $id_attr_value]);
         }
 
         public function delete($id_attr, $id_attr_value){
-            $q = "DELETE FROM ". $this->table ." WHERE :id_attr = :id_attr_value;";
+            $q = "DELETE FROM ". $this->table ." WHERE ". $id_attr ." = :id_attr_value;";
             $stm = $this->c->prepare($q);
             $stm->execute([
-                "id_attr" => $id_attr,
                 "id_attr_value" => $id_attr_value]);
         }
     }
@@ -80,7 +77,7 @@
     class Encarregado extends Server{
 
         public function addNewEncarregado($bi, $nome_completo, $morada, $email, $senha, $telefone, $sexo, $bi_coordenador){
-            $q = "INSERT INTO Encarregadp VALUES (
+            $q = "INSERT INTO Encarregado VALUES (
                 :bi,
                 :nome_completo,
                 :morada,
@@ -106,7 +103,7 @@
 
     class Aluno extends Server{
 
-        public function addNewEncarregado($turma, $senha, $bi, $sexo, $curso, $nome_completo, $email, $data_nascimento, $telefone, $morada, $bi_coordenador, $bi_encarregado){
+        public function addNewAluno($turma, $senha, $bi, $sexo, $curso, $nome_completo, $email, $data_nascimento, $telefone, $morada, $bi_coordenador, $bi_encarregado){
             $q = "INSERT INTO Aluno VALUES (
                 :turma,
                 :senha,
