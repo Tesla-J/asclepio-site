@@ -38,10 +38,10 @@
 
         public function get($attribute, $value){
             if($this->c != null){
-                $q = "SELECT * FROM :table WHERE :attribute = :value;";
+                $q = "SELECT * FROM ". $this->table ." WHERE :attribute = :value;";
                 $stm = $this->c->prepare($q);
                 //$stm->bindValue($id, $BI_Encarregado);
-                $stm->execute(['table' => $this->table, 'attribute' => $attribute, 'value' => $value]);
+                $stm->execute(['attribute' => $attribute, 'value' => $value]);
                 $row = $stm->fetch(PDO::FETCH_ASSOC);
 
                 return json_encode($row);
@@ -50,7 +50,7 @@
         }
 
         public function getAll(){
-            $q = "SELECT * FROM :table;";
+            $q = "SELECT * FROM ". $this->table .";";
             $stm = $this->c->prepare($q);
             $stm->execute(["table" => $this->table]);
             $rows = $stm.fetchAll(PDO::FETCH_ASSOC);
@@ -58,10 +58,9 @@
         }
 
         public function update($id_attr, $id_attr_value, $attr, $value){
-            $q = "UPDATE :table SET :attr = :value WHERE :id_attr = :id_attr_value;";
+            $q = "UPDATE ". $this->table ." SET :attr = :value WHERE :id_attr = :id_attr_value;";
             $stm = $this->c->prepare($q);
             $stm->execute([
-                "table" => $this->table,
                 "attr" => $attr,
                 "value" => $value,
                 "id_attr" => $id_attr,
@@ -69,10 +68,9 @@
         }
 
         public function delete($id_attr, $id_attr_value){
-            $q = "DELETE FROM :table WHERE :id_attr = :id_attr_value;";
+            $q = "DELETE FROM ". $this->table ." WHERE :id_attr = :id_attr_value;";
             $stm = $this->c->prepare($q);
             $stm->execute([
-                "table" => $this->table,
                 "id_attr" => $id_attr,
                 "id_attr_value" => $id_attr_value]);
         }
@@ -145,71 +143,28 @@
     Nota: a ser revisado
     */
     class Coordenador extends Server{
-        public function getCoordenadorById($id){
-            if($this->c != null){
-                $q = "SELECT * FROM Funcionarios WHERE BI = ?;";
-                $stm = $this->c->prepare($q);
-                $stm->bindValue($id, $BI);
-                $stm->execute();
-                $row = $stm->fetch(PDO::FETCH_ASSOC);
-
-                return $row;
-            }
-                return null;
-        }
-
-        public function getAllFromCoordenador(){
-            $q = "SELECT * FROM Funcionarios;";
-            $stm = $this->c->execute($q);
-            $rows = $stm.fetchAll(PDO::FETCH_ASSOC);
-            return $rows;
-        }
-
-        public function setBI($id, $new_BI){
-            $q = "UPDATE Funcionarios SET BI = :new_BI WHERE BI = :id";
-            $stm = $this->c->prepare($q);
-            $stm->execute(["new_BI" => $new_BI, "id" => $id]);
-        }
-
         public function addNewCoordenador($bi, $nome_completo, $data_nascimento, $sexo, $email, $telefone, $morada, $funcao, $senha){
-            $q = "INSERT INTO Funcionarios VALUES ( :bi, :nome_completo, :data_nascimento, :sexo, :email, :telefone, :morada, :funcao, :senha)";
+            $q = "INSERT INTO Funcionarios VALUES (
+                :bi,
+                :nome_completo,
+                :data_nascimento,
+                :sexo,
+                :email,
+                :telefone,
+                :morada,
+                :funcao,
+                :senha)";
             $stm = $this->c->prepare($q);
-            $stm->execute(["bi" => $bi, "nome_completo" => $nome_completo, "data_nascimento" => $data_nascimento, "sexo" => $sexo, "email" => $email, "telefone" => $telefone, "morada" => $morada, "funcao" => $funcao, "senha" => hash("sha512", $senha, false)]);
-        }
-
-        public function setNome($id, $new_Nome){
-            $q = "UPDATE Funcionarios SET Nome_Completo = :new_Nome WHERE BI = :id";
-            $stm = $this->c->prepare($q);
-            $tm->execute(["new_Nome" => $new_Nome, "id" => $id]);// baseasse aqui será sexo,e new_Sexo;
-        }
-
-         public function setSexo($id, $new_Sexo){
-            $q = "UPDATE Funcionarios SET Sexo = :new_Sexo WHERE BI = :id";
-            $stm = $this->c->prepare($q);
-            $tm->execute(["new_Sexo" => $new_Sexo, "id" => $id]);
-        }
-
-          public function setData_nascimento($id, $new_Data_nascimento){
-            $q = "UPDATE Funcionarios SET Data_nascimento = :new_Data_nascimento WHERE BI = :id";
-            $stm = $this->c->prepare($q);
-            $tm->execute(["new_Data_nascimento" => $new_Data_nascimento, "id" => $id]);
-        }
-
-         public function setEmail($id, $new_Email){
-            $q = "UPDATE Funcionarios SET Email = :new_Email WHERE BI = :id";
-            $stm = $this->c->prepare($q);
-            $tm->execute(["new_Email" => $new_Email, "id" => $id]);
-        }
-        public function setTelefone($id, $new_Telefone){
-            $q = "UPDATE Funcionarios SET Telefone = :new_Telefone WHERE BI = :id";
-            $stm = $this->c->prepare($q);
-            $tm->execute(["new_Telefone" => $new_Telefone, "id" => $id]);
-        }
-
-        public function setSenha($id, $new_Senha){
-            $q = "UPDATE Funcionarios SET Senha = :new_Senha WHERE BI = :id";
-            $stm = $this->c->prepare($q);
-            $tm->execute(["new_Senha" => $new_Senha, "id" => $id]);
+            $stm->execute(
+                ["bi" => $bi,
+                "nome_completo" => $nome_completo,
+                "data_nascimento" => $data_nascimento,
+                "sexo" => $sexo,
+                "email" => $email,
+                "telefone" => $telefone,
+                "morada" => $morada,
+                "funcao" => $funcao,
+                "senha" => hash("sha512", $senha, false)]);
         }
 }
 
