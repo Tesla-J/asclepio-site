@@ -31,7 +31,6 @@ class FuncLogin{
                             window.location.replace('telaprofessorgeral.php');
                             break;
                         default:
-                            alert (obj.username);
                             window.location.replace('coordenador.html');
                     }
                 }

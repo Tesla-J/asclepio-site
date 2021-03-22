@@ -38,7 +38,7 @@
 
         public function get($attribute, $value){
             if($this->c != null){
-                $q = "SELECT * FROM ". $this->table ." WHERE ". $attribute ." = :value;";
+                $q = "SELECT * FROM ". $this->table ." WHERE ". $attribute ." = :value";
                 $stm = $this->c->prepare($q);
                 //$stm->bindValue($id, $BI_Encarregado);
                 $stm->execute(['value' => $value]);

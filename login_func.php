@@ -35,10 +35,13 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
     //SEARCHING
 
-    if( isset($coordenador_data['email']) ){
-        if($coordenador_data['email'] == $user && $coordenador_data['senha'] == $hash_password){
+    if( isset($coordenador_data['Email']) ){
+        if($coordenador_data['Email'] == $user && $coordenador_data['Senha'] == $hash_password){
             $data = array('username' => $coordenador_data['Nome_Completo'],
                 'bi' => $coordenador_data['BI_Coordenador']);
+        }
+        else{
+            $data = 'NONE';
         }
     }
     else if( $prof_data['username'] == $hash_user && $prof_data['password'] == $hash_password){
@@ -48,7 +51,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         $data = array('username' => 'Administrador');
     }
     else{
-        $data = $_POST['user'];//'NONE';
+        $data = 'NONE';
     }
 
     echo (string) json_encode($data);
