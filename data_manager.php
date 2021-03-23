@@ -140,16 +140,15 @@
     Nota: a ser revisado
     */
     class Coordenador extends Server{
-        public function addNewCoordenador($bi, $nome_completo, $data_nascimento, $sexo, $email, $telefone, $morada, $funcao, $senha){
-            $q = "INSERT INTO Funcionarios VALUES (
+        public function addNewCoordenador($bi, $nome_completo, $morada, $sexo, $data_nascimento, $telefone, $email, $senha){
+            $q = "INSERT INTO Coordenador VALUES (
                 :bi,
                 :nome_completo,
-                :data_nascimento,
-                :sexo,
-                :email,
-                :telefone,
                 :morada,
-                :funcao,
+                :sexo,
+                :data_nascimento,
+                :telefone,
+                :email,
                 :senha)";
             $stm = $this->c->prepare($q);
             $stm->execute(
@@ -160,7 +159,6 @@
                 "email" => $email,
                 "telefone" => $telefone,
                 "morada" => $morada,
-                "funcao" => $funcao,
                 "senha" => hash("sha512", $senha, false)]);
         }
 }

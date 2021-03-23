@@ -42,6 +42,21 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             echo "OK";
             break;
 
+        case 'coord':
+            $coordenador = new Coordenador();
+            $coordenador->addNewCoordenador(
+                $_POST['bi'],
+                $_POST['nome_completo'],
+                $_POST['morada'],
+                $_POST['sexo'],
+                $_POST['data_nascimento'],
+                $_POST['telefone'],
+                $_POST['email'],
+                $_POST['senha']
+            );
+            echo 'OK';
+            break;
+
         default: echo "FATALITY";
     }
 }

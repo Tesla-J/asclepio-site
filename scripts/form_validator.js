@@ -36,7 +36,7 @@ class FormSubmiter {
     submitInsert(type, form_id){
 
         var xhr = new XMLHttpRequest();
-        xhr.open("POST", "reg_client.php", true);
+        xhr.open("POST", "reg.php", true);
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
         xhr.onreadystatechange = function(){
             if(xhr.readyState == 4 && xhr.status == 200){
@@ -112,6 +112,27 @@ class FormSubmiter {
                 break;
 
             case "coord":
+                this.isValidPassword('senha1', 'senha2');
+                if(!this.isPasswordValid){return;}
+                var bi = document.getElementById('bi').value;
+                var nome_completo = document.getElementById('nome_completo').value;
+                var data_nascimento = document.getElementById('data_nascimento').value;
+                var sexo = document.getElementById('sexo').value;
+                var email = document.getElementById('email').value;
+                var telefone = document.getElementById('telefone').value;
+                var morada = document.getElementById('morada').value;
+                var senha = document.getElementById('senha1').value;
+
+                xhr.send('bi=' + bi +
+                    '&nome_completo=' + nome_completo +
+                    '&data_nascimento=' + data_nascimento +
+                    '&sexo=' + sexo +
+                    '&email=' + email +
+                    '&telefone=' + telefone +
+                    '&morada=' + morada +
+                    '&senha=' + senha +
+                    '&type=' + type
+                );
                 break;
         }
 
