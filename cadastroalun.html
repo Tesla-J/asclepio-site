@@ -1,29 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
-  
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <meta http-equiv="Content-Type" content="text/html"; charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link type="text/css" rel="stylesheet" href="styles/nsd/materialize.css">
       <link rel="stylesheet" type="text/css" href="styles/nsd/style.css">
-      <link rel="stylesheet" type="text/css" href="icons/fontawesome-free-5.15.1-web/css/all.min.css"> 
+      <link rel="stylesheet" type="text/css" href="icons/fontawesome-free-5.15.1-web/css/all.min.css">
       <link rel="stylesheet" type="text/css" href="icons/fonts/material-icons.css">
       <link rel="stylesheet" type="text/css" href="styles/nsd/flag-icon.css">
       <style type="text/css">
       	.formulario{
             border: 3px solid #00bcd4;
             border-radius: 10px;
- }                    
+ }
 
                    .input-field .prefix.active {
                       color: #26a69a !important;
                     }
-                    
+
 
       </style>
-	<title></title>
+	<title>Cadastrar aluno</title>
 </head>
 <body>
+    <script type='text/javascript' src='scripts/cookie_manager.js'></script>
   <!-- Start Page Loading -->
     <div id="loader-wrapper">
       <div id="loader"></div>
@@ -57,7 +58,7 @@
                   <span class="flag-icon flag-icon-ao"></span>
                 </a>
               </li>
-              
+
               <li>
                 <a href="javascript:void(0);" class="waves-effect waves-block waves-light notification-button" data-activates="notifications-dropdown">
                   <i class="material-icons">notifications_none
@@ -73,7 +74,7 @@
                   </span>
                 </a>
               </li>
-              
+
             </ul>
             <!-- translation-button -->
             <ul id="translation-dropdown" class="dropdown-content">
@@ -131,7 +132,7 @@
                   <i class="material-icons">live_help</i>Ajuda</a>
               </li>
               <li class="divider"></li>
-              
+
               <li>
                 <a href="#" class="grey-text text-darken-1">
                   <i class="material-icons">keyboard_tab</i>Logou</a>
@@ -169,13 +170,19 @@
                         <i class="material-icons">live_help</i>Ajuda</a>
                     </li>
                     <li class="divider"></li>
-                    
+
                     <li>
                       <a href="#" class="grey-text text-darken-1">
                         <i class="material-icons">keyboard_tab</i>Logout</a>
                     </li>
                   </ul>
-                  <a class=" btn-flat dropdown-button waves-effect waves-light white-text profile-btn" href="#" data-activates="profile-dropdown-nav">Alexandre Muginga<i class="mdi-navigation-arrow-drop-down right"></i></a>
+                  <a id='username' class=" btn-flat dropdown-button waves-effect waves-light white-text profile-btn" href="#" data-activates="profile-dropdown-nav">
+                      <script type="text/javascript">
+                        let username = document.getElementById('username');
+                        username.innerHTML = cookieManager.getUsername();
+                      </script>
+                      <i class="mdi-navigation-arrow-drop-down right"></i>
+                  </a>
                   <p class="user-roal">coordenador</p>
                 </div>
               </div>
@@ -208,14 +215,14 @@
                     </a>
                 </li>
 
-                
+
                 <li class="bold">
                   <a href="enviarcomunic.html" class="waves-effect waves-cyan">
                       <i class="fas fa-upload prefix cyan-text"></i>
                       <span class="nav-text" style="font-size: 17px;">Enviar Comunicados</span>
                     </a>
                 </li>
-               
+
               </ul>
             </li>
           </ul>
@@ -226,15 +233,15 @@
 
          <section id="content">
           <!--start container-->
-         
-            
+
+
       <div class="row container">
   <p>&nbsp;</p>
-  <form    action=""   method="" class="col s12">
+  <form    action=""   method="" class="col s12" id='form'>
   <fieldset class="formulario" style="padding: 15px;">
     <legend><img src="pictures/2919600.png" width="100"></legend>
     <h5 class="light center">Cadastro de Aluno</h5>
-                              
+
                               <div class="input-field col s6">
                 <i class="fas fa-id-badge prefix"></i>
                 <input type="text" name="BI" id="BI" maxlength="14" required autofocus>
@@ -248,8 +255,8 @@
               </div>
               <div class="input-field col s6">
                  <i class="fas fa-user prefix"></i>
-                <input type="text" name="BI_Encarregado" id="BI_Encarregado" maxlength="50" required >
-                <label for="BI_Encarregado">BI Encarregado</label>
+                <input type="text" name="bi_Encarregado" id="bi_Encarregado" maxlength="50" required >
+                <label for="bi_Encarregado">BI Encarregado</label>
               </div>
                             <div class="input-field col s6">
                 <i class="material-icons prefix">email</i>
@@ -268,7 +275,7 @@
                              <input id="morada" type="text" name="morada">
                              <label for="morada">Morada</label>
                              </div>
-                              
+
                              <div class="input-field col s6">
                             <i class="fas fa-calendar-day prefix"></i>
                              <input  type="date" id="data"  nome="date"/>
@@ -311,16 +318,16 @@
                                <div class="input-field col s10">
                 <input type="submit" value="Cadastrar" class="btn blue" style=" margin:0 1em 0 0;">
                 <input type="reset" value="Limpar" class="btn red">
-                
+
               </div>
 
-                             
+
    </fieldset>
   </form>
 </div>
   </section><br>
-                 
-                  
+
+
 
          <footer class="page-footer gradient-45deg-light-blue-cyan">
         <div class="footer-copyright">

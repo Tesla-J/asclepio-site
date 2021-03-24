@@ -27,3 +27,4 @@ class CookieManager{
 }
 
 cookieManager = new CookieManager();
+export { CookieManager };

@@ -71,6 +71,19 @@
             $stm->execute([
                 "id_attr_value" => $id_attr_value]);
         }
+
+        public function search($attribute, $value){
+            if($this->c != null){
+                $q = "SELECT * FROM ". $this->table ." WHERE ". $attribute ." = ". "%" .":value" . "%";
+                $stm = $this->c->prepare($q);
+                //$stm->bindValue($id, $BI_Encarregado);
+                $stm->execute(['value' => $value]);
+                $row = $stm->fetch(PDO::FETCH_ASSOC);
+
+                return json_encode($row);
+            }
+                return null;
+        }
     }
 
 
