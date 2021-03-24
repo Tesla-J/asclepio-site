@@ -1,0 +1,269 @@
+.text-center {
+  text-align: center !important;
+}
+
+
+
+.service-block, .vacation-offer-block{
+   padding: 70px 0 0 0;
+
+
+}
+        .service-image {
+          border: 2px solid #ddd;
+           border-radius: 50%;
+            display: inline-block;
+           padding: 35px;
+            background: #ddd;
+
+           
+
+}
+            
+  
+
+     .service-details h4 {
+         font-size: 18px;
+         font-weight: 500;
+         letter-spacing: 1px;
+           margin-top: 45px;
+         text-transform: uppercase;
+         text-align: center;
+
+}
+
+.vacation-offer-bgbanner {
+    background: rgba(0, 0, 0, 0) url("vacation-banner.png") no-repeat scroll center center / cover ;
+    color: #fff;
+    position: relative;
+   padding: 35px;
+   margin: 0;
+}
+.vacation-offer-bgbanner::before {
+    background: rgba(0, 0, 0, 0.7) none repeat scroll 0 0;
+    content: "";
+    display: block;
+    height: 100%;
+    left: -50%;
+    position: absolute;
+    top: 0;
+    transform: skewX(-45deg);
+    width: 100%;
+}
+
+.vacation-offer-details > h1 {
+    font-size: 30px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+}
+
+ .col-md-5, .col-sm-6, .col-xs-12{
+  position: relative;
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.slider .indicators .indicator-item.active {
+  background-color: #3ed0d0;/*#4CAF50*/
+}
+
+  .btn:hover{
+      background-color: #fff;
+    color: grey;
+    }
+
+    .card{
+      transition: .5s;
+      background: #eee;
+    }
+
+    .card:hover{
+      transform: scale(1.1);
+      background: #fff;
+    }
+
+
+    .social-text {
+  padding: 0.7rem 0;
+  font-size: 18px;
+  text-align: center;
+}
+
+.social-media {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.social-icon {
+  height: 46px;
+  width: 46px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 0.45rem;
+  color: #fff;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  text-decoration: none;
+  font-size: 1.1rem;
+  transition: 0.3s;
+}
+
+.social-icon:hover {
+  color: #4481eb;
+  border-color: #4481eb;
+}
+
+.justificado {
+          text-align: justify;
+          text-justify: inter-word;
+        }
+
+        .con {
+  margin: 0 auto;
+  max-width: 1280px;
+  width: 100%;
+}
+
+
+
+@media only screen and (min-width: 993px) {
+  .con {
+    width: 85%;
+  }
+}
+
+@media only screen and (min-width: 601px) {
+  .con {
+    width: 98%;
+  }
+}
+.side-nav h4{
+            color: #fff;
+            text-transform: uppercase;
+            text-align: center;
+            margin-bottom: 5px; 
+           }
+
+           .side-nav li > a.botão{
+              margin: 10px 15px;
+            }
+          nav ul a.botão{
+                margin-top: -2px;
+               margin-left: 15px;
+               margin-right: 15px;
+          }
+         
+
+          .botão{
+      border: none;
+  border-radius: 2px;
+  display: inline-block;
+  height: 36px;
+  line-height: 36px;
+  padding: 0 2rem;
+  text-transform: uppercase;
+  vertical-align: middle;
+  -webkit-tap-highlight-color: transparent;
+  text-decoration: none;
+  color: #fff;
+  background-color: #26a69a;
+  text-align: center;
+  letter-spacing: .5px;
+  -webkit-transition: .2s ease-out;
+  transition: .2s ease-out;
+  cursor: pointer;
+  
+  
+}
+        .botão:hover
+        {
+        animation: pulse 1s infinite;
+
+        }
+
+@keyframes pulse{
+  0%
+  {
+    transform: scale(1);
+  }
+  70%
+  {
+    transform: scale(0.9);
+  }
+}
+
+ul.side-nav.leftside-navigation li:not(.no-padding).user-details #profile-dropdown a {
+  padding: 8px 15px;
+}
+
+
+
+.avatar-status {
+  position: relative;
+  display: inline-block;
+  line-height: 50px;
+  width: 28px;
+  white-space: nowrap;
+  border-radius: 1000px;
+  vertical-align: bottom;
+}
+
+.avatar-status i {
+  position: absolute;
+  right: -2px;
+  bottom: 18px;
+  width: 9px !important;
+  height: 9px !important;
+  border: 1px solid #fff;
+  border-radius: 100%;
+}
+
+.avatar-status span.text-circle {
+  text-align: center;
+  vertical-align: middle;
+  color: #fff;
+  font-size: 1.2rem;
+  background: #fafafa;
+  display: table-cell;
+}
+
+.avatar-status img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  background: #e6e6e6;
+  border: 0 none;
+  border-radius: 1000px;
+}
+
+.avatar-online i {
+  background-color: #00E676;
+}
+
+.avatar-off i {
+  background-color: #bdbdbd;
+}
+
+.avatar-busy i {
+  background-color: #FF1744;
+}
+
+.avatar-away i {
+  background-color: #ffc400;
+}
+
+.avatar-100 {
+  width: 100px;
+}
+
+.avatar-100 span.text-circle {
+  width: 100px;
+  height: 100px;
+}
+
+
