@@ -45,7 +45,7 @@
 
              <?php
 include_once 'conexao.php';
-$id = filter_input(INPUT_GET,'BI_coordenador',FILTER_SANITIZE_NUMBER_INT);
+$BI_coordenador = $_GET['BI_coordenador'];
 $_SESSION ['BI_coodernador']=$BI_coordenador;
 
 $querySelect=$conexao->query("select * from coordenador where BI_coordenador='$BI_coordenador'");

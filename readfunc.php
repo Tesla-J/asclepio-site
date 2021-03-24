@@ -9,7 +9,7 @@ print "Resultado da pesquisa com a letra <strong>$Filtro</strong><br><br>";
 			print "$data registros encontrados.";
 			print"<br><br>";
 
-foreach ($querySelect as $registros ):#exibe todos dados
+while ($registros=$querySelect->fetch_assoc() ):#exibe todos dados
 $BI_coordenador=$registros['BI_coordenador'];
 $Nome_completo=$registros['Nome_completo'];
 $Email=$registros['Email'];
