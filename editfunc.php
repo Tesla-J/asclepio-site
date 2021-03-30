@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<?php 
+<?php
   session_start();
 ?>
 <html>
@@ -14,7 +14,7 @@
       	.formulario{
             border: 3px solid #00bcd4;
             border-radius: 10px;
- }                    
+ }
 
                    .input-field .prefix.active {
                       color: #26a69a !important;
@@ -48,16 +48,16 @@ include_once 'conexao.php';
 $BI_coordenador = $_GET['BI_coordenador'];
 $_SESSION ['BI_coodernador']=$BI_coordenador;
 
-$querySelect=$conexao->query("select * from coordenador where BI_coordenador='$BI_coordenador'");
+$querySelect=$conexao->query("select * from Coordenador where BI_Coordenador='$BI_coordenador'");
 while ($registros=$querySelect->fetch_assoc()):
-  
-$BI_coordenador=$registros['BI_coordenador'];
-$Nome_completo=$registros['Nome_completo'];
+
+$BI_coordenador=$registros['BI_Coordenador'];
+$Nome_completo=$registros['Nome_Completo'];
 $Email=$registros['Email'];
-$Telefone=$registros['Telefone']; 
+$Telefone=$registros['Telefone'];
 $Sexo=$registros['Sexo'];
-$Data_nascimento=$registros['Data_nascimento'];
-$Morada=$registros['Morada']; 
+$Data_nascimento=$registros['Data_Nascimento'];
+$Morada=$registros['Morada'];
 endwhile;
 ?>
 
@@ -88,25 +88,12 @@ endwhile;
                              <input id="Morada" type="text" name="Morada" value="<?php echo $Morada ?>">
                              <label for="Morada">Morada</label>
                              </div>
-                              
+
                              <div class="input-field col s6">
                             <i class="fas fa-calendar-day prefix"></i>
                              <input id="Data_nascimento"  type="date" name="Data_nascimento" value="<?php echo $Data_nascimento ?>">
                              <label for="Data de Nascimento"></label>
                              </div>
-
-                            
-
-                          <div class="input-field col s6">
-                <i class="fas fa-key prefix"></i>
-                <input type="password" name="senha" id="senha" maxlength="14" required>
-                <label for="senha">Senha</label>
-              </div>
-              <div class="input-field col s6">
-                <i class="fas fa-key prefix"></i>
-                <input type="password" name="senha_confirmation" id="senha" maxlength="14" required>
-                <label for="senha">Confirmar a Senha</label>
-              </div>
 
                                <div class="input-field col s6">
                                 <i class="fas fa-venus-mars prefix"></i>
@@ -120,14 +107,14 @@ endwhile;
                                <div class="input-field col s12">
                 <input type="submit" value="Alterar" class="btn blue" style=" margin:0 1em 0 0;">
                 <input type="reset" value="Limpar" class="btn red"  class="fas fa-user">
-                
+
               </div>
 
-                             
+
    </fieldset>
   </form>
 </div>
-               </div>        
+               </div>
 
  <script type="text/javascript" src="scripts/js/jquery-3.5.1.min.js"></script>
 <script type="text/javascript" src="scripts/js/materialize.js"></script>

@@ -1,8 +1,16 @@
 <?php
 
 include_once 'conexao.php';
-$BI_coordenador = filter_input(INPUT_GET,'BI_coordenador',FILTER_SANITIZE_NUMBER_INT);
-$queryDelete=$conexao->query("delete from coordenador where BI_coordenador='$BI_coordenador'");
-if(mysqli_affected_rows($conexao)> 0):
-	header("Location:funciconsulta.php");
-endif;
+if($_SERVER['REQUEST_METHOD'] == 'POST'){
+    $BI_coordenador = $_POST['BI_Coordenador'];
+    $queryDelete=$conexao->query("delete from Coordenador where BI_Coordenador='$BI_coordenador';");
+
+    if(mysqli_affected_rows($conexao) == 1):
+	       echo '';
+    else:
+        echo 'ERROR!';
+    endif;
+}
+else{
+    header('location:funciconsulta.php');
+}
