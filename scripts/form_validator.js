@@ -1,10 +1,11 @@
-//import { CookieManager } from './cookie_manager.js';
 
 class FormSubmiter {
 
     constructor(){
         this.isPasswordValid = false;
-        //this.cookie_info = new CookieManager();
+        try{
+            this.cookie_info = new CookieManager();
+        }catch(e){}
     }
 
     isValidPassword(id_pass1, id_pass2){
@@ -52,7 +53,9 @@ class FormSubmiter {
                 var senha = document.getElementById('senha1').value;
                 var telefone = document.getElementById('telefone').value;
                 var sexo = document.getElementById('sexo').value;
-                var bi_coordenador = 'Null';//this.cookie_info.getBI();
+                try{
+                    var bi_coordenador = this.cookie_info.getBI();
+                }catch(e){alert('Por favor, active os cookies');}
 
                 xhr.send('bi_encarregado=' + bi_encarregado +
                     '&nome_completo=' + nome_completo +
@@ -69,9 +72,11 @@ class FormSubmiter {
             case "aluno":
                 this.isValidPassword('senha1', 'senha2');
                 if(!this.isPasswordValid){return;}
-                var turma = document.getElementById('turma').value;
-                var senha = document.getElementById('senha').value;
-                var encarregado = document.getElementById('encarregado').value;
+                try{
+                    var turma = document.getElementById('turma').value;
+                }catch(e){var turma = 'Desconhecido'}
+                var senha = document.getElementById('senha1').value;
+                var encarregado = document.getElementById('bi_encarregado').value;
                 var bi = document.getElementById('bi').value;
                 var sexo = document.getElementById('sexo').value;
                 var curso = document.getElementById('curso').value;
@@ -80,7 +85,9 @@ class FormSubmiter {
                 var data_nascimento = document.getElementById('data_nascimento').value;
                 var telefone = document.getElementById('telefone').value;
                 var morada = document.getElementById('morada').value;
-                var bi_coordenador = 'Null';//this.cookie_info.getBI();
+                try{
+                    var bi_coordenador = this.cookie_info.getBI();
+                }catch(e){alert('Por favor, active os cookies');}
                 var bi_encarregado = document.getElementById('bi_encarregado').value;
 
                 xhr.send('turma=' + turma +

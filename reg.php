@@ -24,10 +24,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
         case "aluno":
             $aluno = new Aluno();
-            $enc->addNewAluno(
+            $aluno->addNewAluno(
                 $_POST['turma'],
                 $_POST['senha'],
-                $_POST['encarregado'],
                 $_POST['bi'],
                 $_POST['sexo'],
                 $_POST['curso'],

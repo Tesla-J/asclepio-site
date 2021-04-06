@@ -25,6 +25,7 @@
 </head>
 <body>
     <script type='text/javascript' src='scripts/cookie_manager.js'></script>
+    <script type="text/javascript" src="scripts/form_validator.js"></script>
   <!-- Start Page Loading -->
     <div id="loader-wrapper">
       <div id="loader"></div>
@@ -237,26 +238,26 @@
 
       <div class="row container">
   <p>&nbsp;</p>
-  <form    action=""   method="" class="col s12" id='form'>
+  <form    action=""   method="post" class="col s12" id='form'>
   <fieldset class="formulario" style="padding: 15px;">
     <legend><img src="pictures/2919600.png" width="100"></legend>
     <h5 class="light center">Cadastro de Aluno</h5>
 
                               <div class="input-field col s6">
                 <i class="fas fa-id-badge prefix"></i>
-                <input type="text" name="BI" id="BI" maxlength="14" required autofocus>
-                <label for="BI">BI</label>
+                <input type="text" name="bi" id="bi" maxlength="14" required autofocus>
+                <label for="bi">BI</label>
               </div>
 
                        <div class="input-field col s6">
                 <i class="material-icons prefix">account_circle</i>
-                <input type="text" name="Nome_completo" id="Nome_completo" maxlength="70" required>
-                <label for="Nome_completo">Nome Completo</label>
+                <input type="text" name="nome_completo" id="nome_completo" maxlength="70" required>
+                <label for="nome_completo">Nome Completo</label>
               </div>
               <div class="input-field col s6">
                  <i class="fas fa-user prefix"></i>
-                <input type="text" name="bi_Encarregado" id="bi_Encarregado" maxlength="50" required >
-                <label for="bi_Encarregado">BI Encarregado</label>
+                <input type="text" name="bi_encarregado" id="bi_encarregado" maxlength="14" required >
+                <label for="bi_encarregado">BI Encarregado</label>
               </div>
                             <div class="input-field col s6">
                 <i class="material-icons prefix">email</i>
@@ -266,8 +267,8 @@
 
                             <div class="input-field col s6">
                             <i class="material-icons prefix">phone</i>
-                            <input id="icon_telephone" type="tel" class="validate">
-                            <label for="icon_telephone">Telefone</label>
+                            <input name='telefone' id='telefone' maxlength="13" type="tel" class="validate">
+                            <label for="telefone">Telefone</label>
                             </div>
 
                <div class="input-field col s6">
@@ -278,46 +279,48 @@
 
                              <div class="input-field col s6">
                             <i class="fas fa-calendar-day prefix"></i>
-                             <input  type="date" id="data"  nome="date"/>
-                             <label for="data"></label>
+                             <input  type="date" id="data_nascimento"  name="data_nascimento"/>
+                             <label for="data_nascimento"></label>
                              </div>
 
                              <div class="input-field col s6">
                               <i class="fa fa-suitcase prefix"></i>
-                          <select>
+                          <select id='curso'>
                           <option value="" disabled selected>Selecionar curso</option>
-                          <option value="1">Análises Clínicas</option>
-                          <option value="2">Enfermagem</option>
-                          <option value="3">Estomatologia</option>
-                          <option value="4">Farmácia</option>
+                          <option value="Análises Clínicas">Análises Clínicas</option>
+                          <option value="Efermagem">Enfermagem</option>
+                          <option value="Estomatologia">Estomatologia</option>
+                          <option value="Farmácia">Farmácia</option>
                           </select>
                           </div>
 
                           <div class="input-field col s6">
                 <i class="fas fa-key prefix"></i>
-                <input type="password" name="senha" id="senha" maxlength="14" required>
-                <label for="senha">Senha</label>
+                <input type="password" name="senha1" id="senha1" required>
+                <label for="senha1">Senha</label>
               </div>
 
               <div class="input-field col s6">
                        <i class="fas fa-key prefix"></i>
-                       <input type="password" name="senha" id="senha" maxlength="14" required>
-                       <label for="senha">Confirmar a Senha</label>
+                       <input type="password" name="senha2" id="senha2" required>
+                       <label for="senha2">Confirmar a Senha</label>
                        </div>
 
 
                                <div class="input-field col s6">
                                 <i class="fas fa-venus-mars prefix"></i>
-                                 <select>
+                                 <select id='sexo'>
                                  <option value="" disabled selected>Selecione o gênero</option>
-                                <option value="1">Masculino</option>
-                               <option value="2">Feminino</option>
+                                <option value="M">Masculino</option>
+                               <option value="F">Feminino</option>
                                 </select>
                                </div>
 
                                <div class="input-field col s10">
-                <input type="submit" value="Cadastrar" class="btn blue" style=" margin:0 1em 0 0;">
-                <input type="reset" value="Limpar" class="btn red">
+                <input type="button" class="btn blue" value='Cadastrar' style=" margin:0 1em 0 0;"
+                    onclick="validator.submitInsert('aluno','form');"
+                />
+                <input type="reset" value="Limpar" class="btn red"/>
 
               </div>
 

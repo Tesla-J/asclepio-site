@@ -21,6 +21,7 @@
 	<title>Cadastrar Encarregado</title>
 </head>
 <body>
+    <script type='text/javascript' src='scripts/cookie_manager.js'></script>
     <script type="text/javascript" src="scripts/form_validator.js">
     </script>
 
@@ -164,7 +165,11 @@
                         <i class="material-icons">keyboard_tab</i>Logout</a>
                     </li>
                   </ul>
-                  <a class=" btn-flat dropdown-button waves-effect waves-light white-text profile-btn" href="#" data-activates="profile-dropdown-nav">Ngueve Mufuinda<i class="mdi-navigation-arrow-drop-down right"></i></a>
+                  <a id='username' class=" btn-flat dropdown-button waves-effect waves-light white-text profile-btn" href="#" data-activates="profile-dropdown-nav">Ngueve Mufuinda<i class="mdi-navigation-arrow-drop-down right"></i></a>
+                  <script type="text/javascript">
+                    let username = document.getElementById('username');
+                    username.innerHTML = cookieManager.getUsername();
+                  </script>
                   <p class="user-roal">coordenador</p>
                 </div>
               </div>
