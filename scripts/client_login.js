@@ -3,7 +3,7 @@ class ClientLogin{
         this.tentativas = 0;
     }
 
-    sendLogin(){
+    prepareSendLogin(){
         let self = this;
         self.xhr = new XMLHttpRequest();
         self.xhr.open('POST', 'login_client.php', true);
@@ -33,12 +33,13 @@ class ClientLogin{
             }
         }
     }
-}
 
     login(username_id, password_id){
         var username = document.getElementById(username_id).value;
         var password = document.getElementById(password_id).value;
-        this.sendLogin();
-        this.xhr.send('user=' + username + "&password=" + password);
+        this.prepareSendLogin();
+        this.xhr.send('email=' + username + "&password=" + password);
     }
 }
+
+login = new ClientLogin();
