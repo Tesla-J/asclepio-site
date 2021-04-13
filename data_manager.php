@@ -38,7 +38,7 @@
 
         public function get($attribute, $value){
             if($this->c != null){
-                $q = "SELECT * FROM ". $this->table ." WHERE ". $attribute ." = :value";
+                $q = "SELECT * FROM  $this->table  WHERE  $attribute  = :value";
                 $stm = $this->c->prepare($q);
                 //$stm->bindValue($id, $BI_Encarregado);
                 $stm->execute(['value' => $value]);
@@ -115,6 +115,19 @@
     }
 
     class Aluno extends Server{
+
+        public function get_r($attribute, $value){
+            if($this->c != null){
+                $q = "SELECT Nome_Completo FROM  $this->table  WHERE  $attribute  = '$value'";
+                //$stm = $this->c->prepare($q);
+                //$stm->bindValue($id, $BI_Encarregado);
+                $stm = $this->c->query($q);//(['value' => $value]);
+                $row = $stm->fetch(PDO::FETCH_ASSOC);
+
+                return $row;
+            }
+                return null;
+        }
 
         public function addNewAluno($turma, $senha, $bi, $sexo, $curso, $nome_completo, $email, $data_nascimento, $telefone, $morada, $bi_coordenador, $bi_encarregado){
             $q = "INSERT INTO Aluno VALUES (

@@ -71,33 +71,40 @@
 	<section class="section row container">
 		<h3><u> Aproveitamento do Meu Educando</u></h3>
 
-		<table class="striped centered">
-        <thead>
-          <tr>
-              <th>Name</th>
-              <th>Item Name</th>
-              <th>Item Price</th>
-          </tr>
-        </thead>
+		<?php
+            require_once('data_manager.php');
 
-        <tbody>
-          <tr>
-            <td>Alvin</td>
-            <td>Eclair</td>
-            <td>$0.87</td>
-          </tr>
-          <tr>
-            <td>Alan</td>
-            <td>Jellybean</td>
-            <td>$3.76</td>
-          </tr>
-          <tr>
-            <td>Jonathan</td>
-            <td>Lollipop</td>
-            <td>$7.00</td>
-          </tr>
-        </tbody>
-      </table>
+            $aluno_db = new Aluno();
+            $aluno_db->setTable('Aluno');
+            $aluno_list = $aluno_db->get_r('BI_Encarregado', $_COOKIE['bi']);
+            $aluno_names = array();
+
+            //saving students names
+            foreach($aluno_list as $key => $value){
+                //foreach($reg as $key => $value)
+                    if(!strcmp($key, 'Nome_Completo')){
+                        array_push($aluno_names, $value);
+                    }
+            }
+
+            if($aluno_names == null) echo "<p style='color: red'>Ainda não tem alunos cadastrados no sistema.</p>";
+            else{
+                $boletim_db = new Boletim();
+                $boletim_list = $boletim_db->getAllFromBoletim();
+
+                foreach($boletim_list as $reg_num => $reg){ //loop dos registros
+                    foreach($reg as $key => $value){ //loop dos dados de cada registro
+                        if(!strcmp($key, 'Arquivo')){
+                            $boletim_mg = new BoletimManager($value);
+                            foreach($aluno_names as $name) //loop dos nomes dos alunos
+                                foreach($boletim_mg->get($name) as $key => $value ) //dados de cada nome
+                                    echo "$key: $value <br/>";
+                        }
+                    }
+                    echo "<br/>";
+                }
+            }
+        ?>
 	</section>
 </div>
 
