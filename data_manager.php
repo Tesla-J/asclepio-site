@@ -148,10 +148,6 @@
 
     }
 
-    /* Classe Funcionário
-    Responsável pelo CRUD da tabela Funcionários na BD asclepio
-    Nota: a ser revisado
-    */
     class Coordenador extends Server{
         public function addNewCoordenador($bi, $nome_completo, $morada, $sexo, $data_nascimento, $telefone, $email, $senha){
             $q = "INSERT INTO Coordenador VALUES (
@@ -176,9 +172,6 @@
         }
 }
 
-    /* Classe Comunicado
-    Responsável pelo CRUD na tabela Comunicados na BD asclepio
-    */
     class Comunicado extends Server{
         public function getComunicadoById($id){
          if($this->c != null){
@@ -198,13 +191,10 @@
         }
     }
 
-    /* Classe Boletins
-    Responsável pelo CRUD na tabela Boletins na BD asclepio
-    */
-    class Boletins extends Server{
+    class Boletim extends Server{
         public function getBoletimById($id){
             if($this->c != null){
-                $q = "SELECT * FROM Boletins WHERE ID_Boletim = :id;";
+                $q = "SELECT * FROM Boletim WHERE ID_Boletim = :id;";
                 $stm = $this->c->prepare($q);
                 $stm->execute(["id" => $id]);
                 $row = $stm->fetch(PDO::FETCH_ASSOC);
@@ -215,34 +205,19 @@
         }
 
         public function getAllFromBoletim(){
-            $q = "SELECT * FROM Boletins;";
+            $q = "SELECT * FROM Boletim ORDER BY ID_Boletim DESC;";
             $stm = $this->c->query($q);
             $rows = $stm->fetchAll(PDO::FETCH_ASSOC);
-            return json_encode($rows);
+            return $rows;
         }
 
         public function addNewBoletim($arquivo, $trimestre, $ano){
-            $q = "INSERT INTO Boletins VALUES ( DEFAULT, :arquivo, :trimestre, :ano );";
+            $q = "INSERT INTO Boletim VALUES ( DEFAULT, :arquivo, :trimestre, :ano );";
             $stm = $this->c->prepare($q);
             $stm->execute(["arquivo" => $arquivo, "trimestre" => $trimestre, "ano" => $ano]);
         }
-
-        public function setPath($id, $new_Path){
-            $q = "UPDATE Boletins SET Arquivo = :new_Path WHERE ID_Boletim = :id";
-            $stm = $this->c->prepare($q);
-            $stm->execute(["new_Path" => $new_Path, "id" => $id]);
-        }
-
-        public function setTrimestre($id, $new_Trimestre){
-            $q = "UPDATE Boletins SET Arquivo = :new_Trimestre WHERE ID_Boletim = :id";
-            $stm = $this->c->prepare($q);
-            $stm->execute(["new_Path" => $new_Trimestre, "id" => $id]);
-        }
     }
 
-    /* Classe BoletimManager
-    Responsável por manipular as informações nas planilhas carregadas
-    */
     require_once "phpspreadsheet/spreadsheet/vendor/autoload.php";
     class BoletimManager{
         //private $filename;
@@ -327,6 +302,42 @@
             }
             return json_encode($names_array);
         }
+
+        //coisas úteis para obter informações
+
+        public function getColumnName($column){
+            $r = null;
+            for($r=1; $this->sheet->getCell($column . $r)->getValue() == null; $r++);
+            return $this->sheet->getCell($column . $r)->getValue();
+        }
+
+        public function get($name){
+            $name_location = null;
+            //getting the name address
+            for($row=1; $row <= $this->sheet->getHighestDataRow() ;$row++){
+                //$column=-1; //for some reason it'll become 1, maybe it's a property of ++ after var
+                foreach( range('A', $this->sheet->getHighestDataColumn()) as $column ){
+                    //echo $column.'<br/>';
+                    $cell = $this->sheet->getCell($column.$row);
+                    if ( !strcmp($cell->getValue(), $name)){
+                        $name_location = array("row" => $row , "column" => $column);
+                    }
+                }
+                if($name_location != null) break;
+            }
+
+            if($name_location == null) return null; //if name not found
+
+            //getting all data in the same line
+            $line = array();
+            foreach( range('A', $this->sheet->getHighestDataColumn()) as $column){
+                $line[$this->getColumnName($column)] = $this->sheet->getCell($column . $name_location['row'])->getValue();
+            }
+
+            return $line;
+
+        }
+
     }
 
 ?>

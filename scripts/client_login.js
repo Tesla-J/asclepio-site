@@ -22,11 +22,11 @@ class ClientLogin{
 
                     switch(obj.type){
                         case 'al':
-                            window.location.replace('telaaluno.html');
+                            window.location.replace('telaaluno.php');
                             break;
 
                         case 'enc':
-                            window.location.replace('encarregado_home.html');
+                            window.location.replace('encarregado_home.php');
                             break;
                     }
                 }

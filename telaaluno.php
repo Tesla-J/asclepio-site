@@ -91,33 +91,30 @@
 	<section class="section row container">
 		<h3><u>Meu Aproveitamento</u></h3>
 
-		<table class="striped centered">
-        <thead>
-          <tr>
-              <th>Name</th>
-              <th>Item Name</th>
-              <th>Item Price</th>
-          </tr>
-        </thead>
+        <?php
+            if(!isset($_COOKIE['username'])) header('location:index.html');
+            require_once('data_manager.php');
+            $boletim_db = new Boletim();
+            $boletim_list = $boletim_db->getAllFromBoletim();
+            $boletim_data = null;
 
-        <tbody>
-          <tr>
-            <td>Alvin</td>
-            <td>Eclair</td>
-            <td>$0.87</td>
-          </tr>
-          <tr>
-            <td>Alan</td>
-            <td>Jellybean</td>
-            <td>$3.76</td>
-          </tr>
-          <tr>
-            <td>Jonathan</td>
-            <td>Lollipop</td>
-            <td>$7.00</td>
-          </tr>
-        </tbody>
-      </table>
+            foreach($boletim_list as $reg_num => $reg){
+                foreach($reg as $key => $value){
+                    if(!strcmp($key, 'Arquivo')){
+                        $boletim_mg = new BoletimManager($value);
+                        $boletim_data = $boletim_mg->get($_COOKIE['username']);
+
+                        if($boletim_data != null){
+                            foreach($boletim_data as $key => $value){
+                                echo "$key: $value <br/>";
+                            }
+                        }
+                    }
+                }
+            }
+
+        ?>
+
 	</section>
 </div>
 
