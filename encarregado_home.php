@@ -80,11 +80,13 @@
             $aluno_names = array();
 
             //saving students names
-            foreach($aluno_list as $key => $value){
+            foreach($aluno_list as $reg_num => $reg){
+                foreach($reg as $key => $value){
                 //foreach($reg as $key => $value)
                     if(!strcmp($key, 'Nome_Completo')){
                         array_push($aluno_names, $value);
                     }
+                }
             }
 
             if($aluno_names == null) echo "<p style='color: red'>Ainda não tem alunos cadastrados no sistema.</p>";
@@ -96,12 +98,13 @@
                     foreach($reg as $key => $value){ //loop dos dados de cada registro
                         if(!strcmp($key, 'Arquivo')){
                             $boletim_mg = new BoletimManager($value);
-                            foreach($aluno_names as $name) //loop dos nomes dos alunos
+                            foreach($aluno_names as $name){ //loop dos nomes dos alunos
                                 foreach($boletim_mg->get($name) as $key => $value ) //dados de cada nome
                                     echo "$key: $value <br/>";
+                                echo "<br/>";
+                            }
                         }
                     }
-                    echo "<br/>";
                 }
             }
         ?>

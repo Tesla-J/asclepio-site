@@ -119,12 +119,13 @@
         public function get_r($attribute, $value){
             if($this->c != null){
                 $q = "SELECT Nome_Completo FROM  $this->table  WHERE  $attribute  = '$value'";
-                //$stm = $this->c->prepare($q);
-                //$stm->bindValue($id, $BI_Encarregado);
-                $stm = $this->c->query($q);//(['value' => $value]);
-                $row = $stm->fetch(PDO::FETCH_ASSOC);
+                $data = array();
 
-                return $row;
+                foreach($this->c->query($q) as $row){
+                    array_push($data, $row);
+                }
+                
+                return $data;
             }
                 return null;
         }
