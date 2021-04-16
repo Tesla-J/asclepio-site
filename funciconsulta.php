@@ -6,7 +6,6 @@ session_start();
 <html>
 <head>
   <link rel="stylesheet" type="text/css" href="styles/css/materialize.min.css">
-  <link rel="stylesheet" type="text/css" href="styles/css/main.css">
   <link rel="stylesheet" type="text/css" href="icons/fontawesome-free-5.15.1-web/css/all.min.css">
   <link rel="stylesheet" type="text/css" href="icons/fonts/material-icons.css">
   <style type="text/css">
@@ -31,20 +30,23 @@ session_start();
 </div>
   </header>
  <p>&nbsp;</p>
- 
- </script>
-    <form method="post" action="">
-             <input type="text" name="Filtro" class="campo col s8" placeholder="Pesquisar">
-        <input type="submit" value="Pesquisar" class="btn cyan">
-      </form>
-      </div>
+<div class="row container">
+<div class="col s12">
+  <h5 class="light">Consulta</h5><hr>
+    <p>&nbsp;</p>
+
+  <form method="post" action="">
+           <input type="text" name="Filtro" class="campo col s8" placeholder="Pesquisar">
+      <input type="submit" value="Pesquisar" class="btn cyan">
+    </form>
     </div>
+  </div>
       <p>&nbsp;</p>
 
-      
+
 <script type="text/javascript">
    window.onload=function() {
-   Materialize.toast('<?php 
+   Materialize.toast('<?php
                           if(isset($_SESSION['mensagem'])):
                             echo $_SESSION['mensagem'];
                             session_unset();
@@ -52,11 +54,11 @@ session_start();
             ?>', 2000, 'cyan');
    };
  </script>
- 
+
 
   <section class="section row container">
-    
- 
+
+
     <table class="striped centered">
         <thead>
         <tr>
@@ -67,7 +69,7 @@ session_start();
            <th>Sexo</th>
             <th>Morada</th>
             <th>Data de Nascimento</th>
-            
+
         </tr>
         </thead>
 

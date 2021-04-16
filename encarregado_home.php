@@ -101,7 +101,7 @@
                             foreach($aluno_names as $name){ //loop dos nomes dos alunos
                                 foreach($boletim_mg->get($name) as $key => $value ) //dados de cada nome
                                     echo "$key: $value <br/>";
-                                echo "<br/>";
+                                echo "<hr/>";
                             }
                         }
                     }
