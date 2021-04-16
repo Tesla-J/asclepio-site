@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <?php
 include_once ("conexao.php");
+session_start();
 ?>
 <html>
 <head>
@@ -24,17 +25,14 @@ include_once ("conexao.php");
     <div class=" navbar-fixed">
     <nav class="cyan">
     <div class="nav-wrapper container">
-     <a href="encarregadoconsulta.php" class="brand-logo">Banco de Dados</a>
+     <a href="funciconsulta.php" class="brand-logo">Banco de Dados</a>
       </div>
 </nav>
 </div>
   </header>
  <p>&nbsp;</p>
-  <div class="row container">
-  <div class="col s12">
-    <h5 class="light">Consulta</h5><hr>
-      <p>&nbsp;</p>
-
+ 
+ </script>
     <form method="post" action="">
              <input type="text" name="Filtro" class="campo col s8" placeholder="Pesquisar">
         <input type="submit" value="Pesquisar" class="btn cyan">
@@ -44,12 +42,21 @@ include_once ("conexao.php");
       <p>&nbsp;</p>
 
       
-
+<script type="text/javascript">
+   window.onload=function() {
+   Materialize.toast('<?php 
+                          if(isset($_SESSION['mensagem'])):
+                            echo $_SESSION['mensagem'];
+                            session_unset();
+                          endif;
+            ?>', 2000, 'cyan');
+   };
+ </script>
  
 
   <section class="section row container">
     
-
+ 
     <table class="striped centered">
         <thead>
         <tr>

@@ -24,9 +24,9 @@
               ?>
             </div>
             <div class="card-action center"><?php
-            	$BI_Coordenador=$_GET['BI_Coordenador'];
-              echo "<a href='deletefunc.php?BI_Coordenador=$BI_coordenador' class='btn green' style='margin:0 1em 0 0;'>Sim</a>";
-              echo "<a href='funciconsulta.php' class='btn red'>Não</a>";
+            	$BI=$_GET['BI'];
+              echo "<a href='deletealun.php?BI=$BI' class='btn green' style='margin:0 1em 0 0;'>Sim</a>";
+              echo "<a href='alunoconsulta.php' class='btn red'>Não</a>";
               ?>
             </div>
           </div>

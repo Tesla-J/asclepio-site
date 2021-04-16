@@ -1,16 +1,12 @@
 <?php
-
+session_start();
 include_once 'conexao.php';
-if($_SERVER['REQUEST_METHOD'] == 'POST'){
-    $BI_coordenador = $_POST['BI_Coordenador'];
-    $queryDelete=$conexao->query("delete from Coordenador where BI_Coordenador='$BI_coordenador';");
-
-    if(mysqli_affected_rows($conexao) == 1):
-	       echo '';
-    else:
-        echo 'ERROR!';
-    endif;
-}
-else{
-    header('location:funciconsulta.php');
-}
+$BI_Coordenador = filter_input(INPUT_GET,'BI_Coordenador');
+$queryDelete=$conexao->query("delete from coordenador where BI_Coordenador='$BI_Coordenador'");
+if(mysqli_affected_rows($conexao)> 0):
+	$_SESSION['mensagem']="Registro eliminado com sucesso";
+	header("Location:funciconsulta.php");
+else:
+	$_SESSION['mensagem']="Erro ao eliminar o registro";
+	header("Location:funciconsulta.php");
+endif;

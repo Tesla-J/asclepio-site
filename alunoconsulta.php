@@ -5,11 +5,11 @@ session_start();
 ?>
 <html>
 <head>
-  <link rel="stylesheet" type="text/css" href="styles/css/materialize.min.css">
+	<link rel="stylesheet" type="text/css" href="styles/css/materialize.min.css">
   <link rel="stylesheet" type="text/css" href="styles/css/main.css">
-  <link rel="stylesheet" type="text/css" href="icons/fontawesome-free-5.15.1-web/css/all.min.css">
-  <link rel="stylesheet" type="text/css" href="icons/fonts/material-icons.css">
-  <style type="text/css">
+	<link rel="stylesheet" type="text/css" href="icons/fontawesome-free-5.15.1-web/css/all.min.css">
+	<link rel="stylesheet" type="text/css" href="icons/fonts/material-icons.css">
+	<style type="text/css">
   .row .col.s9 {
   width: 87%;
   margin-left: auto;
@@ -17,7 +17,7 @@ session_start();
   right: auto;
 }
 </style>
-  <title></title>
+	<title></title>
 </head>
 <body>
 
@@ -25,7 +25,7 @@ session_start();
     <div class=" navbar-fixed">
     <nav class="cyan">
     <div class="nav-wrapper container">
-     <a href="encarregadoconsulta.php" class="brand-logo">Banco de Dados</a>
+     <a href="alunoconsulta.php" class="brand-logo">Banco de Dados</a>
       </div>
 </nav>
 </div>
@@ -44,9 +44,8 @@ session_start();
     </div>
       <p>&nbsp;</p>
 
-      
 
- <script type="text/javascript">
+       <script type="text/javascript">
    window.onload=function() {
    Materialize.toast('<?php 
                           if(isset($_SESSION['mensagem'])):
@@ -57,38 +56,44 @@ session_start();
    };
  </script>
 
-  <section class="section row container">
-    
 
-    <table class="striped centered">
+ 
+
+	<section class="section row container">
+		
+
+		<table class="striped bordered centered responsive-table">
         <thead>
         <tr>
-          <th>BI</th>
+           
           <th>Nome</th>
           <th>Email</th>
           <th>Telefone</th>
            <th>Sexo</th>
+            <th>Turma</th>
             <th>Morada</th>
-
-            
+            <th>Curso</th>
+            <th>Data de Nascimento</th>
+            <th>Encarregado</th>
         </tr>
         </thead>
-
-        <tbody>
+          
          <tbody>
-            <?php include_once'readenc.php' ?>
+            <?php include_once'readalun.php' ?>
                </tbody>
         </tbody>
       </table>
-  </section>
+	</section>
 
 
 <script type="text/javascript" src="scripts/js/jquery-3.5.1.min.js"></script>
 <script type="text/javascript" src="scripts/js/materialize.js"></script>
 <script type="text/javascript">
-  $(document).ready(function () {
+	$(document).ready(function () {
 
-  });
-</script>
+	});
+
+	 
+	</script>
 </body>
 </html>
