@@ -124,7 +124,7 @@
                 foreach($this->c->query($q) as $row){
                     array_push($data, $row);
                 }
-                
+
                 return $data;
             }
                 return null;
@@ -225,10 +225,10 @@
             return $rows;
         }
 
-        public function addNewBoletim($arquivo, $trimestre, $ano){
-            $q = "INSERT INTO Boletim VALUES ( DEFAULT, :arquivo, :trimestre, :ano );";
+        public function addNewBoletim($arquivo, $bi_coordenador){
+            $q = "INSERT INTO Boletim VALUES (:arquivo, DEFAULT, :bi_coordenador );";
             $stm = $this->c->prepare($q);
-            $stm->execute(["arquivo" => $arquivo, "trimestre" => $trimestre, "ano" => $ano]);
+            $stm->execute(["arquivo" => $arquivo, "bi_coordenador" => $bi_coordenador]);
         }
     }
 

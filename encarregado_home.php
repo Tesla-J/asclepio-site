@@ -72,6 +72,7 @@
 		<h3><u> Aproveitamento do Meu Educando</u></h3>
 
 		<?php
+            echo "<div id='notas'>";
             require_once('data_manager.php');
 
             $aluno_db = new Aluno();
@@ -99,15 +100,25 @@
                         if(!strcmp($key, 'Arquivo')){
                             $boletim_mg = new BoletimManager($value);
                             foreach($aluno_names as $name){ //loop dos nomes dos alunos
-                                foreach($boletim_mg->get($name) as $key => $value ) //dados de cada nome
-                                    echo "$key: $value <br/>";
-                                echo "<hr/>";
+                                if($boletim_mg->get($name) != null){
+                                    foreach($boletim_mg->get($name) as $key => $value ) //dados de cada nome
+                                        echo "$key: $value <br/>";
+                                    echo "<hr/>";
+                                }else continue;
                             }
                         }
                     }
                 }
             }
+            echo "</div>"
         ?>
+        <script type='text/javascript'>
+            let notas = document.getElementById('notas');
+            if(notas.innerHTML == 0){
+                alert('Não há oque mostrar no momento.');
+                notas.innerHTML = "<p>Ainda não existem dados para serem exibidos.</p>";
+            }
+        </script>
 	</section>
 </div>
 

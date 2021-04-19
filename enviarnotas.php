@@ -4,11 +4,11 @@
   <meta charset="utf-8">
 	<link type="text/css" rel="stylesheet" href="styles/nsd/materialize.css">
       <link rel="stylesheet" type="text/css" href="styles/nsd/style.css">
-      <link rel="stylesheet" type="text/css" href="icons/fontawesome-free-5.15.1-web/css/all.min.css"> 
+      <link rel="stylesheet" type="text/css" href="icons/fontawesome-free-5.15.1-web/css/all.min.css">
       <link rel="stylesheet" type="text/css" href="icons/fonts/material-icons.css">
       <link rel="stylesheet" type="text/css" href="styles/nsd/flag-icon.css">
       <style type="text/css">
-      	
+
 
       </style>
 	<title></title>
@@ -40,7 +40,7 @@
                   <span class="flag-icon flag-icon-ao"></span>
                 </a>
               </li>
-              
+
               <li>
                 <a href="javascript:void(0);" class="waves-effect waves-block waves-light notification-button" data-activates="notifications-dropdown">
                   <i class="material-icons">notifications_none
@@ -56,7 +56,7 @@
                   </span>
                 </a>
               </li>
-              
+
             </ul>
             <!-- translation-button -->
             <ul id="translation-dropdown" class="dropdown-content">
@@ -114,7 +114,7 @@
                   <i class="material-icons">live_help</i>Ajuda</a>
               </li>
               <li class="divider"></li>
-              
+
               <li>
                 <a href="#" class="grey-text text-darken-1">
                   <i class="material-icons">keyboard_tab</i>Logout</a>
@@ -152,18 +152,18 @@
                         <i class="material-icons">live_help</i>Ajuda</a>
                     </li>
                     <li class="divider"></li>
-                    
+
                     <li>
                       <a href="#" class="grey-text text-darken-1">
                         <i class="material-icons">keyboard_tab</i>Logout</a>
                     </li>
                   </ul>
+                  <a class=" btn-flat dropdown-button waves-effect waves-light white-text profile-btn" href="#" data-activates="profile-dropdown-nav"><i id='username' class="mdi-navigation-arrow-drop-down right"></i></a>
+                  <p class="user-roal">coordenador</p>
                   <script>
                   	let e = document.getElementById('username');
-                  	e.innerHTML=cookieManager.getUsename();
+                  	e.innerHTML=cookieManager.getUsername();
                   </script>
-                  <a class=" btn-flat dropdown-button waves-effect waves-light white-text profile-btn" href="#" data-activates="profile-dropdown-nav"><i class="mdi-navigation-arrow-drop-down right"></i></a>
-                  <p class="user-roal">coordenador</p>
                 </div>
               </div>
             </li>
@@ -187,7 +187,7 @@
                       <span class="nav-text" style="font-size: 17px;">Cadastrar Encarregados</span>
                     </a>
                 </li>
-                
+
                  <li class="bold">
                   <a href="enviarnotas.html" class="waves-effect waves-cyan">
                       <i class="fas fa-upload prefix cyan-text"></i>
@@ -202,7 +202,7 @@
                     </a>
                 </li>
 
-               
+
               </ul>
             </li>
           </ul>
@@ -219,56 +219,52 @@
     <div class="col s12 ">
       <div class="card">
 
-              
+
         <div class="card-action cyan white-text">
           <h3 class="light"><u style="border-radius: 35px;">Arquivos</u></h3>
-          
+
         </div>
 
-        <div class="card-content">
-          <div class="file-field input-field">
-                    <div class="btn cyan">
-                    <span>Arquivo</span>
-                   <input type="file" multiple>
-                   </div>
-                <div class="file-path-wrapper">
-                 <input class="file-path validate" type="text" placeholder="Faça upload de um ou mais arquivos">
-                 </div>
-                 </div>
+        <form class="" action="upload.php" method="post" enctype="multipart/form-data">
+            <div class="card-content">
+              <div class="file-field input-field">
+                        <div class="btn cyan">
+                        <span>Arquivo</span>
+                       <input type="file" name='boletim' multiple>
+                       </div>
+                    <div class="file-path-wrapper">
+                     <input class="file-path validate" type="text" placeholder="Faça upload de um ou mais arquivos">
+                     </div>
+                     </div>
 
-          <div class="input-field col s12">
-                 <i class="fas fa-user prefix cyan-text"></i>
-                <input type="text" name="nomecompleto" id="nomecompleto" maxlength="50">
-                <label for="nomecompleto">Autor</label>
-              </div>
-                         
-                        <!-- <div class="input-field col s12">
-                            <i class="fas fa-calendar-day prefix cyan-text"></i>
-                             <input  type="date" id="data"  nome="date"/>
-                             <label for="data"></label>
-                             </div>-->
+              <div class="input-field col s12">
+                     <i class="fas fa-user prefix cyan-text"></i>
+                    <input type="text" name="bi_coordenador" id="bi_coordenador" maxlength="14" value=<?php echo $_COOKIE['bi']?> disabled>
+                    <label for="nomecompleto">Autor</label>
+                  </div>
 
-          <div class="form-field">
-            <button class="btn-large waves-effect cyan" style="width:100%;">Enviar</button>
-          </div><br>
-                   
-           </div>
+              <div class="form-field">
+                <button class="btn-large waves-effect cyan" style="width:100%;">Enviar</button>
+              </div><br>
+
+               </div>
+        </form>
 
      </div>
     </div>
-    
+
       </div>
 
             </div>
-                 <br> 
-                  <br> 
-                   <br> 
-                    <br> 
-                     <br> 
-                      <br> 
-                       <br> 
-                        <br> 
-                  
+                 <br>
+                  <br>
+                   <br>
+                    <br>
+                     <br>
+                      <br>
+                       <br>
+                        <br>
+
 
          <footer class="page-footer gradient-45deg-light-blue-cyan">
         <div class="footer-copyright">
@@ -284,6 +280,6 @@
 <script type="text/javascript" src="scripts/js1/jquery-3.5.1.min.js"></script>
 <script type="text/javascript" src="scripts/js1/materialize.min.js"></script>
 <script type="text/javascript" src="scripts/js1/plugins.min.js"></script>
-   	
+
 </body>
 </html>
