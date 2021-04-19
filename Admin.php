@@ -4,11 +4,11 @@
   <meta charset="utf-8">
 	<link type="text/css" rel="stylesheet" href="styles/nsd/materialize.css">
       <link rel="stylesheet" type="text/css" href="styles/nsd/style.css">
-      <link rel="stylesheet" type="text/css" href="icons/fontawesome-free-5.15.1-web/css/all.min.css"> 
+      <link rel="stylesheet" type="text/css" href="icons/fontawesome-free-5.15.1-web/css/all.min.css">
       <link rel="stylesheet" type="text/css" href="icons/fonts/material-icons.css">
       <link rel="stylesheet" type="text/css" href="styles/nsd/flag-icon.css">
       <style type="text/css">
-      	
+
 
       </style>
 	<title></title>
@@ -47,7 +47,7 @@
                   <span class="flag-icon flag-icon-ao"></span>
                 </a>
               </li>
-              
+
               <li>
                 <a href="javascript:void(0);" class="waves-effect waves-block waves-light notification-button" data-activates="notifications-dropdown">
                   <i class="material-icons">notifications_none
@@ -63,7 +63,7 @@
                   </span>
                 </a>
               </li>
-              
+
             </ul>
             <!-- translation-button -->
             <ul id="translation-dropdown" class="dropdown-content">
@@ -133,7 +133,7 @@
                   <i class="material-icons">live_help</i>Ajuda</a>
               </li>
               <li class="divider"></li>
-              
+
               <li>
                 <a href="#" class="grey-text text-darken-1">
                   <i class="material-icons">keyboard_tab</i>Logout</a>
@@ -171,13 +171,13 @@
                         <i class="material-icons">live_help</i>Ajuda</a>
                     </li>
                     <li class="divider"></li>
-                    
+
                     <li>
                       <a href="#" class="grey-text text-darken-1">
                         <i class="material-icons">keyboard_tab</i>Logout</a>
                     </li>
                   </ul>
-                  <a class="btn-flat dropdown-button waves-effect waves-light white-text profile-btn" href="#" data-activates="profile-dropdown-nav">Alexandre Muginga<i class="mdi-navigation-arrow-drop-down right"></i></a>
+                  <a class="btn-flat dropdown-button waves-effect waves-light white-text profile-btn" href="#" data-activates="profile-dropdown-nav">Administrador<i class="mdi-navigation-arrow-drop-down right"></i></a>
                   <p class="user-roal">Administrator</p>
                 </div>
               </div>
@@ -211,6 +211,10 @@
         </aside>
 
          <section id="content">
+             <?php
+                require_once('data_manager.php');
+                $counter = new Server();
+             ?>
           <!--start container-->
           <div class="container">
             <!--card stats start-->
@@ -224,7 +228,7 @@
                         <p>Cursos</p>
                       </div>
                       <div class="col s5 m5 right-align">
-                        <h4 class="mb-0">690</h4>
+                        <h4 class="mb-0"><?php $counter->singleRowQuery('select count(distinct Curso) from Aluno;'); ?></h4>
                        </div>
                     </div>
                     <a href="" class="btn cyan hoverable" style="width: 100%;">Abrir</a>
@@ -238,7 +242,7 @@
                         <p>Alunos</p>
                       </div>
                       <div class="col s5 m5 right-align">
-                        <h4 class="mb-0">1885</h4> 
+                        <h4 class="mb-0"><?php $counter->singleRowQuery('select count(Nome_Completo) from Aluno;'); ?></h4>
                       </div>
 
                     </div>
@@ -253,7 +257,7 @@
                         <p>Encarregados</p>
                       </div>
                       <div class="col s5 m5 right-align">
-                        <h4 class="mb-0">1233</h4>
+                        <h4 class="mb-0"><?php $counter->singleRowQuery('select count(Nome_Completo) from Encarregado;'); ?></h4>
                       </div>
                     </div>
                     <a href="encarregadoconsulta.php" class="btn orange hoverable" style="width: 100%;">Abrir</a>
@@ -264,17 +268,17 @@
                     <div class="padding-4">
                       <div class="col s7 m7">
                         <i class="fas fa-users fa-2x background-round mt-5"></i>
-                        <p>Coordenador</p>
+                        <p>Coordenadores</p>
                       </div>
                       <div class="col s5 m5 right-align">
-                        <h4 class="mb-0">2</h4>
+                        <h4 class="mb-0"><?php $counter->singleRowQuery('select count(Nome_Completo) from Coordenador;'); ?></h4>
                       </div>
                     </div>
                      <a href="funciconsulta.php" class="btn purple hoverable" style="width: 100%;">Abrir</a>
                   </div>
                 </div>
 
-              
+
                 <div class="col s12 m6 l3">
                   <div class="card pink gradient-shadow min-height-100 white-text">
                     <div class="padding-4">
@@ -283,8 +287,8 @@
                         <p>Turmas</p>
                       </div>
                       <div class="col s5 m5 right-align">
-                        <h4 class="mb-0">7</h4>
-                        
+                        <h4 class="mb-0"><?php $counter->singleRowQuery('select count(distinct Turma) from Aluno;'); ?></h4>
+
                       </div>
                     </div>
                     <a href="" class="btn pink hoverable" style="width: 100%;">Abrir</a>
@@ -299,13 +303,13 @@
                         <p>Salas</p>
                       </div>
                       <div class="col s5 m5 right-align">
-                        <h4 class="mb-0">12</h4>
+                        <h4 class="mb-0"><?php $counter->singleRowQuery('select count(distinct Turma) from Aluno;'); ?></h4>
                         </div>
                     </div>
                     <a href="" class="btn gradient-45deg-purple-deep-orange hoverable" style="width: 100%;">Abrir</a>
                   </div>
                 </div>
-      
+
               </div>
             </div>
                  <p>&nbsp;</p>

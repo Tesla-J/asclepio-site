@@ -25,7 +25,7 @@ class FuncLogin{
 
                     switch(obj.username){
                         case 'Administrador':
-                            window.location.replace('Admin.html');
+                            window.location.replace('Admin.php');
                             break;
                         case 'Professor':
                             window.location.replace('telaprofessorgeral.php');

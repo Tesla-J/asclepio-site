@@ -29,6 +29,13 @@
             }
         }
 
+        //why didn't I used this method to sumarise this f*cking code?
+        public function singleRowQuery($query){
+            $stm = $this->c->query($query);
+            $result = $stm->fetch();
+            echo $result[0];
+        }
+
         //Must set it before use the followind methods
         public function setTable($table){
             $this->table = $table;
