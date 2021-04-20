@@ -211,6 +211,10 @@
         </aside>
 
          <section id="content">
+             <?php
+                require_once('data_manager.php');
+                $counter = new Server();
+             ?>
           <!--start container-->
           <div class="container">
             <!--card stats start-->
@@ -224,7 +228,7 @@
                         <p>Cursos</p>
                       </div>
                       <div class="col s5 m5 right-align">
-                        <h4 class="mb-0">690</h4>
+                        <h4 class="mb-0"><?php $counter->singleRowQuery('select count(distinct Curso) from Aluno;'); ?></h4>
                        </div>
                     </div>
                     <a href="" class="btn cyan hoverable" style="width: 100%;">Abrir</a>
@@ -238,7 +242,7 @@
                         <p>Alunos</p>
                       </div>
                       <div class="col s5 m5 right-align">
-                        <h4 class="mb-0">1885</h4>
+                        <h4 class="mb-0"><?php $counter->singleRowQuery('select count(Nome_Completo) from Aluno;'); ?></h4>
                       </div>
 
                     </div>
@@ -253,7 +257,7 @@
                         <p>Encarregados</p>
                       </div>
                       <div class="col s5 m5 right-align">
-                        <h4 class="mb-0">1233</h4>
+                        <h4 class="mb-0"><?php $counter->singleRowQuery('select count(Nome_Completo) from Encarregado;'); ?></h4>
                       </div>
                     </div>
                     <a href="" class="btn orange hoverable" style="width: 100%;">Abrir</a>
@@ -271,7 +275,7 @@
                         <p>Turmas</p>
                       </div>
                       <div class="col s5 m5 right-align">
-                        <h4 class="mb-0">7</h4>
+                        <h4 class="mb-0"><?php $counter->singleRowQuery('select count(distinct Turma) from Aluno;'); ?></h4>
 
                       </div>
                     </div>
@@ -287,7 +291,7 @@
                         <p>Salas</p>
                       </div>
                       <div class="col s5 m5 right-align">
-                        <h4 class="mb-0">12</h4>
+                        <h4 class="mb-0"><?php $counter->singleRowQuery('select count(distinct Turma) from Aluno;'); ?></h4>
                         </div>
                     </div>
                     <a href="" class="btn gradient-45deg-purple-deep-orange hoverable" style="width: 100%;">Abrir</a>

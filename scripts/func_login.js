@@ -34,8 +34,8 @@ class FuncLogin{
                             window.location.replace('telaprofessorgeral.php');
                             break;
                         default:
-                            document.cookie = 'home=coordenador.html';
-                            window.location.replace('coordenador.html');
+                            document.cookie = 'home=coordenador.php';
+                            window.location.replace('coordenador.php');
                     }
                 }
             }
