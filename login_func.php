@@ -38,7 +38,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     if( isset($coordenador_data['Email']) ){
         if($coordenador_data['Email'] == $user && $coordenador_data['Senha'] == $hash_password){
             $data = array('username' => $coordenador_data['Nome_Completo'],
-                'bi' => $coordenador_data['BI_Coordenador']);
+                'bi' => $coordenador_data['BI_Coordenador'], 'email' => $coordenador_data['Email']);
         }
         else{
             $data = 'NONE';

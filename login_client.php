@@ -13,13 +13,13 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
         if(isset($data_aluno['Email'])){
             if($data_aluno['Email'] == $_POST['email'] && $data_aluno['Senha'] == hash('sha512', $_POST['password'], false)){
-                $data = array('username' => $data_aluno['Nome_Completo'], 'bi' => $data_aluno['BI'], 'type' => 'al');
+                $data = array('username' => $data_aluno['Nome_Completo'], 'bi' => $data_aluno['BI'], 'type' => 'al', 'email' => $data_aluno['Email']);
             }
         }
 
         if(isset($data_encarregado['Email'])){
             if($data_encarregado['Email'] == $_POST['email'] && $data_encarregado['Senha'] == hash('sha512', $_POST['password'], false)){
-                $data = array('username' => $data_encarregado['Nome_Completo'], 'bi' => $data_encarregado['BI_Encarregado'], 'type' => 'enc');
+                $data = array('username' => $data_encarregado['Nome_Completo'], 'bi' => $data_encarregado['BI_Encarregado'], 'type' => 'enc', 'email' => $data_encarregado['Email']);
             }
         }
 

@@ -20,7 +20,7 @@
 
       <ul id="nav-mobile" class="right hide-on-med-and-down">
 
-        <li><a href="telalun.html" style="font-size: 18px;"><i class="material-icons left">home</i>Inicial</a></li>
+        <li><a href="index.php" style="font-size: 18px;"><i class="material-icons left">home</i>Página Inicial</a></li>
         <li><a href="informaçao.html" style="font-size: 18px;"><i class="far fa-comment-alt left"></i>Comunicados</a></li>
 
       </ul>
@@ -35,15 +35,15 @@
         <img src="office.jpg">
       </div>
       <a href="#!user"><img class="circle" src="default-user.png"></a>
-      <a href="#!name"><span class="white-text name">John Doe</span></a>
-      <a href="#!email"><span class="white-text email">jdandturk@gmail.com</span></a>
+      <a href="#!name"><span class="white-text name"><?php echo $_COOKIE['username'];?></span></a>
+      <a href="#!email"><span class="white-text email"><?php echo $_COOKIE['email'];?></span></a>
     </div></li>
-      <li><a href="telalun.html" style="font-size: 18px;" class="white-text"><i class="material-icons left white-text">home</i>Inicial</a></li>
+      <li><a href="index.php" style="font-size: 18px;" class="white-text"><i class="material-icons left white-text">home</i>Página inicial</a></li>
         <li><a href="informaçao.html" style="font-size: 18px;"  class="white-text"><i class="far fa-comment-alt left white-text"></i>Comunicados</a></li>
         <li class="divider"></li>
          <li>
-                <a href="#" style="font-size: 18px;"  class="white-text">
-                  <i class="material-icons white-text">keyboard_tab</i>Logout</a>
+                <a href="logout.php" style="font-size: 18px;"  class="white-text">
+                  <i class="material-icons white-text">keyboard_tab</i>Terminar sessão</a>
               </li>
       </ul>
 <!-- opções do user para computador-->

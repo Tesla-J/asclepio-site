@@ -19,18 +19,22 @@ class FuncLogin{
                     let obj = JSON.parse(self.xhr.responseText);
                     document.cookie = 'username='+obj.username;
                     try{
+                        document.cookie = 'email='+obj.email;
                         document.cookie = 'bi='+obj.bi;
                     }
                     catch(e){}
 
                     switch(obj.username){
                         case 'Administrador':
+                            document.cookie = 'home=Admin.php';
                             window.location.replace('Admin.php');
                             break;
                         case 'Professor':
+                            document.cookie = 'home=telaprofessorgeral.php';
                             window.location.replace('telaprofessorgeral.php');
                             break;
                         default:
+                            document.cookie = 'home=coordenador.html';
                             window.location.replace('coordenador.html');
                     }
                 }

@@ -19,13 +19,16 @@ class ClientLogin{
                     let obj = JSON.parse(self.xhr.responseText);
                     document.cookie = 'username='+obj.username;
                     document.cookie = 'bi='+obj.bi;
+                    document.cookie = 'email='+obj.email;
 
                     switch(obj.type){
                         case 'al':
+                            document.cookie = 'home=telaaluno.php';
                             window.location.replace('telaaluno.php');
                             break;
 
                         case 'enc':
+                            document.cookie = 'home=encarregado_home.php';
                             window.location.replace('encarregado_home.php');
                             break;
                     }
