@@ -1,26 +1,21 @@
 <?php
 session_start();
 include_once 'conexao.php';
+if(isset($_SESSION['BI_coordenador'])){
+    $BI_coordenador=$_SESSION['BI_coordenador'];
+}else{
+    $BI_coordenador = $_POST['BI_coordenador'];
+}
 
+$Nome_completo=$_POST['Nome_completo'];
+$Email=$_POST['Email'];
+$Telefone=$_POST['Telefone'];
+$Data_nascimento=$_POST['Data_nascimento'];
+$Morada=$_POST['Morada'];
 
-$BI_Coordenador=filter_input(INPUT_POST, 'BI_Coordenador');
-$Nome_Completo=filter_input(INPUT_POST,'Nome_Completo');
-$Email=filter_input(INPUT_POST,'Email');
-$Telefone=filter_input(INPUT_POST,'Telefone');
-$Sexo=filter_input(INPUT_POST,'Sexo');
-$Data_Nascimento=filter_input(INPUT_POST,'Data_Nascimento');
-$Morada=filter_input(INPUT_POST,'Morada');
-
-
-
-
-$queryUpdate=$conexao->query("update Coordenador set Nome_Completo='$Nome_Completo', Morada='$Morada', Sexo='$Sexo', Data_Nascimento='$Data_Nascimento', Telefone='$Telefone', Email='$Email' where BI_Coordenador='$BI_Coordenador'");
-
+$queryUpdate= $conexao->query("update Coordenador set Nome_Completo='$Nome_completo', Email='$Email',Telefone='$Telefone',Data_Nascimento='$Data_nascimento',Morada='$Morada' where BI_Coordenador='$BI_coordenador'");
 $affected_rows=mysqli_affected_rows($conexao);
-        if($affected_rows > 0):
-        	$_SESSION['mensagem']="Registro actualizado com sucesso!";
-        header("Location:funciconsulta.php");
-    else:
-    	$_SESSION['mensagem']="Erro ao actualizar!";
-    	header("Location:funciconsulta.php");
-        endif;
+if($affected_rows > 0):
+	header("Location:funciconsulta.php");
+	endif;
+?>

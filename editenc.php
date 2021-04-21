@@ -38,13 +38,13 @@
  
 include_once 'conexao.php';
 $BI_Encarregado = $_GET['BI_Encarregado'];
-$_SESSION['BI_Encarregado']=$BI_Encarregado;
+$_SESSION ['BI_Encarregado']=$BI_Encarregado;
 
 $querySelect=$conexao->query("select * from encarregado where BI_Encarregado='$BI_Encarregado'");
 while ($registros=$querySelect->fetch_assoc()):
 
 $BI_Encarregado=$registros['BI_Encarregado'];
-$Nome_Completo=$registros['Nome_Completo'];
+$Nome_completo=$registros['Nome_completo'];
 $Email=$registros['Email'];
 $Telefone=$registros['Telefone'];
 $Sexo=$registros['Sexo'];
@@ -67,8 +67,8 @@ endwhile;
               </div>
               <div class="input-field col s6">
                  <i class="fas fa-user prefix"></i>
-                <input type="text" name="Nome_Completo" id="Nome_Completo" value="<?php echo $Nome_Completo ?>" >
-                <label for="Nome_Completo">Nome Completo</label>
+                <input type="text" name="Nome_completo" id="Nome_completo" value="<?php echo $Nome_completo ?>" >
+                <label for="Nome_completo">Nome Completo</label>
               </div>
                             <div class="input-field col s6">
                 <i class="material-icons prefix">email</i>
@@ -92,10 +92,10 @@ endwhile;
 
                                <div class="input-field col s6">
                                 <i class="fas fa-venus-mars prefix"></i>
-                                 <select name="Sexo" id="Sexo" value="<?php echo $Sexo ?>">
+                                 <select name="Sexo" value="<?php echo $Sexo ?>">
                                  <option value="" disabled selected>Selecione o gênero</option>
-                                <option value="Masculino">Masculino</option>
-                               <option value="Feminino">Feminino</option>
+                                <option value="1">Masculino</option>
+                               <option value="2">Feminino</option>
                                 </select>
                                </div>
 

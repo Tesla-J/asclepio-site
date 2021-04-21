@@ -2,7 +2,7 @@
 include_once 'conexao.php';
 $Filtro=isset($_POST['Filtro'])?$_POST['Filtro']: "";#filtro da pesquisa
 
-$result_cursos= "SELECT A.*, E. `Nome_Completo` AS Encarregado FROM `Aluno` AS A INNER JOIN `Encarregado` AS E ON A.`BI_Encarregado` = E.`BI_Encarregado` ORDER BY A.`Nome_Completo` ASC";
+$result_cursos= "SELECT A.*, E. `Nome_Completo` AS Encarregado FROM `Aluno` AS A INNER JOIN `Encarregado` AS E ON A.`BI_Encarregado` = E.`BI_Encarregado` WHERE A. `Nome_Completo` LIKE \"%$Filtro%\" ORDER BY A.`Nome_Completo` ASC";
 $resultado_cursos = mysqli_query($conexao, $result_cursos);
 $data= mysqli_num_rows($resultado_cursos);#mostra a contagem de registros
 

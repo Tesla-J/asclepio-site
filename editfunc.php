@@ -29,7 +29,7 @@
     <div class=" navbar-fixed">
     <nav class="cyan">
     <div class="nav-wrapper container">
-     <a href="funciconsulta.php" class="brand-logo">ASCLÉPIO</a>
+     <a href="#" class="brand-logo">ASCLÉPIO</a>
       </div>
   </nav>
 </div>
@@ -41,40 +41,39 @@
   <form    action="updatefunc.php"   method="post" class="col s12">
   <fieldset class="formulario" style="padding: 15px;">
     <legend><img src="pictures/func.jpg" class="circle" width="100"></legend>
-    <h5 class="light center">Actualizar Funcionário</h5>
+    <h5 class="light center">Actualização de Dados do Funcionário</h5>
 
              <?php
 include_once 'conexao.php';
-$BI_Coordenador = $_GET['BI_Coordenador'];
-$_SESSION['BI_Coordenador']=$BI_Coordenador;
+$BI_coordenador = $_GET['BI_coordenador'];
+$_SESSION ['BI_coodernador']=$BI_coordenador;
 
-$querySelect=$conexao->query("select * from Coordenador where BI_Coordenador='$BI_Coordenador'");
+$querySelect=$conexao->query("select * from Coordenador where BI_Coordenador='$BI_coordenador'");
 while ($registros=$querySelect->fetch_assoc()):
 
-$BI_Coordenador=$registros['BI_Coordenador'];
-$Nome_Completo=$registros['Nome_Completo'];
+$BI_coordenador=$registros['BI_Coordenador'];
+$Nome_completo=$registros['Nome_Completo'];
 $Email=$registros['Email'];
 $Telefone=$registros['Telefone'];
 $Sexo=$registros['Sexo'];
-$Data_Nascimento=$registros['Data_Nascimento'];
+$Data_nascimento=$registros['Data_Nascimento'];
 $Morada=$registros['Morada'];
-
 endwhile;
 ?>
 
            <div class="input-field col s6">
                 <i class="fas fa-id-badge prefix"></i>
-                <input type="text" name="BI_Coordenador" id="BI" value="<?php echo $BI_Coordenador ?>" >
+                <input type="text" name="BI_coordenador" id="BI" value="<?php echo $BI_coordenador ?>" maxlength="50" required autofocus>
                 <label for="BI">BI</label>
               </div>
               <div class="input-field col s6">
                  <i class="fas fa-user prefix"></i>
-                <input type="text" name="Nome_Completo" id="Nome_Completo" value="<?php echo $Nome_Completo ?>">
+                <input type="text" name="Nome_completo" id="Nome_completo" value="<?php echo $Nome_completo ?>" maxlength="50">
                 <label for="nomecompleto">Nome Completo</label>
               </div>
                             <div class="input-field col s6">
                 <i class="material-icons prefix">email</i>
-                <input type="email" name="Email" id="Email"  value="<?php echo $Email ?>">
+                <input type="email" name="Email" id="Email"  value="<?php echo $Email ?>"maxlength="40" required>
                 <label for="email">Email</label>
               </div>
 
@@ -92,24 +91,23 @@ endwhile;
 
                              <div class="input-field col s6">
                             <i class="fas fa-calendar-day prefix"></i>
-                             <input id="Data_nascimento"  type="date" name="Data_Nascimento" value="<?php echo $Data_Nascimento ?>">
+                             <input id="Data_nascimento"  type="date" name="Data_nascimento" value="<?php echo $Data_nascimento ?>">
                              <label for="Data de Nascimento"></label>
                              </div>
 
-
-
                                <div class="input-field col s6">
                                 <i class="fas fa-venus-mars prefix"></i>
-                                 <select id="Sexo" name="Sexo" value="<?php  $Sequiço ?>">
+                                 <select name="Sexo" value="<?php echo $Sexo ?>">
                                  <option value="" disabled selected>Selecione o gênero</option>
-                                <option value="1">Masculino</option>
-                               <option value="2" >Feminino</option>
+                                <option value="M">Masculino</option>
+                               <option value="F" >Feminino</option>
                                 </select>
                                </div>
 
                                <div class="input-field col s12">
-                <input type="submit" value="Actualizar" class="btn blue" style=" margin:0 1em 0 0;">
-               <a href="funciconsulta.php" class="btn red">Cancelar</a>
+                <input type="submit" value="Alterar" class="btn blue" style=" margin:0 1em 0 0;">
+                <input type="reset" value="Limpar" class="btn red"  class="fas fa-user">
+
               </div>
 
 
