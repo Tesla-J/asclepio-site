@@ -60,7 +60,7 @@
             $q = "SELECT * FROM ". $this->table .";";
             $stm = $this->c->prepare($q);
             $stm->execute();
-            $rows = $stm.fetchAll(PDO::FETCH_ASSOC);
+            $rows = $stm->fetchAll(PDO::FETCH_ASSOC);
             return json_encode($rows);
         }
 
@@ -122,6 +122,14 @@
     }
 
     class Aluno extends Server{
+
+        public function getAll_r(){
+            $q = "SELECT * FROM ". $this->table .";";
+            $stm = $this->c->prepare($q);
+            $stm->execute();
+            $rows = $stm->fetchAll(PDO::FETCH_ASSOC);
+            return $rows;
+        }
 
         public function get_r($attribute, $value){
             if($this->c != null){

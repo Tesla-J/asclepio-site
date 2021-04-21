@@ -30,7 +30,7 @@
             <ul class="left">
               <li>
                 <h1 class="logo-wrapper">
-                  <a href="index.html" class="brand-logo darken-1">
+                  <a href="index.php" class="brand-logo darken-1">
                     <img src="" alt="">
                     <span class="logo-text hide-on-med-and-down">Asclépio</span>
                   </a>

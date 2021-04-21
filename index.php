@@ -27,11 +27,15 @@
     <div class=" navbar-fixed">
     <nav class="cyan">
     <div class="nav-wrapper con">
-     <a href="#" class="brand-logo">ASCLÉPIO</a>
+     <a href="#" onclick='document.location.reload();' class="brand-logo">ASCLÉPIO</a>
       <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="fas fa-bars"></i></a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
 
-        <li><a onclick='window.location.href=home;' href="#" id="#Inicio" style="font-size: 18px;"><i class="material-icons left">home</i>Menu do Utilizador</a></li>
+        <?php
+            if(isset($_COOKIE['username'])){
+                echo "<li><a onclick='window.location.href=home;' href='#' id='#Inicio' style='font-size: 18px;'><i class='material-icons left'>home</i>Menu do Utilizador</a></li>";
+            }
+        ?>
 
         <li><a href="informaçao.html" style="font-size: 18px;"><i class="material-icons left">info</i>Informações</a></li>
 
@@ -41,7 +45,7 @@
                 echo '<li><a href="arearestrita.html" class="botão cyan" style="color: white; border-radius: 26px; border: 2px solid #fff; text-align: center; font-size: 18px;">Área Restrita</a></li>';
             }
             else{
-                echo '<li><a href="logout.php" class="botão cyan" style="color: white; border-radius: 26px; border: 2px solid #fff; text-align: center; font-size: 18px;">Terminar Sessão</a></li>';
+                echo '<li><a href="logout.php" class="botão cyan" style="color: white; border-radius: 26px; border: 2px solid #fff; text-align: center; font-size: 18px;">Sair</a></li>';
             }
         ?>
 
@@ -54,7 +58,11 @@
       <ul class="side-nav cyan" style=" padding: 5px; font-size: 18px;" id="mobile-demo">
          <h4>ASCLÉPIO</h4>
         <div class="divider"></div>
-       <li><a onclick='window.location.href=home;' href="#" class="white-text" style=" font-size: 18px;"><i class="material-icons left white-text">home</i> Menu do Utilizador </a></li>
+       <?php
+            if(isset($_COOKIE['username'])){
+                echo "<li><a onclick='window.location.href=home;' href='#' class='white-text' style=' font-size: 18px;'><i class='material-icons left white-text'>home</i> Menu do Utilizador </a></li>";
+            }
+       ?>
 
       <li><a href="informaçao.html" class="white-text" style=" font-size: 18px;"><i class="material-icons left white-text">info</i>Informações</a></li><br>
 
@@ -65,7 +73,7 @@
                 echo '<li><a href="arearestrita.html" class="botão cyan" style="color: white; border-radius: 26px; border: 2px solid #fff; text-align: center; font-size: 18px;">Área Restrita</a></li>';
             }
             else{
-                echo '<li><a href="logout.php" class="botão cyan" style="color: white; border-radius: 26px; border: 2px solid #fff; text-align: center; font-size: 18px;">Terminar Sessão</a></li>';
+                echo '<li><a href="logout.php" class="botão cyan" style="color: white; border-radius: 26px; border: 2px solid #fff; text-align: center; font-size: 18px;">Sair</a></li>';
             }
         ?>
 
