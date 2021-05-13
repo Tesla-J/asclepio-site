@@ -29,5 +29,6 @@ if(isset($_FILES['boletim']) && $_SERVER['REQUEST_METHOD'] == 'POST' && isset($_
     echo $boletim_manager->namesToJSON() . "</br>";*/
     header('location: enviarnotas.php');
 }
+header('location: index.php')
 
 ?>

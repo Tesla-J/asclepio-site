@@ -37,12 +37,12 @@
             }
         ?>
 
-        <li><a href="informaçao.html" style="font-size: 18px;"><i class="material-icons left">info</i>Informações</a></li>
+        <li><a href="informaçao.php" style="font-size: 18px;"><i class="material-icons left">info</i>Informações</a></li>
 
         <?php
             if(!isset($_COOKIE['username'])){
-                echo '<li><a href="login.html" class="botão cyan" style="color: white; border-radius: 26px; border: 2px solid #fff; text-align: center; font-size: 18px;">Iniciar Sessão</a></li>';
-                echo '<li><a href="arearestrita.html" class="botão cyan" style="color: white; border-radius: 26px; border: 2px solid #fff; text-align: center; font-size: 18px;">Área Restrita</a></li>';
+                echo '<li><a href="login.php" class="botão cyan" style="color: white; border-radius: 26px; border: 2px solid #fff; text-align: center; font-size: 18px;">Iniciar Sessão</a></li>';
+                echo '<li><a href="arearestrita.php" class="botão cyan" style="color: white; border-radius: 26px; border: 2px solid #fff; text-align: center; font-size: 18px;">Área Restrita</a></li>';
             }
             else{
                 echo '<li><a href="logout.php" class="botão cyan" style="color: white; border-radius: 26px; border: 2px solid #fff; text-align: center; font-size: 18px;">Sair</a></li>';
@@ -64,13 +64,13 @@
             }
        ?>
 
-      <li><a href="informaçao.html" class="white-text" style=" font-size: 18px;"><i class="material-icons left white-text">info</i>Informações</a></li><br>
+      <li><a href="informaçao.php" class="white-text" style=" font-size: 18px;"><i class="material-icons left white-text">info</i>Informações</a></li><br>
 
 
         <?php
             if(!isset($_COOKIE['username'])){
-                echo '<li><a href="login.html" class="botão cyan" style="color: white; border-radius: 26px; border: 2px solid #fff; text-align: center; font-size: 18px;">Iniciar Sessão</a></li>';
-                echo '<li><a href="arearestrita.html" class="botão cyan" style="color: white; border-radius: 26px; border: 2px solid #fff; text-align: center; font-size: 18px;">Área Restrita</a></li>';
+                echo '<li><a href="login.php" class="botão cyan" style="color: white; border-radius: 26px; border: 2px solid #fff; text-align: center; font-size: 18px;">Iniciar Sessão</a></li>';
+                echo '<li><a href="arearestrita.php" class="botão cyan" style="color: white; border-radius: 26px; border: 2px solid #fff; text-align: center; font-size: 18px;">Área Restrita</a></li>';
             }
             else{
                 echo '<li><a href="logout.php" class="botão cyan" style="color: white; border-radius: 26px; border: 2px solid #fff; text-align: center; font-size: 18px;">Sair</a></li>';
@@ -119,7 +119,7 @@
                                     <a><i class="fa fa-university" style="font-size: 70px;"></i></a>
                                     <!--<img alt="image" class="img-responsive" src="images/icons/wifi.png">-->
                                 </div>
-                                <h4><a href="IMPSA.html" class="">ITMPSA</a></h4>
+                                <h4><a href="IMPSA.php" class="">ITMPSA</a></h4>
                             </div>
                         </div>
                         <div class="col s12 m3">
@@ -127,7 +127,7 @@
                                 <div class="service-image">
                                     <a><i class="fa fa-eye" style="font-size: 70px;"></i></a>
                                 </div>
-                                <h4><a href="visao.html">Visão</a></h4>
+                                <h4><a href="visao.php">Visão</a></h4>
                             </div>
                         </div>
                         <div class="col s12 m3">
@@ -135,7 +135,7 @@
                                 <div class="service-image">
                                     <a><i class="fa fa-book" style="font-size: 70px;"></i></a>
                                 </div>
-                                <h4><a href="ensino.html">Ensino</a></h4>
+                                <h4><a href="ensino.php">Ensino</a></h4>
                             </div>
                         </div>
                         <div class="col s12 m3">
@@ -143,7 +143,7 @@
                                 <div class="service-image">
                                    <a><i class="fa fa-suitcase" style="font-size: 70px;"></i></a>
                                 </div>
-                                <h4><a href="cursos.html">Cursos</a></h4>
+                                <h4><a href="cursos.php">Cursos</a></h4>
                             </div>
                         </div>
                     </div>

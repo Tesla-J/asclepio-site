@@ -21,6 +21,12 @@ session_start();
 </head>
 <body>
 
+    <?php
+        if(!isset($_COOKIE['username'])){
+            header('location: index.php');
+        }
+    ?>
+
 <header>
     <div class=" navbar-fixed">
     <nav class="cyan">
@@ -47,7 +53,7 @@ session_start();
 
        <script type="text/javascript">
    window.onload=function() {
-   Materialize.toast('<?php 
+   Materialize.toast('<?php
                           if(isset($_SESSION['mensagem'])):
                             echo $_SESSION['mensagem'];
                             session_unset();
@@ -57,15 +63,15 @@ session_start();
  </script>
 
 
- 
+
 
 	<section class="section row container">
-		
+
 
 		<table class="striped bordered centered responsive-table">
         <thead>
         <tr>
-           
+
           <th>Nome</th>
           <th>Email</th>
           <th>Telefone</th>
@@ -77,7 +83,7 @@ session_start();
             <th>Encarregado</th>
         </tr>
         </thead>
-          
+
          <tbody>
             <?php include_once'readalun.php' ?>
                </tbody>
@@ -93,7 +99,7 @@ session_start();
 
 	});
 
-	 
+
 	</script>
 </body>
 </html>

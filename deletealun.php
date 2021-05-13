@@ -12,6 +12,3 @@ else:
 	header("alunoconsulta.php");
 endif;
 ?>
-
-
-	

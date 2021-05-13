@@ -14,6 +14,13 @@
     <meta charset='utf-8'/>
 </head>
 <body>
+
+    <?php
+        if(!isset($_COOKIE['username'])){
+            header('location: index.php');
+        }
+    ?>
+
 <script type='text/javascript' src='scripts/cookie_manager.js'></script>
    <!-- Start Page Loading -->
     <div id="loader-wrapper">
@@ -30,7 +37,7 @@
             <ul class="left">
               <li>
                 <h1 class="logo-wrapper">
-                  <a href="coordenador.html" class="brand-logo darken-1">
+                  <a href="coordenador.php" class="brand-logo darken-1">
                     <img src="" alt="">
                     <span class="logo-text hide-on-med-and-down">Asclépio</span>
                   </a>
@@ -169,19 +176,19 @@
             <li class="no-padding">
               <ul class="collapsible" data-collapsible="accordion">
                 <li class="bold">
-                  <a href="coordenador.html" class="waves-effect waves-cyan">
+                  <a href="coordenador.php" class="waves-effect waves-cyan">
                       <i class="material-icons">pie_chart_outlined</i>
                       <span class="nav-text" style="font-size: 17px;">Painel de Controle</span>
                     </a>
                 </li>
                  <li class="bold">
-                  <a href="cadastroalun.html" class="waves-effect waves-cyan">
+                  <a href="cadastroalun.php" class="waves-effect waves-cyan">
                      <i class="fas fa-user-plus prefix green-text"></i>
                       <span class="nav-text" style="font-size: 17px;">Cadastrar Alunos</span>
                     </a>
                 </li>
                 <li class="bold">
-                  <a href="cadastroenc.html" class="waves-effect waves-cyan">
+                  <a href="cadastroenc.php" class="waves-effect waves-cyan">
                      <i class="fas fa-user-plus prefix orange-text"></i>
                       <span class="nav-text" style="font-size: 17px;">Cadastrar Encarregados</span>
                     </a>
@@ -196,7 +203,7 @@
 
 
                 <li class="bold">
-                  <a href="enviarcomunic.html" class="waves-effect waves-cyan">
+                  <a href="enviarcomunic.php" class="waves-effect waves-cyan">
                       <i class="fas fa-upload prefix cyan-text"></i>
                       <span class="nav-text" style="font-size: 17px;">Enviar Comunicados</span>
                     </a>
@@ -230,9 +237,6 @@
                       <div class="col s5 m5 right-align">
                         <h4 class="mb-0"><?php $counter->singleRowQuery('select count(distinct Curso) from Aluno;'); ?></h4>
                        </div>
-                    </div>
-                    <a href="" class="btn cyan hoverable" style="width: 100%;">Abrir</a>
-                  </div>
                 </div>
                 <div class="col s12 m6 l3">
                   <div class="card green gradient-shadow min-height-100 white-text">
@@ -278,9 +282,6 @@
                         <h4 class="mb-0"><?php $counter->singleRowQuery('select count(distinct Turma) from Aluno;'); ?></h4>
 
                       </div>
-                    </div>
-                    <a href="" class="btn pink hoverable" style="width: 100%;">Abrir</a>
-                  </div>
                 </div>
 
                 <div class="col s12 m6 l3">
@@ -293,9 +294,6 @@
                       <div class="col s5 m5 right-align">
                         <h4 class="mb-0"><?php $counter->singleRowQuery('select count(distinct Turma) from Aluno;'); ?></h4>
                         </div>
-                    </div>
-                    <a href="" class="btn gradient-45deg-purple-deep-orange hoverable" style="width: 100%;">Abrir</a>
-                  </div>
                 </div>
 
               </div>
@@ -321,9 +319,9 @@
           </div>
         </div>
     </footer>
-<script type="text/javascript" src="scripts/js1/jquery-3.5.1.min.js"></script>
-<script type="text/javascript" src="scripts/js1/materialize.min.js"></script>
-<script type="text/javascript" src="scripts/js1/plugins.min.js"></script>
+<script type="text/javascript" src="js1/jquery-3.5.1.min.js"></script>
+<script type="text/javascript" src="js1/materialize.min.js"></script>
+<script type="text/javascript" src="js1/plugins.min.js"></script>
 
 </body>
 </html>

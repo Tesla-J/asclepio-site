@@ -11,6 +11,12 @@
 </head>
 <body>
 
+    <?php
+        if(!isset($_COOKIE['username'])){
+            header('location: index.php');
+        }
+    ?>
+
 <header >
     <div class=" navbar-fixed">
     <nav class="cyan">
@@ -21,7 +27,7 @@
       <ul id="nav-mobile" class="right hide-on-med-and-down">
 
         <li><a href="index.php" style="font-size: 18px;"><i class="material-icons left">home</i>Página Inicial</a></li>
-        <li><a href="informaçao.html" style="font-size: 18px;"><i class="far fa-comment-alt left"></i>Comunicados</a></li>
+        <li><a href="vercomunicado.php" style="font-size: 18px;"><i class="far fa-comment-alt left"></i>Comunicados</a></li>
 
       </ul>
       </div>
@@ -39,7 +45,7 @@
       <a href="#!email"><span class="white-text email"><?php echo $_COOKIE['email'];?></span></a>
     </div></li>
       <li><a href="index.php" style="font-size: 18px;" class="white-text"><i class="material-icons left white-text">home</i>Página inicial</a></li>
-        <li><a href="informaçao.html" style="font-size: 18px;"  class="white-text"><i class="far fa-comment-alt left white-text"></i>Comunicados</a></li>
+        <li><a href="vercomunicado.php" style="font-size: 18px;"  class="white-text"><i class="far fa-comment-alt left white-text"></i>Comunicados</a></li>
         <li class="divider"></li>
          <li>
                 <a href="logout.php" style="font-size: 18px;"  class="white-text">
@@ -115,8 +121,7 @@
         <script type='text/javascript'>
             let notas = document.getElementById('notas');
             if(notas.innerHTML == 0){
-                alert('Não há oque mostrar no momento.');
-                notas.innerHTML = "<p>Ainda não existem dados para serem exibidos.</p>";
+                notas.innerHTML = "<p>Ainda não existem dados a serem exibidos.</p>";
             }
         </script>
 	</section>

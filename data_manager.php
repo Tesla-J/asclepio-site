@@ -216,7 +216,17 @@
         }
 
         public function getAllFromComunidado(){
+            $q = "SELECT * FROM Comunicado ORDER BY ID_Comunicado DESC;";
+            $stm = $this->c->query($q);
+            $result = $stm->fetchAll(PDO::FETCH_ASSOC);
+            return $result;
+        }
 
+        public function addNewComunicado($autor, $titulo, $mensagem){
+            $q = "INSERT INTO Comunicado VALUES (DEFAULT, :autor, :titulo, :mensagem);";
+            $stm = $this->c->prepare($q);
+            $stm->execute(["autor" => $autor, "titulo" => $titulo, "mensagem" => $mensagem]);
+            return;
         }
     }
 

@@ -8,6 +8,14 @@
     <title>Formulário de login e cadastro</title>
   </head>
   <body>
+
+      <?php
+          if(isset($_COOKIE['username'])){
+              header('location: index.php');
+          }
+          else if (isset($_COOKIE['block'])) header("location: index.php");
+      ?>
+
       <script type="text/javascript" src="scripts/client_login.js"></script>
     <div class="container">
       <div class="forms-container">
@@ -24,7 +32,7 @@
             </div>
             <input type="button" value="Login" class="btn solid"
             onclick="login.login('username', 'password');"/>
-            <p class="social-text"><a href="index.html" style="color: black;">Voltar</a></p>
+            <p class="social-text"><a href="index.php" style="color: black;">Voltar</a></p>
             <p class="social-text" style="text-align: center;">Não tem nenhuma conta dirija-se à instituição.</p>
             <p class="social-text">Siga as nossas redes sociais</p>
             <div class="social-media">

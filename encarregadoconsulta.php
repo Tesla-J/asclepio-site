@@ -21,6 +21,12 @@ session_start();
 </head>
 <body>
 
+    <?php
+        if(!isset($_COOKIE['username'])){
+            header('location: index.php');
+        }
+    ?>
+
 <header>
     <div class=" navbar-fixed">
     <nav class="cyan">
@@ -44,11 +50,11 @@ session_start();
     </div>
       <p>&nbsp;</p>
 
-      
+
 
  <script type="text/javascript">
    window.onload=function() {
-   Materialize.toast('<?php 
+   Materialize.toast('<?php
                           if(isset($_SESSION['mensagem'])):
                             echo $_SESSION['mensagem'];
                             session_unset();
@@ -58,7 +64,7 @@ session_start();
  </script>
 
   <section class="section row container">
-    
+
 
     <table class="striped centered">
         <thead>
@@ -70,7 +76,7 @@ session_start();
            <th>Sexo</th>
             <th>Morada</th>
 
-            
+
         </tr>
         </thead>
 

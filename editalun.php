@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<?php 
+<?php
   session_start();
 ?>
 <html>
@@ -13,7 +13,7 @@
         .formulario{
             border: 3px solid #00bcd4;
             border-radius: 10px;
- }                    
+ }
 
                    .input-field .prefix.active {
                       color: #26a69a !important;
@@ -24,6 +24,12 @@
 </head>
 <body>
 
+    <?php
+        if(!isset($_COOKIE['username'])){
+            header('location: index.php');
+        }
+    ?>
+
 <header >
     <div class=" navbar-fixed">
     <nav class="cyan">
@@ -33,9 +39,9 @@
   </nav>
 </div>
   </header>
-  
+
 <?php
- 
+
 include_once 'conexao.php';
 $BI = $_GET['BI'];
 $_SESSION['BI']= $BI;
@@ -48,12 +54,12 @@ $Nome_Completo=$registros['Nome_Completo'];
 $Email=$registros['Email'];
 $Telefone=$registros['Telefone'];
 $Sexo=$registros['Sexo'];
-$Turma=$registros['Turma']; 
+$Turma=$registros['Turma'];
 $Morada=$registros['Morada'];
 $Curso=$registros['Curso'];
 $Data_Nascimento=$registros['Data_Nascimento'];
 endwhile;
-?> 
+?>
 
            <div class="row container">
   <p>&nbsp;</p>
@@ -121,7 +127,7 @@ endwhile;
                           </select>
                           </div>
 
-                         
+
 
                                <div class="input-field col s6">
                                 <i class="fas fa-venus-mars prefix"></i>
@@ -137,14 +143,14 @@ endwhile;
                 <input type="submit" class="btn blue" value="Actualizar"  style=" margin:0 1em 0 0;">
 
                 <a href="alunoconsulta.php" class="btn red">Cancelar</a>
-                
+
               </div>
 
-                             
+
    </fieldset>
   </form>
 </div>
- </div>        
+ </div>
  <script type="text/javascript" src="scripts/js/jquery-3.5.1.min.js"></script>
 <script type="text/javascript" src="scripts/js/materialize.js"></script>
 <script type="text/javascript">

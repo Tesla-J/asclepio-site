@@ -6,10 +6,17 @@
 	<link rel="stylesheet" type="text/css" href="icons/fontawesome-free-5.15.1-web/css/all.min.css">
 	<link rel="stylesheet" type="text/css" href="icons/fonts/material-icons.css">
 	<link rel="stylesheet" type="text/css" href="styles/css/main.css">
-	
+
 	<title></title>
 </head>
 <body>
+
+    <?php
+        if(!isset($_COOKIE['username'])){
+            header('location: index.php');
+        }
+    ?>
+
 <header >
     <div class=" navbar-fixed">
     <nav class="cyan">
@@ -18,7 +25,7 @@
       <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="fas fa-bars"></i></a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
 
-        <li><a href="telaaluno34.html" style="font-size: 18px;"><i class="material-icons left">home</i>Inicial</a></li>
+        <li><a href=<?php echo $_COOKIE['home'];?> style="font-size: 18px;"><i class="material-icons left">home</i>Inicial</a></li>
         <li><a href="vercomunicado.html" style="font-size: 18px;"><i class="far fa-comment-alt left"></i>Comunicados</a></li>
          <li>
                 <a href="javascript:void(0);" class="waves-effect waves-block waves-light profile-button" data-activates="profile-dropdown">
@@ -49,7 +56,7 @@
                   <i class="material-icons">live_help</i>Ajuda</a>
               </li>
               <li class="divider"></li>
-              
+
               <li>
                 <a href="#" class="grey-text text-darken-1">
                   <i class="material-icons">keyboard_tab</i>Logout</a>
@@ -57,18 +64,19 @@
             </ul>
 
 <div class="row container">
-	<u><h4>Comunidados</h4></u>
-	
-  <span><h5>Reunião</h5></span>
-   <p class="justificado">
-	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-    </p>
-	
+	<u><h4>Comunicados</h4></u>
+
+    <?php
+        require_once('data_manager.php');
+        $com = new Comunicado();
+        $comunicados = $com->getAllFromComunidado();
+
+        foreach($comunicados as $c){
+            echo "<span><h5>" . $c['Titulo'] . "</h5></span>";
+            echo "<p class='justificado'>" . $c['Mensagem'] . "</p><hr/>";
+        }
+    ?>
+
 </div>
 <br>
 <br>
@@ -88,7 +96,7 @@
                 <p class="grey-text text-lighten-4">INSTITUTO MÉDIO PRIVADO DE SAÚDE ASCLÉPIO.</p>
               </div>
 
-              
+
 
               <p class="social-text">Siga as nossas redes sociais</p>
               <div class="social-media">
@@ -105,7 +113,7 @@
                 <i class="fab fa-linkedin-in"></i>
               </a>
             </div>
-         
+
         </div>
             </div>
           </div>
@@ -115,13 +123,13 @@
                 document.write(new Date().getFullYear());
               </script> Todos os direitos reservados.
             <a class="grey-text text-lighten-4 right" href="#Inicio"><i class=" fas fa-caret-up fa-2x"></i></a>
-             
+
             </div>
           </div>
-        
+
       </footer>
-<script type="text/javascript" src="scripts/js/jquery-3.5.1.min.js"></script>
-<script type="text/javascript" src="scripts/js/materialize.js"></script>
+<script type="text/javascript" src="js/jquery-3.5.1.min.js"></script>
+<script type="text/javascript" src="js/materialize.js"></script>
 <script type="text/javascript">
 	$(document).ready(function () {
 

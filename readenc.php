@@ -1,4 +1,9 @@
 <?php
+    if(!isset($_COOKIE['username'])){
+        header('location: index.php');
+    }
+?>
+<?php
 include_once 'conexao.php';
 $Filtro=isset($_POST['Filtro'])?$_POST['Filtro']: "";#filtro da pesquisa
 

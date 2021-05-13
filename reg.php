@@ -3,9 +3,10 @@
     You must use XMLHttpRequest
     to send data, It will return OK or FATALITY (yeah, It's from Mortal Combat)
 */
+header("Content-Type: text/plain");
 require_once("data_manager.php");
 
-if($_SERVER["REQUEST_METHOD"] == "POST"){
+if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_COOKIE['bi'])){
     switch($_POST["type"]){
         case "enc":
             $enc = new Encarregado();
@@ -17,7 +18,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 $_POST['senha'],
                 $_POST['telefone'],
                 $_POST['sexo'],
-                $_POST['bi_coordenador']
+                $_COOKIE['bi']
             );
             echo "OK";
             break;
@@ -35,7 +36,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 $_POST['data_nascimento'],
                 $_POST['telefone'],
                 $_POST['morada'],
-                $_POST['bi_coordenador'],
+                $_COOKIE['bi'],
                 $_POST['bi_encarregado']
             );
             echo "OK";

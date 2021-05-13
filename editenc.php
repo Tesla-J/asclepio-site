@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<?php 
+<?php
   session_start();
 ?>
 <html>
@@ -13,7 +13,7 @@
         .formulario{
             border: 3px solid #00bcd4;
             border-radius: 10px;
- }                    
+ }
 
                    .input-field .prefix.active {
                       color: #26a69a !important;
@@ -24,6 +24,12 @@
 </head>
 <body>
 
+    <?php
+        if(!isset($_COOKIE['username'])){
+            header('location: index.php');
+        }
+    ?>
+
 <header >
     <div class=" navbar-fixed">
     <nav class="cyan">
@@ -33,9 +39,9 @@
   </nav>
 </div>
   </header>
-  
+
 <?php
- 
+
 include_once 'conexao.php';
 $BI_Encarregado = $_GET['BI_Encarregado'];
 $_SESSION ['BI_Encarregado']=$BI_Encarregado;
@@ -50,7 +56,7 @@ $Telefone=$registros['Telefone'];
 $Sexo=$registros['Sexo'];
 $Morada=$registros['Morada'];
 endwhile;
-?> 
+?>
 
            <div class="container">
           <div class="row">
@@ -87,8 +93,8 @@ endwhile;
                              <input id="Morada" type="text" name="Morada" value="<?php echo $Morada ?> ">
                              <label for="Morada">Morada</label>
                              </div>
-                              
-                        
+
+
 
                                <div class="input-field col s6">
                                 <i class="fas fa-venus-mars prefix"></i>
@@ -103,14 +109,14 @@ endwhile;
                 <input type="submit" class="btn blue" value="Actualizar"  style=" margin:0 1em 0 0;">
 
                 <a href="encarregadoconsulta.php" class="btn red">Cancelar</a>
-                
+
               </div>
 
-                             
+
    </fieldset>
   </form>
 </div>
- </div>        
+ </div>
  <script type="text/javascript" src="scripts/js/jquery-3.5.1.min.js"></script>
 <script type="text/javascript" src="scripts/js/materialize.js"></script>
 <script type="text/javascript">

@@ -20,6 +20,12 @@ include_once ("conexao.php");
 </head>
 <body>
 
+    <?php
+        if(!isset($_COOKIE['username'])){
+            header('location: index.php');
+        }
+    ?>
+
 <header>
     <div class=" navbar-fixed">
     <nav class="cyan">
@@ -43,12 +49,12 @@ include_once ("conexao.php");
     </div>
       <p>&nbsp;</p>
 
-      
 
- 
+
+
 
   <section class="section row container">
-    
+
 
     <table class="striped centered">
         <thead>
@@ -60,7 +66,7 @@ include_once ("conexao.php");
            <th>Sexo</th>
             <th>Morada</th>
             <th>Data de Nascimento</th>
-            
+
         </tr>
         </thead>
 

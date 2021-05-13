@@ -24,17 +24,22 @@
     <meta charset="utf-8"/>
 </head>
 <body>
+    <?php
+        if(!isset($_COOKIE['username'])){
+            header('location: index.php');
+        }
+    ?>
 
 <header >
     <div class=" navbar-fixed">
     <nav class="cyan">
     <div class="nav-wrapper container">
-     <a href="#" class="brand-logo">ASCLÉPIO</a>
+     <a href="index.php" class="brand-logo">ASCLÉPIO</a>
       <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="fas fa-bars"></i></a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
 
-        <li><a href="telaaluno34.html" style="font-size: 18px;"><i class="material-icons left">home</i>Inicial</a></li>
-        <li><a href="vercomunicado.html" style="font-size: 18px;"><i class="far fa-comment-alt left"></i><small class="notification-badge red accent-2">5</small>Comunicados</a></li>
+        <li><a href="index.php" style="font-size: 18px;"><i class="material-icons left">home</i>Início</a></li>
+        <li><a href="vercomunicado.php" style="font-size: 18px;"><i class="far fa-comment-alt left"></i><small class="notification-badge red accent-2">5</small>Comunicados</a></li>
          <li>
                 <a href="javascript:void(0);" class="waves-effect waves-block waves-light profile-button" data-activates="profile-dropdown">
                   <span class="avatar-status avatar-online">
@@ -55,15 +60,15 @@
         <img src="office.jpg">
       </div>
       <a href="#!user"><img class="circle" src="default-user.png"></a>
-      <a href="#!name"><span class="white-text name" id='username'>John Doe</span></a>
-      <a href="#!email"><span class="white-text email" id='user_mail'>jdandturk@gmail.com</span></a>
+      <a href="#!name"><span class="white-text name" id='username'><?php echo $_COOKIE["username"]?></span></a>
+      <a href="#!email"><span class="white-text email" id='user_mail'><?php echo $_COOKIE["email"]?></span></a>
     </div></li>
-      <li><a href="telalun.html" style="font-size: 18px;" class="white-text"><i class="material-icons left white-text">home</i>Inicial</a></li>
-        <li><a href="informaçao.html" style="font-size: 18px;"  class="white-text"><i class="far fa-comment-alt left white-text"></i>Comunicados</a></li>
+      <li><a href="index.php" style="font-size: 18px;" class="white-text"><i class="material-icons left white-text">home</i>Início</a></li>
+        <li><a href="vercomunicado.php" style="font-size: 18px;"  class="white-text"><i class="far fa-comment-alt left white-text"></i>Comunicados</a></li>
         <li class="divider"></li>
          <li>
-                <a href="#" style="font-size: 18px;"  class="white-text">
-                  <i class="material-icons white-text">keyboard_tab</i>Logout</a>
+                <a href="#" onclick="document.location.replace('logout.php')" style="font-size: 18px;"  class="white-text">
+                  <i class="material-icons white-text">keyboard_tab</i>Sair</a>
               </li>
       </ul>
 <!-- opções do user para computador-->
@@ -83,8 +88,8 @@
               <li class="divider"></li>
 
               <li>
-                <a href="#" class="grey-text text-darken-1">
-                  <i class="material-icons">keyboard_tab</i>Logout</a>
+                <a href="#" onclick="document.location.replace('logout.php')" class="grey-text text-darken-1">
+                  <i class="material-icons">keyboard_tab</i>Sair</a>
               </li>
             </ul>
 <div class="nav-wrapper">
@@ -92,7 +97,8 @@
 		<h3><u>Meu Aproveitamento</u></h3>
 
         <?php
-            if(!isset($_COOKIE['username'])) header('location:index.html');
+            echo "<div id='notas'>";
+
             require_once('data_manager.php');
             $boletim_db = new Boletim();
             $boletim_list = $boletim_db->getAllFromBoletim();
@@ -112,8 +118,16 @@
                     }
                 }
             }
+            echo "</div>";
 
         ?>
+
+        <script type='text/javascript'>
+            let notas = document.getElementById('notas');
+            if(notas.innerHTML == 0){
+                notas.innerHTML = "<p>Ainda não existem dados a serem exibidos.</p>";
+            }
+        </script>
 
 	</section>
 </div>

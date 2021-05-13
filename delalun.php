@@ -1,3 +1,9 @@
+<?php
+    if(!isset($_COOKIE['username'])){
+        header('location: index.php');
+    }
+?>
+
 <!DOCTYPE html>
 
 <html>
@@ -32,13 +38,13 @@
           </div>
         </div>
       </div>
-          
+
 
 	<script type="text/javascript" src="scripts/js/jquery-3.5.1.min.js"></script>
 <script type="text/javascript" src="scripts/js/materialize.js"></script>
 <script type="text/javascript">
   $(document).ready(function () {
-      
+
   });
   </script>
 </body>

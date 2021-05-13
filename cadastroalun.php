@@ -1,19 +1,46 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
+
+  <meta http-equiv="Content-Type" content="text/html"; charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link type="text/css" rel="stylesheet" href="styles/nsd/materialize.css">
       <link rel="stylesheet" type="text/css" href="styles/nsd/style.css">
-      <link rel="stylesheet" type="text/css" href="icons/fontawesome-free-5.15.1-web/css/all.min.css"> 
+      <link rel="stylesheet" type="text/css" href="icons/fontawesome-free-5.15.1-web/css/all.min.css">
       <link rel="stylesheet" type="text/css" href="icons/fonts/material-icons.css">
       <link rel="stylesheet" type="text/css" href="styles/nsd/flag-icon.css">
       <style type="text/css">
-      	
+      	.formulario{
+            border: 3px solid #00bcd4;
+            border-radius: 10px;
+ }
+
+                   .input-field .prefix.active {
+                      color: #26a69a !important;
+                    }
+
 
       </style>
-	<title></title>
+	<title>Cadastrar aluno</title>
 </head>
 <body>
+
+    <?php
+        if(!isset($_COOKIE['username'])){
+            header('location: index.php');
+        }
+    ?>
+
+    <script type='text/javascript' src='scripts/cookie_manager.js'></script>
+    <script type="text/javascript" src="scripts/form_validator.js"></script>
+  <!-- Start Page Loading -->
+    <div id="loader-wrapper">
+      <div id="loader"></div>
+      <div class="loader-section section-left"></div>
+      <div class="loader-section section-right"></div>
+    </div>
+
+
  <header id="header" class="page-topbar">
       <!-- start header nav-->
       <div class="navbar-fixed">
@@ -22,7 +49,7 @@
             <ul class="left">
               <li>
                 <h1 class="logo-wrapper">
-                  <a href="index.html" class="brand-logo darken-1">
+                  <a href="index.php" class="brand-logo darken-1">
                     <img src="" alt="">
                     <span class="logo-text hide-on-med-and-down">Asclépio</span>
                   </a>
@@ -39,7 +66,7 @@
                   <span class="flag-icon flag-icon-ao"></span>
                 </a>
               </li>
-              
+
               <li>
                 <a href="javascript:void(0);" class="waves-effect waves-block waves-light notification-button" data-activates="notifications-dropdown">
                   <i class="material-icons">notifications_none
@@ -55,7 +82,7 @@
                   </span>
                 </a>
               </li>
-              
+
             </ul>
             <!-- translation-button -->
             <ul id="translation-dropdown" class="dropdown-content">
@@ -113,10 +140,10 @@
                   <i class="material-icons">live_help</i>Ajuda</a>
               </li>
               <li class="divider"></li>
-              
+
               <li>
                 <a href="#" class="grey-text text-darken-1">
-                  <i class="material-icons">keyboard_tab</i>Logout</a>
+                  <i class="material-icons">keyboard_tab</i>Logou</a>
               </li>
             </ul>
           </div>
@@ -151,13 +178,19 @@
                         <i class="material-icons">live_help</i>Ajuda</a>
                     </li>
                     <li class="divider"></li>
-                    
+
                     <li>
                       <a href="#" class="grey-text text-darken-1">
                         <i class="material-icons">keyboard_tab</i>Logout</a>
                     </li>
                   </ul>
-                  <a class=" btn-flat dropdown-button waves-effect waves-light white-text profile-btn" href="#" data-activates="profile-dropdown-nav">Alexandre Muginga<i class="mdi-navigation-arrow-drop-down right"></i></a>
+                  <a id='username' class=" btn-flat dropdown-button waves-effect waves-light white-text profile-btn" href="#" data-activates="profile-dropdown-nav">
+                      <script type="text/javascript">
+                        let username = document.getElementById('username');
+                        username.innerHTML = cookieManager.getUsername();
+                      </script>
+                      <i class="mdi-navigation-arrow-drop-down right"></i>
+                  </a>
                   <p class="user-roal">coordenador</p>
                 </div>
               </div>
@@ -165,26 +198,26 @@
             <li class="no-padding">
               <ul class="collapsible" data-collapsible="accordion">
                 <li class="bold">
-                  <a href="coordenador.html" class="waves-effect waves-cyan">
+                  <a href="coordenador.php" class="waves-effect waves-cyan">
                       <i class="material-icons">pie_chart_outlined</i>
                       <span class="nav-text" style="font-size: 17px;">Painel de Controle</span>
                     </a>
                 </li>
                  <li class="bold">
-                  <a href="cadastroalun.html" class="waves-effect waves-cyan">
+                  <a href="cadastroalun.php" class="waves-effect waves-cyan">
                      <i class="fas fa-user-plus prefix green-text"></i>
                       <span class="nav-text" style="font-size: 17px;">Cadastrar Alunos</span>
                     </a>
                 </li>
                 <li class="bold">
-                  <a href="cadastroenc.html" class="waves-effect waves-cyan">
+                  <a href="cadastroenc.php" class="waves-effect waves-cyan">
                      <i class="fas fa-user-plus prefix orange-text"></i>
                       <span class="nav-text" style="font-size: 17px;">Cadastrar Encarregados</span>
                     </a>
                 </li>
-                
-                <li class="bold">
-                  <a href="enviarnotas.html" class="waves-effect waves-cyan">
+
+              <li class="bold">
+                  <a href="enviarnotas.php" class="waves-effect waves-cyan">
                       <i class="fas fa-upload prefix cyan-text"></i>
                       <span class="nav-text" style="font-size: 17px;">Enviar Notas</span>
                     </a>
@@ -192,12 +225,12 @@
 
 
                 <li class="bold">
-                  <a href="enviarcomunic.html" class="waves-effect waves-cyan">
+                  <a href="enviarcomunic.php" class="waves-effect waves-cyan">
                       <i class="fas fa-upload prefix cyan-text"></i>
                       <span class="nav-text" style="font-size: 17px;">Enviar Comunicados</span>
                     </a>
                 </li>
-               
+
               </ul>
             </li>
           </ul>
@@ -206,49 +239,106 @@
           </a>
         </aside>
 
-        <section id="content" style="padding: 10px 100px;">
+         <section id="content">
           <!--start container-->
-        <div class="row container">
-       <p>&nbsp;</p>
-       
-       <div class="row">
-    <div class="col s11 ">
-      <div class="card">
-
-          <div class="card-action cyan white-text">
-          <h3 class="light"><u style="border-radius: 35px;">Comunicados</u></h3>
-           </div>
-
-           <div class="card-content">
-
-           <div class="input-field col s12">
-           <i class="fas fa-user prefix cyan-text"></i>
-          <input type="text" name="Titulo" id="Titulo">
-          <label for="titulo">Título</label>
-        </div>
 
 
-        <div class="input-field col s12">
-        <i class="material-icons prefix cyan-text">mode_edit</i>
-        <textarea id="icon_prefix2" class="materialize-textarea"></textarea>
-        <label for="mensagem">Mensagem</label>
-      </div> <br><br>
+      <div class="row container">
+  <p>&nbsp;</p>
+  <form    action=""   method="post" class="col s12" id='form'>
+  <fieldset class="formulario" style="padding: 15px;">
+    <legend><img src="pictures/2919600.png" width="100"></legend>
+    <h5 class="light center">Cadastro de Aluno</h5>
 
-        <div class="form-field">
-        <button class="btn-large waves-effect cyan">Enviar</button>
-        </div><br>
+                              <div class="input-field col s6">
+                <i class="fas fa-id-badge prefix"></i>
+                <input type="text" name="bi" id="bi" maxlength="14" required autofocus>
+                <label for="bi">BI</label>
+              </div>
 
-       </div>
-      </div>
-    </div>
-      </div>
-    </div>
-    </section><br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
+                       <div class="input-field col s6">
+                <i class="material-icons prefix">account_circle</i>
+                <input type="text" name="nome_completo" id="nome_completo" maxlength="70" required>
+                <label for="nome_completo">Nome Completo</label>
+              </div>
+              <div class="input-field col s6">
+                 <i class="fas fa-user prefix"></i>
+                <input type="text" name="bi_encarregado" id="bi_encarregado" maxlength="14" required >
+                <label for="bi_encarregado">BI Encarregado</label>
+              </div>
+                            <div class="input-field col s6">
+                <i class="material-icons prefix">email</i>
+                <input type="email" name="email" id="email" maxlength="40" required>
+                <label for="email">Email</label>
+              </div>
+
+                            <div class="input-field col s6">
+                            <i class="material-icons prefix">phone</i>
+                            <input name='telefone' id='telefone' maxlength="13" type="tel" class="validate">
+                            <label for="telefone">Telefone</label>
+                            </div>
+
+               <div class="input-field col s6">
+                            <i class="fas fa-address-card prefix"></i>
+                             <input id="morada" type="text" name="morada">
+                             <label for="morada">Morada</label>
+                             </div>
+
+                             <div class="input-field col s6">
+                            <i class="fas fa-calendar-day prefix"></i>
+                             <input  type="date" id="data_nascimento"  name="data_nascimento"/>
+                             <label for="data_nascimento"></label>
+                             </div>
+
+                             <div class="input-field col s6">
+                              <i class="fa fa-suitcase prefix"></i>
+                          <select id='curso'>
+                          <option value="" disabled selected>Selecionar curso</option>
+                          <option value="Análises Clínicas">Análises Clínicas</option>
+                          <option value="Efermagem">Enfermagem</option>
+                          <option value="Estomatologia">Estomatologia</option>
+                          <option value="Farmacologia">Farmacologia</option>
+                          </select>
+                          </div>
+
+                          <div class="input-field col s6">
+                <i class="fas fa-key prefix"></i>
+                <input type="password" name="senha1" id="senha1" required>
+                <label for="senha1">Senha</label>
+              </div>
+
+              <div class="input-field col s6">
+                       <i class="fas fa-key prefix"></i>
+                       <input type="password" name="senha2" id="senha2" required>
+                       <label for="senha2">Confirmar a Senha</label>
+                       </div>
+
+
+                               <div class="input-field col s6">
+                                <i class="fas fa-venus-mars prefix"></i>
+                                 <select id='sexo'>
+                                 <option value="" disabled selected>Selecione o gênero</option>
+                                <option value="M">Masculino</option>
+                               <option value="F">Feminino</option>
+                                </select>
+                               </div>
+
+                               <div class="input-field col s10">
+                <input type="button" class="btn blue" value='Cadastrar' style=" margin:0 1em 0 0;"
+                    onclick="validator.submitInsert('aluno','form');"
+                />
+                <input type="reset" value="Limpar" class="btn red"/>
+
+              </div>
+
+
+   </fieldset>
+  </form>
+</div>
+  </section><br>
+
+
+
          <footer class="page-footer gradient-45deg-light-blue-cyan">
         <div class="footer-copyright">
           <div class="container">
@@ -263,6 +353,5 @@
 <script type="text/javascript" src="scripts/js1/jquery-3.5.1.min.js"></script>
 <script type="text/javascript" src="scripts/js1/materialize.min.js"></script>
 <script type="text/javascript" src="scripts/js1/plugins.min.js"></script>
-   	
 </body>
 </html>

@@ -9,6 +9,14 @@
 	<title></title>
 </head>
 <body>
+
+    <?php
+        if(isset($_COOKIE['username'])){
+            header('location: index.php');
+        }
+        else if (isset($_COOKIE['block'])) header("location: index.php");
+    ?>
+
 	<script type="text/javascript" src='scripts/func_login.js'></script>
     <script type="text/javascript">
         var login = new FuncLogin();
@@ -35,7 +43,7 @@
                 <input type='button' value='Login' class="btn btn-class mb-3" onclick="login.login('username', 'senha');"/>
                 </div>
                 <p>Área reservada para Funcionários</p>
-                <p>Clique aqui para <a href="index.html">Voltar</a></p>
+                <p>Clique aqui para <a href="index.php">Voltar</a></p>
 			</form>
 			</div>
 		</div>

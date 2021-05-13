@@ -25,6 +25,13 @@
 	<title>Cadastro</title>
 </head>
 <body>
+
+    <?php
+        if(!isset($_COOKIE['username'])){
+            header('location: index.php');
+        }
+    ?>
+
 <script type="text/javascript" src="scripts/form_validator.js">
 </script>
   <!-- Start Page Loading -->
@@ -197,13 +204,13 @@
             <li class="no-padding">
               <ul class="collapsible" data-collapsible="accordion">
                 <li class="bold">
-                  <a href="Admin.html" class="waves-effect waves-cyan">
+                  <a href="Admin.php" class="waves-effect waves-cyan">
                       <i class="material-icons">pie_chart_outlined</i>
                       <span class="nav-text"style="font-size: 17px">painel de controle</span>
                     </a>
                 </li>
                  <li class="bold">
-                  <a href="cadastrofunc.html" class="waves-effect waves-cyan">
+                  <a href="cadastrofunc.php" class="waves-effect waves-cyan">
                     <i class="fas fa-user-plus prefix  purple-text"></i>
                       <span class="nav-text" style="font-size: 17px">Cadastrar coordenador</span>
                     </a>

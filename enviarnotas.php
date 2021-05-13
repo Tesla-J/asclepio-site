@@ -14,6 +14,13 @@
 	<title></title>
 </head>
 <body>
+
+    <?php
+        if(!isset($_COOKIE['username'])){
+            header('location: index.php');
+        }
+    ?>
+
 <script type="text/javascript" src="scripts/cookie_manager.js"></script>
  <header id="header" class="page-topbar">
       <!-- start header nav-->
@@ -23,7 +30,7 @@
             <ul class="left">
               <li>
                 <h1 class="logo-wrapper">
-                  <a href="coordenador.html" class="brand-logo darken-1">
+                  <a href="coordenador.php" class="brand-logo darken-1">
                     <img src="" alt="">
                     <span class="logo-text hide-on-med-and-down">Asclépio</span>
                   </a>
@@ -170,33 +177,33 @@
             <li class="no-padding">
               <ul class="collapsible" data-collapsible="accordion">
                 <li class="bold">
-                  <a href="coordenador.html" class="waves-effect waves-cyan">
+                  <a href="coordenador.php" class="waves-effect waves-cyan">
                       <i class="material-icons">pie_chart_outlined</i>
                       <span class="nav-text" style="font-size: 17px;">Painel de Controle</span>
                     </a>
                 </li>
                  <li class="bold">
-                  <a href="cadastroalun.html" class="waves-effect waves-cyan">
+                  <a href="cadastroalun.php" class="waves-effect waves-cyan">
                      <i class="fas fa-user-plus prefix green-text"></i>
                       <span class="nav-text" style="font-size: 17px;">Cadastrar Alunos</span>
                     </a>
                 </li>
                 <li class="bold">
-                  <a href="cadastroenc.html" class="waves-effect waves-cyan">
+                  <a href="cadastroenc.php" class="waves-effect waves-cyan">
                      <i class="fas fa-user-plus prefix orange-text"></i>
                       <span class="nav-text" style="font-size: 17px;">Cadastrar Encarregados</span>
                     </a>
                 </li>
 
                  <li class="bold">
-                  <a href="enviarnotas.html" class="waves-effect waves-cyan">
+                  <a href="enviarnotas.php" class="waves-effect waves-cyan">
                       <i class="fas fa-upload prefix cyan-text"></i>
                       <span class="nav-text" style="font-size: 17px;">Enviar Notas</span>
                     </a>
                 </li>
 
                 <li class="bold">
-                  <a href="enviarnotas.html" class="waves-effect waves-cyan">
+                  <a href="enviarnotas.php" class="waves-effect waves-cyan">
                       <i class="fas fa-upload prefix cyan-text"></i>
                       <span class="nav-text" style="font-size: 17px;">Enviar Comunicados</span>
                     </a>

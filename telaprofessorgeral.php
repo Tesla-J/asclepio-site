@@ -10,6 +10,12 @@
 </head>
 <body>
 
+    <?php
+        if(!isset($_COOKIE['username'])){
+            header('location: index.php');
+        }
+    ?>
+
 <header >
     <div class=" navbar-fixed">
     <nav class="cyan">
@@ -30,7 +36,7 @@
   <!--menu mobile-->
   <ul class="side-nav cyan"  id="mobile-demo">
 
-     <li><a href="telalun.html" style="font-size: 18px;" class="white-text"><i class="material-icons left white-text">home</i>Inicial</a></li>
+     <li><a href="index.php" style="font-size: 18px;" class="white-text"><i class="material-icons left white-text">home</i>Inicial</a></li>
                <li> <a href="#" style="font-size: 18px;"  class="white-text">
                   <i class="material-icons white-text">keyboard_tab</i>Logout</a>
               </li>

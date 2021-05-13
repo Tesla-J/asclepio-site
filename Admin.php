@@ -15,6 +15,12 @@
 </head>
 <body>
 
+    <?php
+        if(!isset($_COOKIE['username'])){
+            header('location: index.php');
+        }
+    ?>
+
    <!-- Start Page Loading -->
     <div id="loader-wrapper">
       <div id="loader"></div>
@@ -121,22 +127,8 @@
             <!-- profile-dropdown -->
             <ul id="profile-dropdown" class="dropdown-content">
               <li>
-                <a href="#" class="grey-text text-darken-1">
-                  <i class="material-icons">face</i> Perfil</a>
-              </li>
-              <li>
-                <a href="#" class="grey-text text-darken-1">
-                  <i class="material-icons">settings</i>Definições</a>
-              </li>
-              <li>
-                <a href="#" class="grey-text text-darken-1">
-                  <i class="material-icons">live_help</i>Ajuda</a>
-              </li>
-              <li class="divider"></li>
-
-              <li>
-                <a href="#" class="grey-text text-darken-1">
-                  <i class="material-icons">keyboard_tab</i>Logout</a>
+                <a href="logout.php" class="grey-text text-darken-1">
+                  <i class="material-icons">keyboard_tab</i>sair</a>
               </li>
             </ul>
           </div>
@@ -159,21 +151,7 @@
                 <div class="col col s8 m8 l8">
                   <ul id="profile-dropdown-nav" class="dropdown-content">
                     <li>
-                      <a href="#" class="grey-text text-darken-1">
-                        <i class="material-icons">face</i>Perfil</a>
-                    </li>
-                    <li>
-                      <a href="#" class="grey-text text-darken-1">
-                        <i class="material-icons">settings</i>Definições</a>
-                    </li>
-                    <li>
-                      <a href="#" class="grey-text text-darken-1">
-                        <i class="material-icons">live_help</i>Ajuda</a>
-                    </li>
-                    <li class="divider"></li>
-
-                    <li>
-                      <a href="#" class="grey-text text-darken-1">
+                      <a href="logout.php" class="grey-text text-darken-1">
                         <i class="material-icons">keyboard_tab</i>Logout</a>
                     </li>
                   </ul>
@@ -185,19 +163,19 @@
             <li class="no-padding">
               <ul class="collapsible" data-collapsible="accordion">
                 <li class="bold">
-                  <a href="Admin.html" class="waves-effect waves-cyan">
+                  <a href="Admin.php" class="waves-effect waves-cyan">
                       <i class="material-icons">pie_chart_outlined</i>
                       <span class="nav-text">painel de controle</span>
                     </a>
                 </li>
                  <li class="bold">
-                  <a href="cadastrofunc.html" class="waves-effect waves-cyan">
+                  <a href="cadastrofunc.php" class="waves-effect waves-cyan">
                     <i class="fas fa-user-plus prefix purple-text"></i>
-                      <span class="nav-text">Coordenador</span>
+                      <span class="nav-text">Cadastrar Coordenador</span>
                     </a>
                 </li>
                 <li class="bold">
-                  <a href="cadastrofunc.html" class="waves-effect waves-cyan">
+                  <a href="cadastrofunc.php" class="waves-effect waves-cyan">
                     <i class="fas fa-user-plus prefix purple-text"></i>
                       <span class="nav-text">Conta Pública</span>
                     </a>
@@ -231,7 +209,7 @@
                         <h4 class="mb-0"><?php $counter->singleRowQuery('select count(distinct Curso) from Aluno;'); ?></h4>
                        </div>
                     </div>
-                    <a href="" class="btn cyan hoverable" style="width: 100%;">Abrir</a>
+                    <a href="#" class="btn cyan" style="width: 100%;"></a>
                   </div>
                 </div>
                 <div class="col s12 m6 l3">
@@ -291,7 +269,7 @@
 
                       </div>
                     </div>
-                    <a href="" class="btn pink hoverable" style="width: 100%;">Abrir</a>
+                    <a href="#" class="btn pink " style="width: 100%;"></a>
                   </div>
                 </div>
 
@@ -306,7 +284,7 @@
                         <h4 class="mb-0"><?php $counter->singleRowQuery('select count(distinct Turma) from Aluno;'); ?></h4>
                         </div>
                     </div>
-                    <a href="" class="btn gradient-45deg-purple-deep-orange hoverable" style="width: 100%;">Abrir</a>
+                    <a href="" class="btn gradient-45deg-purple-deep-orange" style="width: 100%;"></a>
                   </div>
                 </div>
 

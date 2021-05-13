@@ -1,4 +1,5 @@
 <?php
+header("Content-Type: application/json");
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
     require_once('data_manager.php');
 
@@ -54,6 +55,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         $data = 'NONE';
     }
 
-    echo (string) json_encode($data);
+    echo json_encode($data);
 }
 ?>

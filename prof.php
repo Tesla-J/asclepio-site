@@ -3,16 +3,23 @@
 <head>
 	<link type="text/css" rel="stylesheet" href="nsd/materialize.css">
       <link rel="stylesheet" type="text/css" href="nsd/style.css">
-      <link rel="stylesheet" type="text/css" href="fontawesome-free-5.15.1-web/css/all.min.css"> 
+      <link rel="stylesheet" type="text/css" href="fontawesome-free-5.15.1-web/css/all.min.css">
       <link rel="stylesheet" type="text/css" href="css/fonts/material-icons.css">
       <link rel="stylesheet" type="text/css" href="css/flag-icon.css">
       <style type="text/css">
-      	
+
 
       </style>
 	<title></title>
 </head>
 <body>
+
+    <?php
+        if(!isset($_COOKIE['username'])){
+            header('location: index.php');
+        }
+    ?>
+
  <header id="header" class="page-topbar">
       <!-- start header nav-->
       <div class="navbar-fixed">
@@ -21,7 +28,7 @@
             <ul class="left">
               <li>
                 <h1 class="logo-wrapper">
-                  <a href="index.html" class="brand-logo darken-1">
+                  <a href="index.php" class="brand-logo darken-1">
                     <img src="" alt="">
                     <span class="logo-text hide-on-med-and-down">Asclépio</span>
                   </a>
@@ -38,7 +45,7 @@
                   <span class="flag-icon flag-icon-ao"></span>
                 </a>
               </li>
-              
+
               <li>
                 <a href="javascript:void(0);" class="waves-effect waves-block waves-light notification-button" data-activates="notifications-dropdown">
                   <i class="material-icons">notifications_none
@@ -54,7 +61,7 @@
                   </span>
                 </a>
               </li>
-              
+
             </ul>
             <!-- translation-button -->
             <ul id="translation-dropdown" class="dropdown-content">
@@ -124,7 +131,7 @@
                   <i class="material-icons">live_help</i>Ajuda</a>
               </li>
               <li class="divider"></li>
-              
+
               <li>
                 <a href="#" class="grey-text text-darken-1">
                   <i class="material-icons">keyboard_tab</i>Logou</a>
@@ -162,7 +169,7 @@
                         <i class="material-icons">live_help</i>Ajuda</a>
                     </li>
                     <li class="divider"></li>
-                    
+
                     <li>
                       <a href="#" class="grey-text text-darken-1">
                         <i class="material-icons">keyboard_tab</i>Logout</a>
@@ -176,7 +183,7 @@
             <li class="no-padding">
               <ul class="collapsible" data-collapsible="accordion">
                 <li class="bold">
-                  <a href="upload.html" class="waves-effect waves-cyan">
+                  <a href="upload.php" class="waves-effect waves-cyan">
                       <i class="material-icons">pie_chart_outlined</i>
                       <span class="nav-text">Enviar boletim</span>
                     </a>
@@ -195,8 +202,8 @@
             <!--card stats start-->
             <div id="card-stats">
               <div class="row mt-1">
-               
-                
+
+
 
                 <div class="col s12 m6 l3">
                   <div class="card pink gradient-shadow min-height-100 white-text">
@@ -207,7 +214,7 @@
                       </div>
                       <div class="col s5 m5 right-align">
                         <h4 class="mb-0">7</h4>
-                        
+
                       </div>
                     </div>
                     <a href="" class="btn pink hoverable" style="width: 100%;">Abrir</a>
@@ -228,26 +235,26 @@
                     <a href="" class="btn gradient-45deg-purple-deep-orange hoverable" style="width: 100%;">Abrir</a>
                   </div>
                 </div>
-      
+
               </div>
             </div>
-                 <br> 
-                  <br> 
-                   <br> 
-                    <br> 
-                     <br> 
-                      <br> 
-                       <br> 
+                 <br>
+                  <br>
+                   <br>
+                    <br>
+                     <br>
+                      <br>
+                       <br>
                         <br>
-                         <br> 
-                  <br> 
-                   <br> 
-                    <br> 
-                     <br> 
-                      <br> 
-                       <br> 
-                        <br> 
-                  
+                         <br>
+                  <br>
+                   <br>
+                    <br>
+                     <br>
+                      <br>
+                       <br>
+                        <br>
+
 
          <footer class="page-footer gradient-45deg-light-blue-cyan">
         <div class="footer-copyright">
@@ -263,6 +270,6 @@
 <script type="text/javascript" src="js/jquery-3.5.1.min.js"></script>
 <script type="text/javascript" src="js/materialize.min.js"></script>
 <script type="text/javascript" src="js/plugins.min.js"></script>
-   	
+
 </body>
 </html>

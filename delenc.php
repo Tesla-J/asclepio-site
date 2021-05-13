@@ -1,3 +1,9 @@
+<?php
+    if(!isset($_COOKIE['username'])){
+        header('location: index.php');
+    }
+?>
+
 <!DOCTYPE html>
 
 <html>
@@ -32,7 +38,6 @@
           </div>
         </div>
       </div>
-            
 
 
 
@@ -54,13 +59,14 @@
 
 
 
-	<!--	
+
+	<!--
 	<div class="row container">
 	<div class="col s12 m6">
 	          <div class="card small cyan darken-1">
 	            <div class="card-content white-text"><?php
 	            #echo "<span class='card-title'><h6>Tem certeza que quer excluir este resgistro?</h6></span>";
-	              
+
 
 					#$BI_Encarregado=$_GET['BI_Encarregado'];
 					#echo "<a href='deleteenc.php?BI_Encarregado=$BI_Encarregado' class='btn green' style='margin:0 1em 0 0;'>Sim</a>";
@@ -77,7 +83,7 @@
 <script type="text/javascript" src="scripts/js/materialize.js"></script>
 <script type="text/javascript">
   $(document).ready(function () {
-      
+
   });
   </script>
 </body>
