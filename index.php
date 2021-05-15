@@ -36,16 +36,16 @@
                 echo "<li><a onclick='window.location.href=home;' href='#' id='#Inicio' style='font-size: 18px;'><i class='material-icons left'>home</i>Menu do Utilizador</a></li>";
             }
         ?>
-         <li class="active"><a href="index.php" id="#Inicio"  style="font-size: 18px;"><i class="material-icons left">home</i>Inicial</a></li>
-        <li><a href="informaçao.php" style="font-size: 18px;"><i class="material-icons left">info</i>Informações</a></li>
+         <li class="active"><a href="#" id="#Inicio"  style="font-size: 18px;"><i class="material-icons left">home</i>Inicial</a></li>
+        <li><a href="informaçao" style="font-size: 18px;"><i class="material-icons left">info</i>Informações</a></li>
 
         <?php
             if(!isset($_COOKIE['username'])){
-                echo '<li><a href="login.php" class="botão cyan" style="color: white; border-radius: 26px; border: 2px solid #fff; text-align: center; font-size: 18px;">Iniciar Sessão</a></li>';
-                echo '<li><a href="arearestrita.php" class="botão cyan" style="color: white; border-radius: 26px; border: 2px solid #fff; text-align: center; font-size: 18px;">Área Restrita</a></li>';
+                echo '<li><a href="login" class="botão cyan" style="color: white; border-radius: 26px; border: 2px solid #fff; text-align: center; font-size: 18px;">Iniciar Sessão</a></li>';
+                echo '<li><a href="arearestrita" class="botão cyan" style="color: white; border-radius: 26px; border: 2px solid #fff; text-align: center; font-size: 18px;">Área Restrita</a></li>';
             }
             else{
-                echo '<li><a href="logout.php" class="botão cyan" style="color: white; border-radius: 26px; border: 2px solid #fff; text-align: center; font-size: 18px;">Sair</a></li>';
+                echo '<li><a href="logout" class="botão cyan" style="color: white; border-radius: 26px; border: 2px solid #fff; text-align: center; font-size: 18px;">Sair</a></li>';
             }
         ?>
 
@@ -64,16 +64,16 @@
             }
        ?>
 
-      <li><a href="informaçao.php" class="white-text" style=" font-size: 18px;"><i class="material-icons left white-text">info</i>Informações</a></li><br>
+      <li><a href="informaçao" class="white-text" style=" font-size: 18px;"><i class="material-icons left white-text">info</i>Informações</a></li><br>
 
 
         <?php
             if(!isset($_COOKIE['username'])){
-                echo '<li><a href="login.php" class="botão cyan" style="color: white; border-radius: 26px; border: 2px solid #fff; text-align: center; font-size: 18px;">Iniciar Sessão</a></li>';
-                echo '<li><a href="arearestrita.php" class="botão cyan" style="color: white; border-radius: 26px; border: 2px solid #fff; text-align: center; font-size: 18px;">Área Restrita</a></li>';
+                echo '<li><a href="login" class="botão cyan" style="color: white; border-radius: 26px; border: 2px solid #fff; text-align: center; font-size: 18px;">Iniciar Sessão</a></li>';
+                echo '<li><a href="arearestrita" class="botão cyan" style="color: white; border-radius: 26px; border: 2px solid #fff; text-align: center; font-size: 18px;">Área Restrita</a></li>';
             }
             else{
-                echo '<li><a href="logout.php" class="botão cyan" style="color: white; border-radius: 26px; border: 2px solid #fff; text-align: center; font-size: 18px;">Sair</a></li>';
+                echo '<li><a href="logout" class="botão cyan" style="color: white; border-radius: 26px; border: 2px solid #fff; text-align: center; font-size: 18px;">Sair</a></li>';
             }
         ?>
 
