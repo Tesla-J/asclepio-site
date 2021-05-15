@@ -119,7 +119,7 @@
                                     <a><i class="fa fa-university" style="font-size: 70px;"></i></a>
                                     <!--<img alt="image" class="img-responsive" src="images/icons/wifi.png">-->
                                 </div>
-                                <h4><a href="IMPSA.html" class="">ITMPSA</a></h4>
+                                <h4><a href="IMPSA" class="">ITMPSA</a></h4>
                             </div>
                         </div>
                         <div class="col s12 m3">
@@ -127,7 +127,7 @@
                                 <div class="service-image">
                                     <a><i class="fa fa-eye" style="font-size: 70px;"></i></a>
                                 </div>
-                                <h4><a href="visao.html">Visão</a></h4>
+                                <h4><a href="visao">Visão</a></h4>
                             </div>
                         </div>
                         <div class="col s12 m3">
@@ -135,7 +135,7 @@
                                 <div class="service-image">
                                     <a><i class="fa fa-book" style="font-size: 70px;"></i></a>
                                 </div>
-                                <h4><a href="ensino.html">Ensino</a></h4>
+                                <h4><a href="ensino">Ensino</a></h4>
                             </div>
                         </div>
                         <div class="col s12 m3">
@@ -143,7 +143,7 @@
                                 <div class="service-image">
                                    <a><i class="fa fa-suitcase" style="font-size: 70px;"></i></a>
                                 </div>
-                                <h4><a href="cursos.html">Cursos</a></h4>
+                                <h4><a href="cursos">Cursos</a></h4>
                             </div>
                         </div>
                     </div>
