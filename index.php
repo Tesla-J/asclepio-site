@@ -4,11 +4,11 @@
 	    <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link rel="stylesheet" type="text/css" href="styles/css/materialize.min.css">
-      <link rel="stylesheet" type="text/css" href="styles/css/animate.css">
-	    <link rel="stylesheet" type="text/css" href="icons/fontawesome-free-5.15.1-web/css/all.min.css">
-	    <link rel="stylesheet" type="text/css" href="icons/fonts/material-icons.css">
-      <link rel="stylesheet" type="text/css" href="styles/css/main.css">
+      <link rel="stylesheet" type="text/css" href="css/materialize.min.css">
+      <link rel="stylesheet" type="text/css" href="css/animate.css">
+	    <link rel="stylesheet" type="text/css" href="fontawesome-free-5.15.1-web/css/all.min.css">
+	    <link rel="stylesheet" type="text/css" href="fonts/material-icons.css">
+      <link rel="stylesheet" type="text/css" href="css/main.css">
 
 	    <title></title>
 
@@ -36,7 +36,7 @@
                 echo "<li><a onclick='window.location.href=home;' href='#' id='#Inicio' style='font-size: 18px;'><i class='material-icons left'>home</i>Menu do Utilizador</a></li>";
             }
         ?>
-
+         <li class="active"><a href="index.php" id="#Inicio"  style="font-size: 18px;"><i class="material-icons left">home</i>Inicial</a></li>
         <li><a href="informaçao.php" style="font-size: 18px;"><i class="material-icons left">info</i>Informações</a></li>
 
         <?php
@@ -119,7 +119,7 @@
                                     <a><i class="fa fa-university" style="font-size: 70px;"></i></a>
                                     <!--<img alt="image" class="img-responsive" src="images/icons/wifi.png">-->
                                 </div>
-                                <h4><a href="IMPSA.php" class="">ITMPSA</a></h4>
+                                <h4><a href="IMPSA.html" class="">ITMPSA</a></h4>
                             </div>
                         </div>
                         <div class="col s12 m3">
@@ -127,7 +127,7 @@
                                 <div class="service-image">
                                     <a><i class="fa fa-eye" style="font-size: 70px;"></i></a>
                                 </div>
-                                <h4><a href="visao.php">Visão</a></h4>
+                                <h4><a href="visao.html">Visão</a></h4>
                             </div>
                         </div>
                         <div class="col s12 m3">
@@ -135,7 +135,7 @@
                                 <div class="service-image">
                                     <a><i class="fa fa-book" style="font-size: 70px;"></i></a>
                                 </div>
-                                <h4><a href="ensino.php">Ensino</a></h4>
+                                <h4><a href="ensino.html">Ensino</a></h4>
                             </div>
                         </div>
                         <div class="col s12 m3">
@@ -143,7 +143,7 @@
                                 <div class="service-image">
                                    <a><i class="fa fa-suitcase" style="font-size: 70px;"></i></a>
                                 </div>
-                                <h4><a href="cursos.php">Cursos</a></h4>
+                                <h4><a href="cursos.html">Cursos</a></h4>
                             </div>
                         </div>
                     </div>
@@ -276,8 +276,8 @@
 
       </footer>
 
-<script type="text/javascript" src="scripts/js/jquery-3.5.1.min.js"></script>
-<script type="text/javascript" src="scripts/js/materialize.js"></script>
+<script type="text/javascript" src="js/jquery-3.5.1.min.js"></script>
+<script type="text/javascript" src="js/materialize.js"></script>
 <script type="text/javascript">
 	$(document).ready(function () {
 

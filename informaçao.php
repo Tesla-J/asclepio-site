@@ -4,10 +4,10 @@
 	<meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="styles/css/materialize.min.css">
-	    <link rel="stylesheet" type="text/css" href="icons/fontawesome-free-5.15.1-web/css/all.min.css">
-	    <link rel="stylesheet" type="text/css" href="icons/fonts/material-icons.css">
-	    <link rel="stylesheet" type="text/css" href="/css/main.css">
+        <link rel="stylesheet" type="text/css" href="css/materialize.min.css">
+	    <link rel="stylesheet" type="text/css" href="fontawesome-free-5.15.1-web/css/all.min.css">
+	    <link rel="stylesheet" type="text/css" href="fonts/material-icons.css">
+	    <link rel="stylesheet" type="text/css" href="css/main.css">
       <style type="text/css">
         .section-follow .fa-4x {
   margin: 5px 10px;

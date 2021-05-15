@@ -8,7 +8,7 @@
 
 <html>
 <meta charset="utf-8">
-<link rel="stylesheet" type="text/css" href="styles/css/materialize.min.css">
+<link rel="stylesheet" type="text/css" href="css/materialize.min.css">
 <head>
 	<title></title>
 </head>
@@ -79,8 +79,8 @@
 	</div>
 	-->
 
-	<script type="text/javascript" src="scripts/js/jquery-3.5.1.min.js"></script>
-<script type="text/javascript" src="scripts/js/materialize.js"></script>
+	<script type="text/javascript" src="js/jquery-3.5.1.min.js"></script>
+<script type="text/javascript" src="js/materialize.js"></script>
 <script type="text/javascript">
   $(document).ready(function () {
 

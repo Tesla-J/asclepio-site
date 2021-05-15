@@ -24,6 +24,9 @@ class FuncLogin{
                         document.location.reload();
                     }
                 }
+                else if(self.xhr.response == "DISABLED"){
+                    alert("A conta pública se encontra desabilitada.")
+                }
                 else{
                     console.log(self.xhr.response);
                     let obj = self.xhr.response;

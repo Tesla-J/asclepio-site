@@ -4,10 +4,10 @@ include_once ("conexao.php");
 ?>
 <html>
 <head>
-  <link rel="stylesheet" type="text/css" href="styles/css/materialize.min.css">
-  <link rel="stylesheet" type="text/css" href="styles/css/main.css">
-  <link rel="stylesheet" type="text/css" href="icons/fontawesome-free-5.15.1-web/css/all.min.css">
-  <link rel="stylesheet" type="text/css" href="icons/fonts/material-icons.css">
+  <link rel="stylesheet" type="text/css" href="css/materialize.min.css">
+  <link rel="stylesheet" type="text/css" href="css/main.css">
+  <link rel="stylesheet" type="text/css" href="fontawesome-free-5.15.1-web/css/all.min.css">
+  <link rel="stylesheet" type="text/css" href="fonts/material-icons.css">
   <style type="text/css">
   .row .col.s9 {
   width: 87%;
@@ -79,8 +79,8 @@ include_once ("conexao.php");
   </section>
 
 
-<script type="text/javascript" src="scripts/js/jquery-3.5.1.min.js"></script>
-<script type="text/javascript" src="scripts/js/materialize.js"></script>
+<script type="text/javascript" src="js/jquery-3.5.1.min.js"></script>
+<script type="text/javascript" src="js/materialize.js"></script>
 <script type="text/javascript">
   $(document).ready(function () {
 

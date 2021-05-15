@@ -46,7 +46,11 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         }
     }
     else if( $prof_data['username'] == $hash_user && $prof_data['password'] == $hash_password){
-        $data = array('username' => 'Professor');
+        if(filter_var($prof_data['enabled'], FILTER_VALIDATE_BOOLEAN)){
+            $data = array('username' => 'Professor');
+        }else{
+            $data = "DISABLED";
+        }
     }
     else if( $adm_data['username'] == $hash_user && $adm_data['password'] == $hash_password){
         $data = array('username' => 'Administrador');

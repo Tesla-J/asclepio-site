@@ -1,10 +1,10 @@
 <?php
 session_start();
 include_once 'conexao.php';
-if(isset($_SESSION['BI_coordenador'])){
-    $BI_coordenador=$_SESSION['BI_coordenador'];
+if(isset($_SESSION['BI_Coordenador'])){
+    $BI_coordenador=$_SESSION['BI_Coordenador'];
 }else{
-    $BI_coordenador = $_POST['BI_coordenador'];
+    $BI_coordenador = $_POST['BI_Coordenador'];
 }
 
 $Nome_completo=$_POST['Nome_completo'];

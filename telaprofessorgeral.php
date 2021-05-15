@@ -37,7 +37,7 @@
   <ul class="side-nav cyan"  id="mobile-demo">
 
      <li><a href="index.php" style="font-size: 18px;" class="white-text"><i class="material-icons left white-text">home</i>Inicial</a></li>
-               <li> <a href="#" style="font-size: 18px;"  class="white-text">
+               <li> <a href="logout.php" style="font-size: 18px;"  class="white-text">
                   <i class="material-icons white-text">keyboard_tab</i>Logout</a>
               </li>
       </ul>
@@ -58,7 +58,7 @@
               <li class="divider"></li>
 
               <li>
-                <a href="#" class="grey-text text-darken-1">
+                <a href="logout.php" class="grey-text text-darken-1">
                   <i class="material-icons">keyboard_tab</i>Logout</a>
               </li>
             </ul>

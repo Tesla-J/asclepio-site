@@ -175,11 +175,44 @@
                     </a>
                 </li>
                 <li class="bold">
-                  <a href="cadastrofunc.php" class="waves-effect waves-cyan">
-                    <i class="fas fa-user-plus prefix purple-text"></i>
-                      <span class="nav-text">Conta Pública</span>
-                    </a>
-                </li>
+
+                    <style type="text/css">
+                        .inline_list{
+                            white-space: nowrap;
+                            overflow-x: hidden;
+                        }
+
+                        .inline_list > li{
+                            display: inline-block;
+                        }
+
+                    </style>
+
+                    <ul class="inline_list">
+                        <li>
+                            <a href="#" class="waves-effect waves-cyan">
+                            <i class="fas fa-user prefix purple-text"></i>
+                            <span class="nav-text" style="font-size: 17px">Conta Pública</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <script type="text/javascript" src="scripts/guest_manager.js"></script>
+
+                            <div class="switch" style="width: auto; float: right;">
+                                <label>
+                                  <!--Off-->
+                                  <input type="checkbox" id="switch" onchange="putStatus();getStatus()">
+                                  <span class="lever"></span>
+                                  <!--On-->
+                                </label>
+                            </div>
+                            <script type="text/jscript">
+                                getStatus();
+                            </script>
+                        </li>
+                    </ul>
+
               </ul>
             </li>
           </ul>

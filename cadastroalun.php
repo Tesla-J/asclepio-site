@@ -4,11 +4,11 @@
 
   <meta http-equiv="Content-Type" content="text/html"; charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	<link type="text/css" rel="stylesheet" href="styles/nsd/materialize.css">
-      <link rel="stylesheet" type="text/css" href="styles/nsd/style.css">
-      <link rel="stylesheet" type="text/css" href="icons/fontawesome-free-5.15.1-web/css/all.min.css">
+	<link type="text/css" rel="stylesheet" href="nsd/materialize.css">
+      <link rel="stylesheet" type="text/css" href="nsd/style.css">
+      <link rel="stylesheet" type="text/css" href="fontawesome-free-5.15.1-web/css/all.min.css">
       <link rel="stylesheet" type="text/css" href="icons/fonts/material-icons.css">
-      <link rel="stylesheet" type="text/css" href="styles/nsd/flag-icon.css">
+      <link rel="stylesheet" type="text/css" href="nsd/flag-icon.css">
       <style type="text/css">
       	.formulario{
             border: 3px solid #00bcd4;
@@ -350,8 +350,8 @@
           </div>
         </div>
     </footer>
-<script type="text/javascript" src="scripts/js1/jquery-3.5.1.min.js"></script>
-<script type="text/javascript" src="scripts/js1/materialize.min.js"></script>
-<script type="text/javascript" src="scripts/js1/plugins.min.js"></script>
+<script type="text/javascript" src="js1/jquery-3.5.1.min.js"></script>
+<script type="text/javascript" src="js1/materialize.min.js"></script>
+<script type="text/javascript" src="js1/plugins.min.js"></script>
 </body>
 </html>
