@@ -1,5 +1,8 @@
 <?php
+session_start();
+
 header("Content-Type: application/json");
+
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
     require_once("data_manager.php");
 
@@ -14,13 +17,28 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
         if(isset($data_aluno['Email'])){
             if($data_aluno['Email'] == $_POST['email'] && $data_aluno['Senha'] == hash('sha512', $_POST['password'], false)){
-                $data = array('username' => $data_aluno['Nome_Completo'], 'bi' => $data_aluno['BI'], 'type' => 'al', 'email' => $data_aluno['Email']);
+
+                $_SESSION['permission'] = "Aluno";
+                $_SESSION["username"] = $data_aluno['Nome_Completo'];
+                $_SESSION["home"] = "telaaluno";
+                $_SESSION["bi"] = $data_aluno["BI"];
+                $_SESSION["email"] = $data_aluno["Email"];
+
+                $data = $_SESSION["permission"];
             }
         }
 
         if(isset($data_encarregado['Email'])){
             if($data_encarregado['Email'] == $_POST['email'] && $data_encarregado['Senha'] == hash('sha512', $_POST['password'], false)){
-                $data = array('username' => $data_encarregado['Nome_Completo'], 'bi' => $data_encarregado['BI_Encarregado'], 'type' => 'enc', 'email' => $data_encarregado['Email']);
+
+                $_SESSION['permission'] = "Encarregado";
+                $_SESSION["username"] = $data_encarregado['Nome_Completo'];
+                $_SESSION["home"] = "encarregado_home";
+                $_SESSION["bi"] = $data_encarregado["BI"];
+                $_SESSION["email"] = $data_encarregado["Email"];
+                $_SESSION["bi_encarregado"] = $data_encarregado["BI_Encarregado"];
+
+                $data = $_SESSION["permission"];
             }
         }
 
@@ -32,4 +50,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         }
     }
 }
+
+else header("location: index");
 ?>

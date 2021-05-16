@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="PT">
   <head>
@@ -5,18 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
    <link rel="stylesheet" type="text/css" href="icons/fontawesome-free-5.15.1-web/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="styles/css/style.css" />
-    <title>Formulário de login e cadastro</title>
+    <title>Login</title>
   </head>
   <body>
 
       <?php
-          if(isset($_COOKIE['username'])){
-              header('location: index.php');
-          }
-          else if (isset($_COOKIE['block'])) header("location: index.php");
+          if(isset($_SESSION['permission']) || isset($_COOKIE['ACCESSIBILITY']))
+              header('location: index');
       ?>
 
-      <script type="text/javascript" src="scripts/client_login.js"></script>
     <div class="container">
       <div class="forms-container">
         <div class="signin-signup">
@@ -24,32 +22,18 @@
             <h2 class="title">Login</h2>
             <div class="input-field">
               <i class="fas fa-user"></i>
-              <input type="text" placeholder="Username" id='username'/>
+              <input type="email" placeholder="E-mail" id='email' onblur="validateEmail()" maxlength="30" required/>
             </div>
             <div class="input-field">
               <i class="fas fa-lock"></i>
-              <input type="password" placeholder="Password" id='password'/>
+              <input type="password" placeholder="Senha" id='password' onblur="validatePassword()" maxlength="128" minlength="8" required/>
             </div>
+            <p id="errorTag" style="color: red;"></p>
             <input type="button" value="Login" class="btn solid"
-            onclick="login.login('username', 'password');"/>
-            <p class="social-text"><a href="index.php" style="color: black;">Voltar</a></p>
-            <p class="social-text" style="text-align: center;">Não tem nenhuma conta dirija-se à instituição.</p>
-            <p class="social-text">Siga as nossas redes sociais</p>
-            <div class="social-media">
-              <a href="#" class="social-icon">
-                <i class="fab fa-facebook-f"></i>
-              </a>
-              <a href="#" class="social-icon">
-                <i class="fab fa-twitter"></i>
-              </a>
-              <a href="#" class="social-icon">
-                <i class="fab fa-google"></i>
-              </a>
-              <a href="#" class="social-icon">
-                <i class="fab fa-linkedin-in"></i>
-              </a>
-            </div>
-
+            onclick="submitData();"/>
+            <script type="text/javascript" src="scripts/client_login.js"></script>
+            <p class="social-text"><a href="index" style="color: black;">Voltar</a></p>
+            <p class="social-text" style="text-align: center;">Não possui uma conta? Dirija-se à Secretaria.</p>
         </div>
       </div>
 

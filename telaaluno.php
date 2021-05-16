@@ -25,21 +25,22 @@
 </head>
 <body>
     <?php
-        if(!isset($_COOKIE['username'])){
-            header('location: index.php');
-        }
+        if(!isset($_SESSION['permission']))
+            header('location: index');
+        else if($_SESSION["permission"] != "Aluno")
+            header("location: " . $_SESSION["home"]);
     ?>
 
 <header >
     <div class=" navbar-fixed">
     <nav class="cyan">
     <div class="nav-wrapper container">
-     <a href="index.php" class="brand-logo">ASCLÉPIO</a>
+     <a href="index" class="brand-logo">ASCLÉPIO</a>
       <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="fas fa-bars"></i></a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
 
-        <li><a href="index.php" style="font-size: 18px;"><i class="material-icons left">home</i>Início</a></li>
-        <li><a href="vercomunicado.php" style="font-size: 18px;"><i class="far fa-comment-alt left"></i><small class="notification-badge red accent-2">5</small>Comunicados</a></li>
+        <li><a href="index" style="font-size: 18px;"><i class="material-icons left">home</i>Início</a></li>
+        <li><a href="vercomunicado" style="font-size: 18px;"><i class="far fa-comment-alt left"></i><small class="notification-badge red accent-2">5</small>Comunicados</a></li>
          <li>
                 <a href="javascript:void(0);" class="waves-effect waves-block waves-light profile-button" data-activates="profile-dropdown">
                   <span class="avatar-status avatar-online">
@@ -60,14 +61,14 @@
         <img src="office.jpg">
       </div>
       <a href="#!user"><img class="circle" src="default-user.png"></a>
-      <a href="#!name"><span class="white-text name" id='username'><?php echo $_COOKIE["username"]?></span></a>
-      <a href="#!email"><span class="white-text email" id='user_mail'><?php echo $_COOKIE["email"]?></span></a>
+      <a href="#!name"><span class="white-text name" id='username'><?php echo $_SESSION["username"]?></span></a>
+      <a href="#!email"><span class="white-text email" id='user_mail'><?php echo $_SESSION["email"]?></span></a>
     </div></li>
-      <li><a href="index.php" style="font-size: 18px;" class="white-text"><i class="material-icons left white-text">home</i>Início</a></li>
-        <li><a href="vercomunicado.php" style="font-size: 18px;"  class="white-text"><i class="far fa-comment-alt left white-text"></i>Comunicados</a></li>
+      <li><a href="index" style="font-size: 18px;" class="white-text"><i class="material-icons left white-text">home</i>Início</a></li>
+        <li><a href="vercomunicado" style="font-size: 18px;"  class="white-text"><i class="far fa-comment-alt left white-text"></i>Comunicados</a></li>
         <li class="divider"></li>
          <li>
-                <a href="#" onclick="document.location.replace('logout.php')" style="font-size: 18px;"  class="white-text">
+                <a href="#" onclick="document.location.replace('logout')" style="font-size: 18px;"  class="white-text">
                   <i class="material-icons white-text">keyboard_tab</i>Sair</a>
               </li>
       </ul>
@@ -88,7 +89,7 @@
               <li class="divider"></li>
 
               <li>
-                <a href="#" onclick="document.location.replace('logout.php')" class="grey-text text-darken-1">
+                <a href="#" onclick="document.location.replace('logout')" class="grey-text text-darken-1">
                   <i class="material-icons">keyboard_tab</i>Sair</a>
               </li>
             </ul>
@@ -108,7 +109,7 @@
                 foreach($reg as $key => $value){
                     if(!strcmp($key, 'Arquivo')){
                         $boletim_mg = new BoletimManager($value);
-                        $boletim_data = $boletim_mg->get($_COOKIE['username']);
+                        $boletim_data = $boletim_mg->get($_SESSION['username']);
 
                         if($boletim_data != null){
                             foreach($boletim_data as $key => $value){
