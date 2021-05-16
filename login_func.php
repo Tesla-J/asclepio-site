@@ -1,12 +1,15 @@
 <?php
+session_start();
+
 header("Content-Type: application/json");
+
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
     require_once('data_manager.php');
 
     //obtendo usuario e senha
-    $user = $_POST['user'];
+    $email = $_POST["email"];
     $password = $_POST['password'];
-    $hash_user = hash('sha512', $user, false);
+    $hash_user = hash('sha512', $email, false);
     $hash_password = hash('sha512', $password, false);
 
     //preparando os locais de procura de correspondência
@@ -31,15 +34,20 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $coordenador = new Coordenador();
     $coordenador->setTable('Coordenador');
     $coordenador_data = json_decode(
-        $coordenador->get('Email', $user),
+        $coordenador->get('Email', $email),
         true);
 
     //SEARCHING
 
     if( isset($coordenador_data['Email']) ){
-        if($coordenador_data['Email'] == $user && $coordenador_data['Senha'] == $hash_password){
-            $data = array('username' => $coordenador_data['Nome_Completo'],
-                'bi' => $coordenador_data['BI_Coordenador'], 'email' => $coordenador_data['Email']);
+        if($coordenador_data['Email'] == $email && $coordenador_data['Senha'] == $hash_password){
+            $_SESSION["username"] = $coordenador_data['Nome_Completo'];
+            $_SESSION["bi"] = $coordenador_data['BI_Coordenador'];
+            $_SESSION["email"] = $coordenador_data['Email'];
+            $_SESSION["home"] = "coordenador";
+
+            $data = "Coordenador";
+            $_SESSION["permission"] = $data;
         }
         else{
             $data = 'NONE';
@@ -47,13 +55,17 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     }
     else if( $prof_data['username'] == $hash_user && $prof_data['password'] == $hash_password){
         if(filter_var($prof_data['enabled'], FILTER_VALIDATE_BOOLEAN)){
-            $data = array('username' => 'Professor');
+            $data = 'Professor';
+            $_SESSION["permission"] = $data;
+            $_SESSION["home"] = "telaprofessorgeral";
         }else{
             $data = "DISABLED";
         }
     }
     else if( $adm_data['username'] == $hash_user && $adm_data['password'] == $hash_password){
-        $data = array('username' => 'Administrador');
+        $data = 'Administrador';
+        $_SESSION["permission"] = $data;
+        $_SESSION["home"] = "Admin";
     }
     else{
         $data = 'NONE';
@@ -61,4 +73,5 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
     echo json_encode($data);
 }
+else header("location: index");
 ?>

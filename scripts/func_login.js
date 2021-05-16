@@ -1,64 +1,109 @@
-class FuncLogin{
-    constructor(){
-        this.tentativas = 0;
+let tentativas = 0;
+
+let emailInput = document.getElementById("email");
+let emailValidity = false;
+
+let passwordInput = document.getElementById("password");
+let passwordValidity = false;
+
+let errorTag = document.getElementById("errorTag");
+
+
+function validateEmail(){
+
+    if(emailInput.value.length == 0){
+        emailInput.setCustomValidity("Introduza o seu e-mail.");
+        emailInput.reportValidity();
+    }
+    else if (!emailInput.checkValidity()) {
+        emailInput.setCustomValidity("Introduza um e-mail válido.");
+        emailInput.reportValidity();
+    }
+    else{
+        emailInput.setCustomValidity("");
+        emailValidity = true;
     }
 
-    sendLogin(){
-        let self = this;
-        self.xhr = new XMLHttpRequest();
-        self.xhr.open('POST', 'login_func.php', true);
-        self.xhr.responseType = "json";
-        self.xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-        self.xhr.onreadystatechange = function() {
-            if(self.xhr.readyState == 4 && self.xhr.status == 200){
-                if(self.xhr.response == "NONE"){
-                    alert('Usuário ou senha incorrectos.');
-                    ++self.tentativas;
+}
 
-                    if(self.tentativas >= 5){
-                        self.tentativas = 0;
-                        let expirationDate =  new Date();
-                        expirationDate.setTime( expirationDate.getTime() + (3600000))
-                        document.cookie = "block=true; expires=" + expirationDate.toUTCString();
-                        alert("Ocorreram várias tentativas, tente daqui a uma hora");
-                        document.location.reload();
-                    }
-                }
-                else if(self.xhr.response == "DISABLED"){
-                    alert("A conta pública se encontra desabilitada.")
-                }
-                else{
-                    console.log(self.xhr.response);
-                    let obj = self.xhr.response;
-                    document.cookie = 'username='+obj.username;
-                    try{
-                        document.cookie = 'email='+obj.email;
-                        document.cookie = 'bi='+obj.bi;
-                    }
-                    catch(e){}
+function validatePassword(){
 
-                    switch(obj.username){
-                        case 'Administrador':
-                            document.cookie = 'home=Admin.php';
-                            window.location.replace('Admin.php');
-                            break;
-                        case 'Professor':
-                            document.cookie = 'home=telaprofessorgeral.php';
-                            window.location.replace('telaprofessorgeral.php');
-                            break;
-                        default:
-                            document.cookie = 'home=coordenador.php';
-                            window.location.replace('coordenador.php');
-                    }
-                }
-            }
+    if(passwordInput.value.length == 0){
+        passwordInput.setCustomValidity("Intruduza a sua senha.");
+        passwordInput.reportValidity();
+    }
+    else if(passwordInput.value.length < 8){
+        passwordInput.setCustomValidity("A senha deve ter pelo menos 8 caracteres.");
+        passwordInput.reportValidity();
+    }
+    else{
+        passwordInput.setCustomValidity("");
+        passwordValidity = true;
+    }
+
+}
+
+function verifyResponse(response){
+
+    if(response == "NONE"){
+        errorTag.innerHTML = "Dados de acesso incorrectos!";
+        ++tentativas;
+
+        if(tentativas >= 5){
+            expirationDate = new Date();
+            expirationDate.setTime(expirationDate.getTime() + (3600 * 1000));
+
+            document.cookie = "ACCESSIBILITY=null; expires="+expirationDate.toUTCString() + "; secure";
+            tentativas = 0;
+            document.location.reload();
+        }
+    }
+    else{
+        switch(response){
+
+            case "DISABLED":
+                errorTag.innerHTML = "A conta dos professores está desactivada.";
+                break;
+
+            case "Professor":
+                document.location.replace("telaprofessorgeral");
+                break;
+
+            case "Administrador":
+                document.location.replace("Admin");
+                break;
+
+            default:
+                document.location.replace("coordenador");
         }
     }
 
-    login(username_id, password_id){
-        var username = document.getElementById(username_id).value;
-        var password = document.getElementById(password_id).value;
-        this.sendLogin();
-        this.xhr.send('user=' + username + "&password=" + password);
+}
+
+
+function sendRequest(email, pass){
+
+    xhr = new XMLHttpRequest();
+    xhr.open("post","login_func");
+    xhr.responseType = "json";
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+    xhr.onreadystatechange = function(){
+        if(xhr.status == 200 && xhr.response != null)
+            verifyResponse(xhr.response);
     }
+
+    xhr.send("email="+email + "&password="+pass);
+}
+
+function submitData(){
+
+    if(!(emailValidity && passwordValidity)){
+        emailInput.reportValidity();
+        passwordInput.reportValidity();
+        return;
+    }
+
+    sendRequest(emailInput.value, passwordInput.value);
+
 }

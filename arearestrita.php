@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,16 +13,12 @@
 <body>
 
     <?php
-        if(isset($_COOKIE['username'])){
-            header('location: index.php');
+        if(isset($_SESSION['permission']) || isset($_COOKIE['ACCESSIBILITY'])){
+            header('location: index');
         }
-        else if (isset($_COOKIE['block'])) header("location: index.php");
     ?>
 
-	<script type="text/javascript" src='scripts/func_login.js'></script>
-    <script type="text/javascript">
-        var login = new FuncLogin();
-    </script>
+
 	<section class="form my-4 mx-1">
 	<div class="container">
 		<p>&nbsp;</p>
@@ -30,20 +28,22 @@
 			</div>
 			<div class="col-lg-7">
 			<h3 class="signin-text mb-3 text-center">LOGIN ÁREA RESTRITA</h3>
-			<form id='form'>
+			<form method="post">
 			<div class="form-group">
-				<label for="username">Utilizador</label>
-				<input type="text" name="username" id='username' class="form-control">
+				<label for="email">E-mail</label>
+				<input type="email" name="email" id='email' class="form-control" onblur="validateEmail()" maxlength="30" required>
 			</div>
 			<div class="form-group">
-				<label for="senha">Senha</label>
-				<input type="password" name="senha" id='senha' class="form-control">
+				<label for="password">Senha</label>
+				<input type="password" name="password" id='password' class="form-control" onblur="validatePassword()" minlength="8" maxlength="128" required>
                 </div>
+                <p style="color:red" id="errorTag"></>
                 <div class="form-group col-lg-7">
-                <input type='button' value='Login' class="btn btn-class mb-3" onclick="login.login('username', 'senha');"/>
+                <input type='button' value='Login' class="btn btn-class mb-3" onclick="submitData()"/>
                 </div>
                 <p>Área reservada para Funcionários</p>
-                <p>Clique aqui para <a href="index.php">Voltar</a></p>
+                <p>Acessou esta página por engano? Clique <a href="index">aqui</a> para voltar.</p>
+                <script type="text/javascript" src='scripts/func_login.js'></script>
 			</form>
 			</div>
 		</div>

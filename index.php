@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,13 +11,13 @@
 	    <link rel="stylesheet" type="text/css" href="fonts/material-icons.css">
       <link rel="stylesheet" type="text/css" href="css/main.css">
 
-	    <title></title>
+	    <title>Página inicial</title>
 
 </head>
 <body id="Inicio" class="scrollspy">
     <?php
-        if(isset($_COOKIE['home'])){
-            $home = $_COOKIE['home'];
+        if(isset($_SESSION['home'])){
+            $home = $_SESSION['home'];
             echo "<script type='text/javascript'>";
             echo "let home=\"$home\";";
             echo "</script>";
@@ -32,7 +33,7 @@
       <ul id="nav-mobile" class="right hide-on-med-and-down">
 
         <?php
-            if(isset($_COOKIE['username'])){
+            if(isset($_SESSION['permission'])){
                 echo "<li><a onclick='window.location.href=home;' href='#' id='#Inicio' style='font-size: 18px;'><i class='material-icons left'>home</i>Menu do Utilizador</a></li>";
             }
         ?>
@@ -40,7 +41,7 @@
         <li><a href="informaçao" style="font-size: 18px;"><i class="material-icons left">info</i>Informações</a></li>
 
         <?php
-            if(!isset($_COOKIE['username'])){
+            if(!isset($_SESSION['permission'])){
                 echo '<li><a href="login" class="botão cyan" style="color: white; border-radius: 26px; border: 2px solid #fff; text-align: center; font-size: 18px;">Iniciar Sessão</a></li>';
                 echo '<li><a href="arearestrita" class="botão cyan" style="color: white; border-radius: 26px; border: 2px solid #fff; text-align: center; font-size: 18px;">Área Restrita</a></li>';
             }
@@ -59,7 +60,7 @@
          <h4>ASCLÉPIO</h4>
         <div class="divider"></div>
        <?php
-            if(isset($_COOKIE['username'])){
+            if(isset($_SESSION['permission'])){
                 echo "<li><a onclick='window.location.href=home;' href='#' class='white-text' style=' font-size: 18px;'><i class='material-icons left white-text'>home</i> Menu do Utilizador </a></li>";
             }
        ?>
@@ -68,7 +69,7 @@
 
 
         <?php
-            if(!isset($_COOKIE['username'])){
+            if(!isset($_SESSION['permission'])){
                 echo '<li><a href="login" class="botão cyan" style="color: white; border-radius: 26px; border: 2px solid #fff; text-align: center; font-size: 18px;">Iniciar Sessão</a></li>';
                 echo '<li><a href="arearestrita" class="botão cyan" style="color: white; border-radius: 26px; border: 2px solid #fff; text-align: center; font-size: 18px;">Área Restrita</a></li>';
             }

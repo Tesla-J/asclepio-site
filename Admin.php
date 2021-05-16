@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,9 +17,11 @@
 <body>
 
     <?php
-        if(!isset($_COOKIE['username'])){
-            header('location: index.php');
-        }
+        if(!isset($_SESSION['permission']))
+            header('location: index');
+
+        else if( $_SESSION["permission"] != "Administrador")
+            header("location: " . $_SESSION['home']);
     ?>
 
    <!-- Start Page Loading -->
@@ -36,7 +39,7 @@
             <ul class="left">
               <li>
                 <h1 class="logo-wrapper">
-                  <a href="index.php" class="brand-logo darken-1">
+                  <a href="index" class="brand-logo darken-1">
                     <img src="" alt="">
                     <span class="logo-text hide-on-med-and-down">Asclépio</span>
                   </a>
@@ -127,7 +130,7 @@
             <!-- profile-dropdown -->
             <ul id="profile-dropdown" class="dropdown-content">
               <li>
-                <a href="logout.php" class="grey-text text-darken-1">
+                <a href="logout" class="grey-text text-darken-1">
                   <i class="material-icons">keyboard_tab</i>sair</a>
               </li>
             </ul>
@@ -151,7 +154,7 @@
                 <div class="col col s8 m8 l8">
                   <ul id="profile-dropdown-nav" class="dropdown-content">
                     <li>
-                      <a href="logout.php" class="grey-text text-darken-1">
+                      <a href="logout" class="grey-text text-darken-1">
                         <i class="material-icons">keyboard_tab</i>Logout</a>
                     </li>
                   </ul>
@@ -163,13 +166,13 @@
             <li class="no-padding">
               <ul class="collapsible" data-collapsible="accordion">
                 <li class="bold">
-                  <a href="Admin.php" class="waves-effect waves-cyan">
+                  <a href="Admin" class="waves-effect waves-cyan">
                       <i class="material-icons">pie_chart_outlined</i>
                       <span class="nav-text">painel de controle</span>
                     </a>
                 </li>
                  <li class="bold">
-                  <a href="cadastrofunc.php" class="waves-effect waves-cyan">
+                  <a href="cadastrofunc" class="waves-effect waves-cyan">
                     <i class="fas fa-user-plus prefix purple-text"></i>
                       <span class="nav-text">Cadastrar Coordenador</span>
                     </a>
@@ -257,7 +260,7 @@
                       </div>
 
                     </div>
-                    <a href="alunoconsulta.php" class="btn green hoverable" style="width: 100%;">Abrir</a>
+                    <a href="alunoconsulta" class="btn green hoverable" style="width: 100%;">Abrir</a>
                   </div>
                 </div>
                 <div class="col s12 m6 l3">
@@ -271,7 +274,7 @@
                         <h4 class="mb-0"><?php $counter->singleRowQuery('select count(Nome_Completo) from Encarregado;'); ?></h4>
                       </div>
                     </div>
-                    <a href="encarregadoconsulta.php" class="btn orange hoverable" style="width: 100%;">Abrir</a>
+                    <a href="encarregadoconsulta" class="btn orange hoverable" style="width: 100%;">Abrir</a>
                   </div>
                 </div>
                 <div class="col s12 m6 l3">
@@ -285,7 +288,7 @@
                         <h4 class="mb-0"><?php $counter->singleRowQuery('select count(Nome_Completo) from Coordenador;'); ?></h4>
                       </div>
                     </div>
-                     <a href="funciconsulta.php" class="btn purple hoverable" style="width: 100%;">Abrir</a>
+                     <a href="funciconsulta" class="btn purple hoverable" style="width: 100%;">Abrir</a>
                   </div>
                 </div>
 
